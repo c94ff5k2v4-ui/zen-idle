@@ -1,0 +1,3452 @@
+[
+    {
+        "q": "Which subatomic particle carries a positive electrical charge of +1?",
+        "options": [
+            "Electron",
+            "Proton",
+            "Neutron",
+            "Positron"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the approximate mass of a proton or a neutron in atomic mass units (amu)?",
+        "options": [
+            "0 amu",
+            "1 amu",
+            "12 amu",
+            "100 amu"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Where are protons and neutrons located within an atom?",
+        "options": [
+            "In electron shells",
+            "In the nucleus",
+            "Orbiting outside the atom",
+            "In covalent bonds"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What collective term is used to describe protons and neutrons in the nucleus?",
+        "options": [
+            "Electrons",
+            "Nucleons",
+            "Ions",
+            "Isotopes"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Why are neutral atoms electrically neutral overall?",
+        "options": [
+            "They contain no charged particles",
+            "They have equal numbers of protons and electrons",
+            "Neutrons cancel out all electron charges",
+            "They contain only neutrons"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What does the atomic number (Z) of an element represent?",
+        "options": [
+            "The total number of neutrons",
+            "The number of protons in the nucleus",
+            "The total number of nucleons",
+            "The mass of the atom in grams"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What does the mass number (A) of an atom represent?",
+        "options": [
+            "The total number of protons only",
+            "The total number of electrons only",
+            "The total number of nucleons (protons plus neutrons)",
+            "The atomic number multiplied by two"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which subatomic particle has a -1 charge and is located outside the nucleus?",
+        "options": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Alpha particle"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Contrary to John Dalton's original atomic theory, what do we now know about atoms of the same element?",
+        "options": [
+            "They can have different numbers of protons",
+            "They are always identical in mass",
+            "They can have different numbers of neutrons (isotopes)",
+            "They cannot form compounds"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What are atoms of the same element that have different mass numbers called?",
+        "options": [
+            "Ions",
+            "Isotopes",
+            "Allotropes",
+            "Isomers"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How can the number of neutrons in an atom be calculated from its atomic number (Z) and mass number (A)?",
+        "options": [
+            "A + Z",
+            "A - Z",
+            "Z - A",
+            "A * Z"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What force holds oppositely charged particles together in atomic interactions?",
+        "options": [
+            "Gravitational force",
+            "Electrostatic force",
+            "Magnetic force",
+            "Nuclear strong force"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "According to atomic theory, what happens to atoms during a chemical reaction?",
+        "options": [
+            "Atoms are created and destroyed",
+            "Atoms of one element change into atoms of another element",
+            "Atoms are rearranged in different combinations",
+            "Atoms lose all of their protons"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which subatomic particle has no electrical charge (charge of 0)?",
+        "options": [
+            "Proton",
+            "Electron",
+            "Neutron",
+            "Positron"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If a neutral carbon atom has an atomic number of 6 and a mass number of 12, how many neutrons does it contain?",
+        "options": [
+            "6",
+            "12",
+            "18",
+            "0"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which part of the atom contains almost all of its mass in a very small volume?",
+        "options": [
+            "Electron cloud",
+            "Nucleus",
+            "Outer shell",
+            "Covalent domain"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What determines the chemical identity of an element?",
+        "options": [
+            "The number of neutrons",
+            "The number of protons",
+            "The total mass number",
+            "The number of isotopes"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a neutral atom with an atomic number of 11, how many electrons are present?",
+        "options": [
+            "22",
+            "11",
+            "5",
+            "0"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the approximate mass of an electron compared to a proton?",
+        "options": [
+            "Equal mass",
+            "Twice as heavy",
+            "Much smaller (negligible mass)",
+            "Ten times heavier"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which statement best describes Dalton's idea regarding compound formation?",
+        "options": [
+            "Atoms combine in simple whole-number ratios",
+            "Atoms combine in random fractional ratios",
+            "Compounds consist of only one element",
+            "Atoms fuse together to form new elements"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is a substance that cannot be broken down into simpler substances under normal chemical conditions called?",
+        "options": [
+            "Compound",
+            "Element",
+            "Heterogeneous mixture",
+            "Solution"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a compound?",
+        "options": [
+            "A physical blend of two or more substances",
+            "A substance formed by two or more elements chemically combined",
+            "A mixture with varying composition",
+            "An uncombined single element"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Why do some element symbols (like Fe for Iron or Au for Gold) differ from their modern English names?",
+        "options": [
+            "They are named after modern scientists",
+            "They are based on their ancient Latin names",
+            "They were randomly assigned",
+            "They are derived from Greek numbers"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which element's chemical symbol 'W' is derived from its German name Wolfram?",
+        "options": [
+            "Tin",
+            "Tungsten",
+            "Titanium",
+            "Thorium"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What type of chemical bond holds atoms together in a molecule by sharing electrons?",
+        "options": [
+            "Ionic bond",
+            "Covalent bond",
+            "Metallic bond",
+            "Hydrogen bond"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is an atom or group of atoms called when it carries a net electrostatic charge?",
+        "options": [
+            "Isotope",
+            "Molecule",
+            "Ion",
+            "Allotropes"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is a positively charged ion called?",
+        "options": [
+            "Anion",
+            "Cation",
+            "Isotope",
+            "Neutron"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a negatively charged ion called?",
+        "options": [
+            "Cation",
+            "Anion",
+            "Positron",
+            "Nucleon"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How does a cation form from a neutral atom?",
+        "options": [
+            "By gaining protons",
+            "By losing electrons",
+            "By gaining electrons",
+            "By losing neutrons"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How does an anion form from a neutral atom?",
+        "options": [
+            "By losing protons",
+            "By losing electrons",
+            "By gaining electrons",
+            "By gaining neutrons"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What are graphite, diamond, and buckminsterfullerene examples of?",
+        "options": [
+            "Isotopes of carbon",
+            "Allotropes of carbon",
+            "Compounds of carbon and oxygen",
+            "Ions of carbon"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which element exists in red and white structural forms?",
+        "options": [
+            "Sulfur",
+            "Phosphorus",
+            "Carbon",
+            "Nitrogen"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In what molecular forms can elemental sulfur exist?",
+        "options": [
+            "S2 and S3",
+            "S6 and S4",
+            "S10 and S12",
+            "S5 and S7"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What type of ion consists of two or more atoms covalently bonded together that carry a net charge?",
+        "options": [
+            "Monatomic ion",
+            "Polyatomic ion",
+            "Neutral atom",
+            "Isotope"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is an ionic compound represented in terms of its simplest whole-number ratio of ions?",
+        "options": [
+            "Molecular mass",
+            "Formula unit",
+            "Isotopic ratio",
+            "Structural formula"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "When writing the chemical formula for an ionic compound containing multiple polyatomic ions of the same type, what must be used?",
+        "options": [
+            "Square brackets",
+            "Parentheses around the polyatomic ion with a subscript",
+            "Quotation marks",
+            "A hyphen"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the overall net charge of a valid ionic compound formula unit?",
+        "options": [
+            "+1",
+            "-1",
+            "Zero (neutral)",
+            "+2"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the correct formula unit for the ionic compound formed by Ca²⁺ and Br⁻?",
+        "options": [
+            "CaBr",
+            "Ca2Br",
+            "CaBr2",
+            "Ca2Br2"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the correct chemical formula for the compound formed by Fe³⁺ and NO₃⁻?",
+        "options": [
+            "FeNO3",
+            "Fe(NO3)3",
+            "Fe3NO3",
+            "Fe2(NO3)3"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which force holds cations and anions together in an ionic bond?",
+        "options": [
+            "Covalent sharing",
+            "Electrostatic attraction",
+            "Magnetic attraction",
+            "Nuclear force"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a pure substance defined as?",
+        "options": [
+            "A mixture with variable composition",
+            "Matter with fixed composition and constant properties",
+            "A combination of two or more phases",
+            "A solution of varying density"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following is an example of a physical property?",
+        "options": [
+            "Flammability",
+            "Reactivity with acid",
+            "Density",
+            "Ability to rust"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What type of property describes how a substance transforms into a different substance?",
+        "options": [
+            "Physical property",
+            "Chemical property",
+            "Extensive physical property",
+            "Optical property"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a mixture?",
+        "options": [
+            "A pure element",
+            "A combination of two or more substances that can vary in proportion",
+            "A compound with a fixed chemical formula",
+            "A single phase with no distinct boundaries"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How can mixtures generally be separated into their individual components?",
+        "options": [
+            "By chemical reactions only",
+            "By physical means",
+            "By nuclear fission",
+            "They cannot be separated"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a 'phase' in chemistry?",
+        "options": [
+            "A chemical reaction state",
+            "A region of matter with uniform properties and distinct boundaries",
+            "The speed of molecular motion",
+            "A measure of density"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a mixture containing two or more distinct phases with definite boundaries called?",
+        "options": [
+            "Homogeneous mixture",
+            "Heterogeneous mixture",
+            "Pure compound",
+            "Element"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A mixture of ice and water is classified as what type of mixture?",
+        "options": [
+            "Homogeneous mixture",
+            "Heterogeneous mixture",
+            "Chemical compound",
+            "Gaseous solution"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which laboratory technique is commonly used to separate an insoluble solid from a liquid in a heterogeneous mixture?",
+        "options": [
+            "Distillation",
+            "Filtration",
+            "Crystallization",
+            "Electrolysis"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is a homogeneous mixture?",
+        "options": [
+            "A mixture with non-uniform composition and multiple phases",
+            "A mixture that is uniform throughout and consists of a single phase",
+            "A combination of elements that cannot be separated",
+            "A solid mixture with visible boundary lines"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a homogeneous mixture, at what level are the components mixed?",
+        "options": [
+            "Macroscopic visible pieces",
+            "Atomic or molecular level",
+            "Phase-separated layers",
+            "Nuclear level"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which technique separates components of a liquid homogeneous mixture based on differences in boiling points?",
+        "options": [
+            "Filtration",
+            "Distillation",
+            "Decantation",
+            "Centrifugation"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What separation technique relies on dissolving a solid and allowing pure crystals to form as the solvent evaporates?",
+        "options": [
+            "Filtration",
+            "Distillation",
+            "Crystallization",
+            "Magnetism"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is another common name for a homogeneous mixture?",
+        "options": [
+            "Compound",
+            "Solution",
+            "Suspension",
+            "Emulsion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a solution, what is the substance that acts as the dissolving medium called?",
+        "options": [
+            "Solute",
+            "Solvent",
+            "Precipitate",
+            "Filtrate"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a solution, what is the substance dissolved in the solvent called?",
+        "options": [
+            "Solvent",
+            "Solute",
+            "Phase",
+            "Distillate"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is an alloy?",
+        "options": [
+            "A heterogeneous suspension of metals",
+            "A solid solution and uniform mixture of metallic elements",
+            "A nonmetallic pure compound",
+            "A liquid element at room temperature"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Steel (iron, chromium, and nickel) and dental amalgam (silver and mercury) are examples of what?",
+        "options": [
+            "Pure compounds",
+            "Alloys",
+            "Heterogeneous mixtures",
+            "Gaseous elements"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How do physical properties like boiling point and density change in a solution when solute concentration varies?",
+        "options": [
+            "They remain completely unaffected",
+            "They vary continuously depending on component proportions",
+            "They immediately double",
+            "They drop to zero"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Can solutions exist in states of matter other than liquids?",
+        "options": [
+            "No, solutions can only be liquids",
+            "Yes, solutions can be solid-solid, liquid-liquid, or gas-gas combinations",
+            "No, solid solutions are impossible",
+            "Yes, but only in plasma state"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What does the Periodic Law state?",
+        "options": [
+            "Properties of elements are random functions of mass",
+            "Properties of elements are periodic functions of their atomic numbers",
+            "Properties of elements change linearly with atomic mass",
+            "All elements in the same period have identical chemical properties"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Where are metals generally located on the periodic table?",
+        "options": [
+            "On the right side",
+            "On the left side",
+            "Along the zigzag line",
+            "At the very bottom row only"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Where are nonmetals located on the periodic table?",
+        "options": [
+            "On the left side",
+            "On the right side",
+            "In Group B only",
+            "In the center block"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What class of elements lies along the boundary between metals and nonmetals and is widely used in semiconductors?",
+        "options": [
+            "Alkali metals",
+            "Halogens",
+            "Metalloids (semimetals)",
+            "Noble gases"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What are the horizontal rows on the periodic table called?",
+        "options": [
+            "Groups",
+            "Families",
+            "Periods",
+            "Blocks"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What are the vertical columns on the periodic table called?",
+        "options": [
+            "Periods",
+            "Groups or Families",
+            "Series",
+            "Transitions"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "With which family of elements does every period on the periodic table end?",
+        "options": [
+            "Alkali metals",
+            "Halogens",
+            "Noble gases",
+            "Alkaline earth metals"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "At reference conditions (1 atm, 25 °C), which two elements exist as liquids?",
+        "options": [
+            "Mercury (Hg) and Bromine (Br2)",
+            "Chlorine (Cl2) and Fluorine (F2)",
+            "Hydrogen (H2) and Oxygen (O2)",
+            "Sodium (Na) and Potassium (K)"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which of the following elements is a gas at reference conditions (1 atm, 25 °C)?",
+        "options": [
+            "Bromine (Br2)",
+            "Fluorine (F2)",
+            "Iodine (I2)",
+            "Mercury (Hg)"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the special family name for Group IA elements?",
+        "options": [
+            "Alkaline earth metals",
+            "Alkali metals",
+            "Halogens",
+            "Chalcogens"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the special family name for Group VIIA elements?",
+        "options": [
+            "Noble gases",
+            "Halogens",
+            "Alkali metals",
+            "Coinage metals"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What are the B-group elements in the central block of the periodic table called?",
+        "options": [
+            "Inner transition metals",
+            "Transition metals",
+            "Metalloids",
+            "Lanthanides"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In the Stock system for naming binary ionic compounds, how is the charge/oxidation state of a metal ion indicated?",
+        "options": [
+            "With a Greek prefix before the metal name",
+            "With a Roman numeral in parentheses after the metal name",
+            "With a subscript number",
+            "By adding -ic to the nonmetal"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In binary molecular compound nomenclature, what Greek prefix is used for the number 4?",
+        "options": [
+            "di-",
+            "tri-",
+            "tetra-",
+            "penta-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the correct systemic name for the binary molecular compound N2O3?",
+        "options": [
+            "Nitrogen oxide",
+            "Dinitrogen trioxide",
+            "Trinitrogen dioxide",
+            "Nitrogen trioxide"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the naming rule for a binary acid such as HCl(aq)?",
+        "options": [
+            "Prefix hydro- + nonmetal root + -ic acid",
+            "Nonmetal root + -ous acid without hydro-",
+            "Prefix per- + nonmetal root + -ic acid",
+            "Nonmetal root + -ide acid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "When naming an oxyacid whose polyatomic anion ends in '-ate' (e.g., sulfate SO4²⁻), what suffix is used for the acid?",
+        "options": [
+            "-ous acid",
+            "-ic acid",
+            "-ide acid",
+            "hydro-...-ic acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "When naming an oxyacid whose polyatomic anion ends in '-ite' (e.g., sulfite SO3²⁻), what suffix is used for the acid?",
+        "options": [
+            "-ic acid",
+            "-ous acid",
+            "-ide acid",
+            "hydro-...-ous acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What are the correct names for H2SO4(aq) and H2SO3(aq)?",
+        "options": [
+            "Sulfuric acid and sulfurous acid",
+            "Sulfurous acid and sulfuric acid",
+            "Hydrosulfuric acid and sulfuric acid",
+            "Sulfuric acid and hydrosulfuric acid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Do oxyacids (such as HNO3 or H2SO4) use the prefix 'hydro-' in their chemical names?",
+        "options": [
+            "Yes, always",
+            "No, never",
+            "Only when concentrated",
+            "Only if they contain sulfur"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What two parts make up every scientific measurement?",
+        "options": [
+            "A number and a unit",
+            "A symbol and a formula",
+            "A mass and a volume",
+            "A hypothesis and a law"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which term describes how close a set of measurements are to each other?",
+        "options": [
+            "Accuracy",
+            "Precision",
+            "Percent error",
+            "Significant figures"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which term refers to how close a measured value is to the true or accepted value?",
+        "options": [
+            "Precision",
+            "Accuracy",
+            "Uncertainty",
+            "Variance"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the formula for calculating percent error?",
+        "options": [
+            "|Accepted - Measured| / Accepted * 100%",
+            "|Accepted - Measured| / Measured * 100%",
+            "(Accepted + Measured) / 2 * 100%",
+            "Measured / Accepted * 100%"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "When adding or subtracting measurements, how is the number of decimal places in the answer determined?",
+        "options": [
+            "By the measurement with the fewest total significant figures",
+            "By the measurement with the fewest decimal places",
+            "By the measurement with the most decimal places",
+            "By taking the average number of decimal places"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "When multiplying or dividing measurements, the answer should have the same number of significant figures as the measurement with:",
+        "options": [
+            "The fewest decimal places",
+            "The most decimal places",
+            "The fewest total significant figures",
+            "The most total significant figures"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "How many significant figures are in the number 0.005020?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "6"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the SI base unit for mass?",
+        "options": [
+            "Gram",
+            "Kilogram",
+            "Milligram",
+            "Pound"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which metric prefix corresponds to 10^-3 (one-thousandth)?",
+        "options": [
+            "Kilo-",
+            "Centi-",
+            "Milli-",
+            "Micro-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "In scientific notation, the coefficient N in N x 10^n must be in what range?",
+        "options": [
+            "0 <= N < 10",
+            "1 <= N < 10",
+            "1 < N <= 100",
+            "0 < N <= 1"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What problem-solving method uses conversion factors to convert from one unit to another?",
+        "options": [
+            "Dimensional analysis",
+            "Scientific method",
+            "Stoichiometry",
+            "Significant rounding"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the freezing point of pure water on the Celsius scale?",
+        "options": [
+            "-32 °C",
+            "0 °C",
+            "32 °C",
+            "273 °C"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is a temperature in Celsius (°C) converted to Kelvin (K)?",
+        "options": [
+            "K = °C - 273.15",
+            "K = °C + 273.15",
+            "K = (°C * 1.8) + 32",
+            "K = (°C - 32) / 1.8"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is absolute zero?",
+        "options": [
+            "0 °C",
+            "0 °F",
+            "0 K",
+            "-273 °F"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If a student measures a density of 2.45 g/mL and the accepted value is 2.50 g/mL, what is the percent error?",
+        "options": [
+            "2.0%",
+            "5.0%",
+            "98.0%",
+            "0.05%"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "A pure substance that cannot be broken down into simpler substances by chemical means is a(n):",
+        "options": [
+            "Element",
+            "Compound",
+            "Heterogeneous mixture",
+            "Homogeneous mixture"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "According to Dalton's atomic theory, all matter is composed of extremely small particles called:",
+        "options": [
+            "Molecules",
+            "Atoms",
+            "Ions",
+            "Electrons"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which subatomic particle carries a negative electric charge?",
+        "options": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Where are protons and neutrons located in an atom?",
+        "options": [
+            "Electron cloud",
+            "Nucleus",
+            "Outer shell",
+            "Orbital paths"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "The atomic number of an element is equal to the number of which subatomic particles in its nucleus?",
+        "options": [
+            "Electrons",
+            "Neutrons",
+            "Protons",
+            "Protons plus neutrons"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "The mass number of an atom is defined as the total number of:",
+        "options": [
+            "Protons only",
+            "Electrons only",
+            "Protons plus neutrons",
+            "Protons plus electrons"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Atoms of the same element that have different numbers of neutrons are called:",
+        "options": [
+            "Isomers",
+            "Isotopes",
+            "Ions",
+            "Allotropes"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "The atomic mass of an element listed on the periodic table represents:",
+        "options": [
+            "The mass of its most common isotope",
+            "The weighted average of the masses of its naturally occurring isotopes",
+            "The total number of protons and neutrons in its nucleus",
+            "The mass of one mole of electrons"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Compounds formed between atoms that share electrons via covalent bonds are called:",
+        "options": [
+            "Ionic compounds",
+            "Molecular compounds",
+            "Metallic compounds",
+            "Nuclear compounds"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A positively charged ion formed when an atom loses one or more electrons is called a(n):",
+        "options": [
+            "Anion",
+            "Cation",
+            "Polyatomic ion",
+            "Isotope"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A negatively charged ion formed when an atom gains one or more electrons is called a(n):",
+        "options": [
+            "Cation",
+            "Anion",
+            "Proton",
+            "Positron"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What type of bond forms between positively charged cations and negatively charged anions?",
+        "options": [
+            "Covalent bond",
+            "Hydrogen bond",
+            "Ionic bond",
+            "Metallic bond"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "The simplest whole-number ratio of ions in an ionic compound is referred to as a(n):",
+        "options": [
+            "Molecular formula",
+            "Structural formula",
+            "Formula unit",
+            "Isotopic ratio"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "An ion composed of two or more atoms covalently bonded together that acts as a single charged unit is a:",
+        "options": [
+            "Monatomic ion",
+            "Polyatomic ion",
+            "Diatomic molecule",
+            "Free radical"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following chemical formulas represents an ionic compound?",
+        "options": [
+            "CO2",
+            "H2O",
+            "NaCl",
+            "CH4"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which state of matter has a definite volume but takes the shape of its container?",
+        "options": [
+            "Solid",
+            "Liquid",
+            "Gas",
+            "Plasma"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which state of matter has neither a definite shape nor a definite volume?",
+        "options": [
+            "Solid",
+            "Liquid",
+            "Gas",
+            "Crystal"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "A property that depends on the amount of matter present in a sample is called an:",
+        "options": [
+            "Intensive property",
+            "Extensive property",
+            "Chemical property",
+            "Atomic property"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following is an intensive physical property?",
+        "options": [
+            "Mass",
+            "Volume",
+            "Density",
+            "Length"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which process is an example of a chemical change?",
+        "options": [
+            "Melting ice",
+            "Rusting of iron",
+            "Boiling water",
+            "Dissolving sugar in water"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "According to the Law of Conservation of Mass, during a chemical reaction, mass is:",
+        "options": [
+            "Created",
+            "Destroyed",
+            "Neither created nor destroyed",
+            "Converted entirely into gas"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Density is calculated as the ratio of which two quantities?",
+        "options": [
+            "Volume to mass",
+            "Mass to volume",
+            "Mass to area",
+            "Weight to height"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A mixture that is uniform in composition throughout is called a:",
+        "options": [
+            "Heterogeneous mixture",
+            "Homogeneous mixture (solution)",
+            "Compound",
+            "Element"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which technique can be used to separate an insoluble solid from a liquid in a heterogeneous mixture?",
+        "options": [
+            "Distillation",
+            "Filtration",
+            "Electrolysis",
+            "Chromatography"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a saltwater solution, water acts as the:",
+        "options": [
+            "Solute",
+            "Solvent",
+            "Precipitate",
+            "Emulsifier"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Energy stored in an object due to its position or chemical composition is known as:",
+        "options": [
+            "Kinetic energy",
+            "Potential energy",
+            "Thermal energy",
+            "Radiant energy"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Energy associated with the motion of particles or objects is called:",
+        "options": [
+            "Potential energy",
+            "Kinetic energy",
+            "Nuclear energy",
+            "Static energy"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A chemical process that releases heat energy to its surroundings is described as:",
+        "options": [
+            "Endothermic",
+            "Exothermic",
+            "Isothermal",
+            "Endergonic"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "The amount of heat required to raise the temperature of 1 gram of a substance by 1 °C is its:",
+        "options": [
+            "Heat of fusion",
+            "Heat of vaporization",
+            "Specific heat capacity",
+            "Thermal conductivity"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "How many calories are equivalent to 1 Nutritional Calorie (Cal)?",
+        "options": [
+            "1 calorie",
+            "100 calories",
+            "1000 calories (1 kcal)",
+            "10,000 calories"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Who is credited with creating the first widely accepted periodic table ordered by atomic mass?",
+        "options": [
+            "John Dalton",
+            "Dmitri Mendeleev",
+            "Ernest Rutherford",
+            "J. J. Thomson"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "The modern periodic table arranges elements in order of increasing:",
+        "options": [
+            "Atomic mass",
+            "Atomic number",
+            "Mass number",
+            "Density"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Elements that are malleable, ductile, lustrous, and good conductors of heat and electricity are:",
+        "options": [
+            "Nonmetals",
+            "Metalloids",
+            "Metals",
+            "Noble gases"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Horizontal rows in the periodic table are known as:",
+        "options": [
+            "Groups",
+            "Families",
+            "Periods",
+            "Blocks"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Vertical columns in the periodic table containing elements with similar chemical properties are called:",
+        "options": [
+            "Periods",
+            "Groups (or families)",
+            "Series",
+            "Transitions"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Group IA (Group 1) elements (excluding hydrogen) are commonly known as the:",
+        "options": [
+            "Alkaline earth metals",
+            "Alkali metals",
+            "Halogens",
+            "Noble gases"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Group VIIA (Group 17) elements are known as the:",
+        "options": [
+            "Halogens",
+            "Noble gases",
+            "Chalcogens",
+            "Alkali metals"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Group VIIIA (Group 18) elements are extremely unreactive gases known as:",
+        "options": [
+            "Halogens",
+            "Alkali metals",
+            "Noble gases",
+            "Actinides"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which of the following nonmetallic elements is a liquid at room temperature (25 °C)?",
+        "options": [
+            "Mercury (Hg)",
+            "Bromine (Br2)",
+            "Chlorine (Cl2)",
+            "Iodine (I2)"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which metallic element is a liquid at room temperature (25 °C)?",
+        "options": [
+            "Sodium (Na)",
+            "Gallium (Ga)",
+            "Mercury (Hg)",
+            "Bromine (Br2)"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "In naming binary ionic compounds, what suffix is added to the root name of the nonmetal anion?",
+        "options": [
+            "-ate",
+            "-ite",
+            "-ide",
+            "-ic"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "In the Stock system of nomenclature, what do Roman numerals in parentheses indicate?",
+        "options": [
+            "The number of atoms in the formula",
+            "The charge of the transition metal cation",
+            "The period number of the element",
+            "The number of polyatomic ions present"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the correct chemical formula for magnesium nitrate?",
+        "options": [
+            "MgNO3",
+            "Mg2NO3",
+            "Mg(NO3)2",
+            "Mg3N2"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What prefix is used in naming binary covalent compounds to indicate the presence of four atoms?",
+        "options": [
+            "Di-",
+            "Tri-",
+            "Tetra-",
+            "Penta-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Binary acids containing hydrogen and one nonmetal (such as HCl) are named using which pattern?",
+        "options": [
+            "hydro- [root] -ic acid",
+            "[root] -ic acid",
+            "[root] -ous acid",
+            "per- [root] -ic acid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What are the two fundamental problems that led to the historical development of calculus?",
+        "options": [
+            "The Tangent Line Problem and the Area Problem",
+            "The Pythagorean Theorem and the Quadratic Formula",
+            "The Optimization Problem and the Matrix Problem",
+            "The Volume Problem and the Distance Formula"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "In the tangent line problem, as point $Q$ approaches point $P$ along a curve, what does the secant line $PQ$ approach?",
+        "options": [
+            "The normal line at $P$",
+            "The tangent line at $P$",
+            "The horizontal asymptote",
+            "The chord of the circle"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is the slope of a secant line passing through points $(c, f(c))$ and $(c + \\Delta x, f(c + \\Delta x))$ expressed?",
+        "options": [
+            "$\\frac{f(c + \\Delta x) - f(c)}{\\Delta x}$",
+            "$\\frac{f(c) - f(\\Delta x)}{c}$",
+            "$\\frac{f(c + \\Delta x) + f(c)}{\\Delta x}$",
+            "$f'(c) \\Delta x$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "The slope of the tangent line at a specific point represents which of the following physical quantities?",
+        "options": [
+            "Average rate of change",
+            "Instantaneous rate of change",
+            "Total distance traveled",
+            "Accumulated area"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is the Area Problem under a continuous curve $f(x)$ from $x = a$ to $x = b$ approximated using precalculus mathematics?",
+        "options": [
+            "By fitting a single tangent line",
+            "By dividing the region into $n$ inscribed or circumscribed rectangles",
+            "By taking the derivative at $x = a$",
+            "By finding the slope between $(a, f(a))$ and $(b, f(b))$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What happens to the approximation of the area under a curve as the number of rectangles $n$ approaches infinity ($n \\to \\infty$)?",
+        "options": [
+            "The approximation becomes zero",
+            "The approximation approaches the exact area under the curve",
+            "The area increases without bound",
+            "The approximation diverges"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Find the slope of the secant line for $f(x) = x^2$ between $x = 1$ and $x = 3$.",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "8"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Find the slope of the secant line for $f(x) = x^2 + 1$ between $x = 2$ and $x = 2 + \\Delta x$ when $\\Delta x = 0.1$.",
+        "options": [
+            "4.1",
+            "4.01",
+            "2.1",
+            "4.0"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which of the following best describes the fundamental difference between precalculus and calculus?",
+        "options": [
+            "Precalculus deals with static concepts; calculus uses a limit process to analyze dynamic change",
+            "Precalculus uses variables; calculus uses only constants",
+            "Precalculus is strictly algebraic; calculus has no geometry",
+            "Precalculus uses limits; calculus does not"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "An object's position is given by $s(t) = 16t^2$ feet. What is its average velocity over the time interval $[1, 3]$ seconds?",
+        "options": [
+            "16 ft/s",
+            "32 ft/s",
+            "48 ft/s",
+            "64 ft/s"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What limit process yields the exact instantaneous velocity from average velocities?",
+        "options": [
+            "Taking the limit of average velocity as the time interval $\\Delta t \\to 0$",
+            "Taking the limit as time $t \\to \\infty$",
+            "Dividing total distance by total time",
+            "Multiplying distance by time"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What geometric shapes were used in Archimedes' classical method of exhaustion to approximate the area of a circle?",
+        "options": [
+            "Inscribed and circumscribed regular polygons",
+            "Rectangles aligned with the coordinate axes",
+            "Overlapping circles",
+            "Paraboloids"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "For the linear function $f(x) = 3x + 2$, what is the slope of any secant line?",
+        "options": [
+            "2",
+            "3",
+            "$3 + \\Delta x$",
+            "It depends on $x$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "As $\\Delta x \\to 0$, what does the expression $\\frac{f(1 + \\Delta x) - f(1)}{\\Delta x}$ approach for $f(x) = x^3$?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "6"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which of the following is an example of a dynamic calculus concept corresponding to the static precalculus concept of 'Length of a line segment'?",
+        "options": [
+            "Curved arc length",
+            "Area of a rectangle",
+            "Slope of a line",
+            "Volume of a rectangular solid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Compute the average rate of change of $f(x) = \\frac{1}{x}$ on the interval $[1, 4]$.",
+        "options": [
+            "$-\\frac{1}{4}$",
+            "$-\\frac{1}{3}$",
+            "$\\frac{1}{4}$",
+            "$-\\frac{3}{4}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which limit problem is directly related to the concept of definite integrals in calculus?",
+        "options": [
+            "The Tangent Line Problem",
+            "The Area Problem",
+            "The Asymptote Problem",
+            "The Continuity Problem"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Calculate the slope of the secant line through $(0, f(0))$ and $(1, f(1))$ for $f(x) = \\sin x$ (where $x$ is in radians).",
+        "options": [
+            "$\\sin 1$",
+            "$\\cos 1$",
+            "1",
+            "0"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Why can the slope of a tangent line NOT be calculated directly using the precalculus formula $m = \\frac{y_2 - y_1}{x_2 - x_1}$ at a single point $P(x_1, y_1)$?",
+        "options": [
+            "Because at a single point, $x_2 = x_1$ and $y_2 = y_1$, resulting in an undefined $\\frac{0}{0}$ form",
+            "Because tangent lines do not have slopes",
+            "Because slopes are only defined for linear functions",
+            "Because $\\frac{0}{0}$ always equals $0$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "If we approximate the area under $f(x) = x$ on $[0, 2]$ using 4 equal subintervals with right endpoints, what is the sum of the rectangular areas?",
+        "options": [
+            "1.5",
+            "2.0",
+            "2.5",
+            "3.0"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What does the notation $\\lim_{x \\to c} f(x) = L$ mean intuitively?",
+        "options": [
+            "$f(c)$ is strictly equal to $L$",
+            "As $x$ approaches $c$ from either side, $f(x)$ gets arbitrarily close to $L$",
+            "$f(x)$ equals $L$ for all $x$ in the domain",
+            "$x$ must equal $c$ for $f(x)$ to equal $L$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Does the existence of $\\lim_{x \\to c} f(x)$ depend on whether $f(c)$ is defined?",
+        "options": [
+            "Yes, $f(c)$ must always be defined and equal to $L$",
+            "No, $f(c)$ does not need to be defined for the limit to exist",
+            "Yes, if $f(c)$ is undefined, the limit is always infinity",
+            "Yes, $f(c)$ must be defined but can be any real number"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following is NOT one of the three common types of behavior associated with the nonexistence of a limit?",
+        "options": [
+            "$f(x)$ approaches different numbers from the left and right of $c$",
+            "$f(x)$ increases or decreases without bound as $x \\to c$",
+            "$f(x)$ oscillates between two fixed values as $x \\to c$",
+            "$f(x)$ is a constant function for all $x$ near $c$"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "For $f(x) = \\frac{|x|}{x}$, what is $\\lim_{x \\to 0} f(x)$?",
+        "options": [
+            "1",
+            "-1",
+            "0",
+            "Does not exist"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the behavior of $f(x) = \\sin\\left(\\frac{1}{x}\\right)$ as $x \\to 0$?",
+        "options": [
+            "Approaches 0",
+            "Approaches 1",
+            "Oscillates infinitely between $-1$ and $1$, so the limit does not exist",
+            "Increases without bound"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the behavior of $f(x) = \\frac{1}{x^2}$ as $x \\to 0$?",
+        "options": [
+            "Approaches 0",
+            "Approaches 1",
+            "Unbounded behavior (approaches $\\infty$), so the limit does not exist as a real number",
+            "Approaches $-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "State the formal $\\varepsilon$-$\\delta$ definition of a limit: $\\lim_{x \\to c} f(x) = L$.",
+        "options": [
+            "For every $\\varepsilon > 0$, there exists a $\\delta > 0$ such that if $0 < |x - c| < \\delta$, then $|f(x) - L| < \\varepsilon$",
+            "For every $\\delta > 0$, there exists an $\\varepsilon > 0$ such that if $|f(x) - L| < \\varepsilon$, then $|x - c| < \\delta$",
+            "For every $\\varepsilon > 0$, $|f(c) - L| < \\varepsilon$",
+            "If $|x - c| < \\delta$, then $f(x) = L$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "In the $\\varepsilon$-$\\delta$ definition of a limit, what does the inequality $0 < |x - c|$ express?",
+        "options": [
+            "$x$ is strictly equal to $c$",
+            "$x$ is within distance $\\delta$ of $c$, but $x \\neq c$",
+            "$x$ is greater than $c$",
+            "$f(x)$ is positive"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Using numerical estimation with values $x = 2.9, 2.99, 2.999$ and $x = 3.1, 3.01, 3.001$, estimate $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$.",
+        "options": [
+            "0",
+            "3",
+            "6",
+            "Undefined"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = L$, which of the following statements must be true?",
+        "options": [
+            "$f(c) = L$",
+            "Left limit and right limit as $x \\to c$ both exist and equal $L$",
+            "$f(x)$ is continuous at $x = c$",
+            "$f'(c)$ exists"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Given the piecewise function $f(x) = 2x + 1$ for $x < 1$ and $f(x) = 5 - x$ for $x > 1$. What is $\\lim_{x \\to 1} f(x)$?",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "Does not exist"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "If $f(x) = 4$ for all $x \\neq 2$, and $f(2) = 0$, what is $\\lim_{x \\to 2} f(x)$?",
+        "options": [
+            "0",
+            "2",
+            "4",
+            "Does not exist"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "In proving $\\lim_{x \\to 4} (2x - 5) = 3$ using the $\\varepsilon$-$\\delta$ definition, what is the appropriate choice of $\\delta$ in terms of $\\varepsilon$?",
+        "options": [
+            "$\\delta = \\varepsilon$",
+            "$\\delta = \\frac{\\varepsilon}{2}$",
+            "$\\delta = 2\\varepsilon$",
+            "$\\delta = \\varepsilon^2$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In proving $\\lim_{x \\to 3} (5x + 2) = 17$, if $\\varepsilon = 0.05$, what is the maximum valid choice for $\\delta$?",
+        "options": [
+            "0.01",
+            "0.05",
+            "0.25",
+            "0.1"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Estimate $\\lim_{x \\to 0} \\frac{\\sqrt{x + 1} - 1}{x}$ numerically.",
+        "options": [
+            "0",
+            "0.5",
+            "1",
+            "2"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which mathematician is primarily credited with formulating the rigorous $\\varepsilon$-$\\delta$ definition of limits?",
+        "options": [
+            "Isaac Newton",
+            "Gottfried Wilhelm Leibniz",
+            "Augustin-Louis Cauchy",
+            "Leonhard Euler"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If a function $f(x)$ oscillates infinitely between $-1$ and $1$ as $x \\to 0$, why does $\\lim_{x \\to 0} f(x)$ fail to exist?",
+        "options": [
+            "Because $f(0)$ is infinite",
+            "Because $f(x)$ does not approach a single, fixed real number $L$",
+            "Because the function is discontinuous at $x = 1$",
+            "Because $f(x)$ is negative"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Suppose a table of values for $f(x)$ shows $f(1.9) = 3.9, f(1.99) = 3.99$ and $f(2.01) = 4.01, f(2.1) = 4.1$. What is the reasonable estimate for $\\lim_{x \\to 2} f(x)$?",
+        "options": [
+            "3.9",
+            "4.0",
+            "4.1",
+            "Cannot be estimated"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "For the function $f(x) = \\cos\\left(\\frac{1}{x}\\right)$, what happens to $f(x)$ as $x \\to 0$?",
+        "options": [
+            "It approaches 1",
+            "It approaches 0",
+            "It oscillates infinitely between $-1$ and $1$",
+            "It approaches infinity"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = L$, can $L$ be negative?",
+        "options": [
+            "No, limits must always be non-negative",
+            "Yes, $L$ can be any real number",
+            "Only if $c$ is negative",
+            "Only if $f(x)$ is a linear function"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is $\\lim_{x \\to 2} (x^3 - 3x + 4)$?",
+        "options": [
+            "2",
+            "6",
+            "8",
+            "10"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = 3$ and $\\lim_{x \\to c} g(x) = -2$, what is $\\lim_{x \\to c} [2f(x) - 3g(x)]$?",
+        "options": [
+            "0",
+            "6",
+            "12",
+            "18"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$.",
+        "options": [
+            "0",
+            "3",
+            "6",
+            "Undefined"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to -2} \\frac{x^2 + 5x + 6}{x + 2}$.",
+        "options": [
+            "1",
+            "0",
+            "-1",
+            "5"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$.",
+        "options": [
+            "0",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$",
+            "1"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What technique should be used when direct substitution yields the indeterminate form $\\frac{0}{0}$ for a fraction containing radical expressions?",
+        "options": [
+            "Dividing out (factoring)",
+            "Rationalizing the numerator or denominator",
+            "Applying the Power Rule",
+            "Evaluating at $x = 0$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the value of the special trigonometric limit $\\lim_{x \\to 0} \\frac{\\sin x}{x}$?",
+        "options": [
+            "0",
+            "1",
+            "Undefined",
+            "$\\pi$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the value of the special trigonometric limit $\\lim_{x \\to 0} \\frac{1 - \\cos x}{x}$?",
+        "options": [
+            "0",
+            "1",
+            "$\\frac{1}{2}$",
+            "Does not exist"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sin(5x)}{x}$.",
+        "options": [
+            "1",
+            "5",
+            "$\\frac{1}{5}$",
+            "0"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\tan x}{x}$.",
+        "options": [
+            "0",
+            "1",
+            "$\\sec x$",
+            "Undefined"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "State the Squeeze Theorem (Sandwich Theorem): If $h(x) \\le f(x) \\le g(x)$ for all $x$ in an open interval containing $c$ (except possibly at $c$), and $\\lim_{x \\to c} h(x) = L = \\lim_{x \\to c} g(x)$, then:",
+        "options": [
+            "$\\lim_{x \\to c} f(x) = L$",
+            "$\\lim_{x \\to c} f(x) = 0$",
+            "$\\lim_{x \\to c} f(x)$ does not exist",
+            "$f(c) = L$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Use the Squeeze Theorem to find $\\lim_{x \\to 0} x^2 \\sin\\left(\\frac{1}{x}\\right)$.",
+        "options": [
+            "1",
+            "-1",
+            "0",
+            "Does not exist"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 1} \\frac{x^3 - 1}{x - 1}$.",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "0"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0} \\frac{1 - \\cos^2 x}{x^2}$.",
+        "options": [
+            "0",
+            "$\\frac{1}{2}$",
+            "1",
+            "2"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If $f(x) = g(x)$ for all $x \\neq c$, and $\\lim_{x \\to c} g(x) = L$, what can be concluded about $\\lim_{x \\to c} f(x)$?",
+        "options": [
+            "$\\lim_{x \\to c} f(x) = L$",
+            "$\\lim_{x \\to c} f(x)$ does not exist",
+            "$\\lim_{x \\to c} f(x) = f(c)$",
+            "No conclusion can be made"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 4} \\frac{x - 4}{\\sqrt{x} - 2}$.",
+        "options": [
+            "0",
+            "2",
+            "4",
+            "8"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sin(3x)}{\\sin(2x)}$.",
+        "options": [
+            "1",
+            "$\\frac{3}{2}$",
+            "$\\frac{2}{3}$",
+            "0"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2} \\frac{\\frac{1}{x} - \\frac{1}{2}}{x - 2}$.",
+        "options": [
+            "$\\frac{1}{4}$",
+            "$-\\frac{1}{4}$",
+            "$\\frac{1}{2}$",
+            "$-\\frac{1}{2}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "For any polynomial function $p(x)$, what is $\\lim_{x \\to c} p(x)$?",
+        "options": [
+            "$p(0)$",
+            "$p(c)$",
+            "$p'(c)$",
+            "$c$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to \\frac{\\pi}{2}} (x \\cos x)$.",
+        "options": [
+            "$\\frac{\\pi}{2}$",
+            "1",
+            "0",
+            "Undefined"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What three conditions must be satisfied for a function $f$ to be continuous at $x = c$?",
+        "options": [
+            "1) $f(c)$ is defined, 2) $\\lim_{x \\to c} f(x)$ exists, 3) $\\lim_{x \\to c} f(x) = f(c)$",
+            "1) $f'(c)$ exists, 2) $f(c) = 0$, 3) $\\lim_{x \\to c} f(x) = 0$",
+            "1) $f$ is a polynomial, 2) $c > 0$, 3) $f(c)$ is positive",
+            "1) $\\lim_{x \\to c^-} f(x) = 0$, 2) $\\lim_{x \\to c^+} f(x) = 0$, 3) $f(c) = 0$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What type of discontinuity occurs at $x = 2$ for $f(x) = \\frac{x^2 - 4}{x - 2}$?",
+        "options": [
+            "Removable discontinuity",
+            "Nonremovable jump discontinuity",
+            "Nonremovable infinite discontinuity",
+            "Continuous at $x = 2$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What type of discontinuity occurs at $x = 0$ for the step function $f(x) = \\llbracket x \\rrbracket$ (greatest integer function)?",
+        "options": [
+            "Removable discontinuity",
+            "Nonremovable jump discontinuity",
+            "Nonremovable infinite discontinuity",
+            "No discontinuity"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the relationship between the double-sided limit $\\lim_{x \\to c} f(x)$ and one-sided limits?",
+        "options": [
+            "$\\lim_{x \\to c} f(x) = L$ if and only if $\\lim_{x \\to c^-} f(x) = L$ and $\\lim_{x \\to c^+} f(x) = L$",
+            "$\\lim_{x \\to c} f(x)$ exists if either left or right limit exists",
+            "$\\lim_{x \\to c} f(x)$ is the average of the left and right limits",
+            "One-sided limits have no relation to double-sided limits"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is $\\lim_{x \\to 3^-} \\sqrt{9 - x^2}$?",
+        "options": [
+            "0",
+            "3",
+            "-3",
+            "Undefined"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "How is continuity defined on a closed interval $[a, b]$?",
+        "options": [
+            "$f$ is continuous on $(a, b)$, continuous from the right at $a$, and continuous from the left at $b$",
+            "$f$ is defined at $a$ and $b$",
+            "$\\lim_{x \\to a} f(x) = \\lim_{x \\to b} f(x)$",
+            "$f'(x) > 0$ for all $x$ in $[a, b]$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "State the Intermediate Value Theorem (IVT): If $f$ is continuous on $[a, b]$ and $k$ is any number between $f(a)$ and $f(b)$, then:",
+        "options": [
+            "There exists at least one number $c \\in (a, b)$ such that $f(c) = k$",
+            "$f(c) = \\frac{f(a) + f(b)}{2}$ for all $c$",
+            "$f$ must be a straight line",
+            "$c$ must be the midpoint of $[a, b]$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "To apply the Intermediate Value Theorem to verify a zero of $f(x)$ on $[a, b]$, what condition must $f(a)$ and $f(b)$ satisfy?",
+        "options": [
+            "$f(a)$ and $f(b)$ must have opposite signs ($f(a)f(b) < 0$) and $f$ must be continuous on $[a, b]$",
+            "$f(a)$ and $f(b)$ must both be positive",
+            "$f(a)$ must equal $f(b)$",
+            "$f$ must be differentiable on $(a, b)$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Find the value of constant $k$ such that $f(x) = \\begin{cases} kx + 1, & x \\le 2 \\\\ x^2 - 1, & x > 2 \\end{cases}$ is continuous everywhere.",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "$\\frac{1}{2}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2^+} \\frac{x - 2}{|x - 2|}$.",
+        "options": [
+            "1",
+            "-1",
+            "0",
+            "Does not exist"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2^-} \\frac{x - 2}{|x - 2|}$.",
+        "options": [
+            "1",
+            "-1",
+            "0",
+            "Does not exist"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following functions is continuous on the entire real line $(-\\infty, \\infty)$?",
+        "options": [
+            "$f(x) = \\sin x$",
+            "$f(x) = \\frac{1}{x}$",
+            "$f(x) = \\tan x$",
+            "$f(x) = \\ln x$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Where is the function $f(x) = \\frac{x + 1}{x^2 - 1}$ discontinuous?",
+        "options": [
+            "Only at $x = 1$",
+            "Only at $x = -1$",
+            "At $x = 1$ and $x = -1$",
+            "Continuous everywhere"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "For $f(x) = \\frac{x + 1}{x^2 - 1}$, which discontinuity is removable?",
+        "options": [
+            "$x = 1$",
+            "$x = -1$",
+            "Both $x = 1$ and $x = -1$",
+            "Neither"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If $g(x)$ is continuous at $x = c$, and $f(x)$ is continuous at $g(c)$, what can be said about the composite function $(f \\circ g)(x)$?",
+        "options": [
+            "$(f \\circ g)(x)$ is continuous at $x = c$",
+            "$(f \\circ g)(x)$ is discontinuous at $x = c$",
+            "$(f \\circ g)(x)$ is undefined at $x = c$",
+            "No conclusion can be made"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Use IVT to determine if $f(x) = x^3 + 2x - 1$ has a zero in the interval $[0, 1]$.",
+        "options": [
+            "Yes, because $f(0) = -1 < 0$ and $f(1) = 2 > 0$ and $f$ is continuous",
+            "No, because $f(0)$ and $f(1)$ are both positive",
+            "No, because $f$ is not continuous",
+            "Cannot be determined"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is $\\lim_{x \\to 0^+} \\llbracket x \\rrbracket$ where $\\llbracket x \\rrbracket$ is the greatest integer function?",
+        "options": [
+            "-1",
+            "0",
+            "1",
+            "Does not exist"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is $\\lim_{x \\to 0^-} \\llbracket x \\rrbracket$ where $\\llbracket x \\rrbracket$ is the greatest integer function?",
+        "options": [
+            "-1",
+            "0",
+            "1",
+            "Does not exist"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Is every polynomial function continuous everywhere on $(-\\infty, \\infty)$?",
+        "options": [
+            "Yes, all polynomial functions are continuous everywhere",
+            "No, only linear polynomials are continuous",
+            "No, polynomials have discontinuities at their zeros",
+            "Only for even degree polynomials"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "If $f(x) = \\sqrt{x - 4}$, what is the domain on which $f$ is continuous?",
+        "options": [
+            "$(-\\infty, \\infty)$",
+            "$(4, \\infty)$",
+            "$[4, \\infty)$",
+            "$(-\\infty, 4]$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What does the notation $\\lim_{x \\to c} f(x) = \\infty$ mean?",
+        "options": [
+            "$f(x)$ approaches a finite number infinity",
+            "$f(x)$ increases without bound as $x \\to c$",
+            "$f(c)$ equals infinity",
+            "The limit exists and equals infinity"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If $\\lim_{x \\to c^+} f(x) = \\infty$ or $\\lim_{x \\to c^-} f(x) = \\infty$, what geometric feature does the line $x = c$ represent for the graph of $f$?",
+        "options": [
+            "Horizontal asymptote",
+            "Vertical asymptote",
+            "Slant asymptote",
+            "Tangent line"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Find the vertical asymptote(s) of $f(x) = \\frac{1}{x^2 - 4}$.",
+        "options": [
+            "$x = 2$",
+            "$x = -2$",
+            "$x = 2$ and $x = -2$",
+            "$y = 0$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Find the vertical asymptote of $f(x) = \\frac{x^2 - 1}{x - 1}$.",
+        "options": [
+            "$x = 1$",
+            "$x = -1$",
+            "$x = 0$",
+            "No vertical asymptote exists because $x = 1$ is a removable discontinuity"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2^+} \\frac{1}{x - 2}$.",
+        "options": [
+            "0",
+            "1",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2^-} \\frac{1}{x - 2}$.",
+        "options": [
+            "0",
+            "-1",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 2} \\frac{1}{(x - 2)^2}$.",
+        "options": [
+            "0",
+            "1",
+            "$\\infty$",
+            "Does not exist because left and right limits differ"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0^+} \\cot x$.",
+        "options": [
+            "0",
+            "1",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to (\\pi/2)^-} \\tan x$.",
+        "options": [
+            "0",
+            "1",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Find all vertical asymptotes of $f(x) = \\tan x$ on the interval $(-\\pi, \\pi)$.",
+        "options": [
+            "$x = 0$",
+            "$x = \\frac{\\pi}{2}$ and $x = -\\frac{\\pi}{2}$",
+            "$x = \\pi$ and $x = -\\pi$",
+            "No vertical asymptotes"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = \\infty$ and $\\lim_{x \\to c} g(x) = L$ (where $L$ is a real number), what is $\\lim_{x \\to c} [f(x) + g(x)]$?",
+        "options": [
+            "$L$",
+            "0",
+            "$\\infty$",
+            "Undefined"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = \\infty$ and $\\lim_{x \\to c} g(x) = L > 0$, what is $\\lim_{x \\to c} [f(x)g(x)]$?",
+        "options": [
+            "$L$",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If $\\lim_{x \\to c} f(x) = \\infty$ and $\\lim_{x \\to c} g(x) = L$, what is $\\lim_{x \\to c} \\frac{g(x)}{f(x)}$?",
+        "options": [
+            "$L$",
+            "0",
+            "$\\infty$",
+            "1"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 1^-} \\frac{x^2 + 1}{x - 1}$.",
+        "options": [
+            "2",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 1^+} \\frac{x^2 + 1}{x - 1}$.",
+        "options": [
+            "2",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "For a rational function $f(x) = \\frac{p(x)}{q(x)}$ in lowest terms, a vertical asymptote occurs at $x = c$ if and only if:",
+        "options": [
+            "$p(c) = 0$",
+            "$q(c) = 0$ and $p(c) \\neq 0$",
+            "$p(c) = 0$ and $q(c) = 0$",
+            "$p'(c) = 0$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 0^+} \\left(1 + \\frac{1}{x}\\right)$.",
+        "options": [
+            "1",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 3^+} \\frac{x + 2}{x - 3}$.",
+        "options": [
+            "5",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Evaluate $\\lim_{x \\to 3^-} \\frac{x + 2}{x - 3}$.",
+        "options": [
+            "5",
+            "0",
+            "$\\infty$",
+            "$-\\infty$"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "Find the vertical asymptote(s) of $f(x) = \\csc x$ on $(0, 2\\pi)$.",
+        "options": [
+            "$x = \\pi$",
+            "$x = \\frac{\\pi}{2}$ and $x = \\frac{3\\pi}{2}$",
+            "$x = 0$ and $x = 2\\pi$",
+            "No vertical asymptotes"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "How do you find the $x$-intercepts of the graph of an equation?",
+        "options": [
+            "Set $x = 0$ and solve for $y$",
+            "Set $y = 0$ and solve for $x$",
+            "Set both $x = 0$ and $y = 0$",
+            "Evaluate the function at $x = 1$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A graph is symmetric with respect to the $y$-axis if replacing $x$ with $-x$ yields an equivalent equation. Which type of function exhibits this symmetry?",
+        "options": [
+            "Odd function",
+            "Even function",
+            "Inverse function",
+            "Piecewise function"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following points is a point of intersection of the graphs $y = x^2$ and $y = 2x - 1$?",
+        "options": [
+            "$(0, 0)$",
+            "$(1, 1)$",
+            "$(2, 3)$",
+            "$(-1, -3)$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the slope $m$ of the line passing through the points $(1, -2)$ and $(4, 7)$?",
+        "options": [
+            "$\\frac{1}{3}$",
+            "3",
+            "-3",
+            "$\\frac{5}{3}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the point-slope form of the equation of a line passing through $(x_1, y_1)$ with slope $m$?",
+        "options": [
+            "$y = mx + b$",
+            "$y - y_1 = m(x - x_1)$",
+            "$Ax + By + C = 0$",
+            "$\\frac{x}{a} + \\frac{y}{b} = 1$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If line $L_1$ has a slope of $\\frac{2}{3}$, what is the slope of a line $L_2$ that is perpendicular to $L_1$?",
+        "options": [
+            "$\\frac{2}{3}$",
+            "$\\frac{3}{2}$",
+            "$-\\frac{3}{2}$",
+            "$-\\frac{2}{3}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "According to the Vertical Line Test, a graph in the coordinate plane represents $y$ as a function of $x$ if and only if:",
+        "options": [
+            "Every horizontal line intersects the graph at least once",
+            "No vertical line intersects the graph at more than one point",
+            "The graph is symmetric with respect to the origin",
+            "The graph passes through the origin $(0, 0)$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the domain of the real-valued function $f(x) = \\sqrt{4 - x^2}$?",
+        "options": [
+            "$(-\\infty, \\infty)$",
+            "$(-2, 2)$",
+            "$[-2, 2]$",
+            "$[2, \\infty)$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Given $f(x) = 2x - 3$ and $g(x) = x^2 + 1$, what is the composite function $(f \\circ g)(x)$?",
+        "options": [
+            "$2x^2 - 1$",
+            "$4x^2 - 12x + 10$",
+            "$2x^2 - 5$",
+            "$x^2 + 2x - 2$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "How is the graph of $y = f(x - 3) + 2$ obtained from the graph of $y = f(x)$?",
+        "options": [
+            "Shifted left 3 units and up 2 units",
+            "Shifted right 3 units and up 2 units",
+            "Shifted right 3 units and down 2 units",
+            "Shifted left 3 units and down 2 units"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the radian measure of an angle measuring $240^\\circ$?",
+        "options": [
+            "$\\frac{4\\pi}{3}$",
+            "$\\frac{5\\pi}{3}$",
+            "$\\frac{3\\pi}{4}$",
+            "$\\frac{7\\pi}{6}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which of the following is a Pythagorean identity in trigonometry?",
+        "options": [
+            "$\\sin(2x) = 2 \\sin x \\cos x$",
+            "$1 + \\tan^2 x = \\sec^2 x$",
+            "$\\cos(2x) = \\cos^2 x - \\sin^2 x$",
+            "$\\tan x = \\frac{\\sin x}{\\cos x}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which trigonometric identity is equivalent to $\\cos(2x)$?",
+        "options": [
+            "$2\\cos x$",
+            "$\\cos^2 x - \\sin^2 x$",
+            "$1 + \\sin^2 x$",
+            "$2\\sin x \\cos x$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the period of the trigonometric function $y = 3 \\sin(2x)$?",
+        "options": [
+            "$2\\pi$",
+            "$\\pi$",
+            "$4\\pi$",
+            "$\\frac{\\pi}{2}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "On a circle of radius $r = 5\\text{ cm}$, what is the length of an arc $s$ intercepted by a central angle $\\theta = 2\\text{ radians}$?",
+        "options": [
+            "$2.5\\text{ cm}$",
+            "$10\\text{ cm}$",
+            "$5\\pi\\text{ cm}$",
+            "$20\\text{ cm}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which of the following is an SI base unit?",
+        "options": [
+            "Meter ($\text{m}$)",
+            "Newton ($\text{N}$)",
+            "Joule ($\text{J}$)",
+            "Watt ($\text{W}$)"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the SI base unit for mass?",
+        "options": [
+            "Gram ($\text{g}$)",
+            "Kilogram ($\text{kg}$)",
+            "Pound ($\text{lb}$)",
+            "Slug ($\text{slug}$)"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is the SI base unit of length ($1\\text{ m}$) currently defined?",
+        "options": [
+            "The distance between two marks on a platinum-iridium bar",
+            "The distance light travels in vacuum in $1/299,792,458$ of a second",
+            "The wavelength of krypton-86 orange light in vacuum",
+            "One ten-millionth of the distance from the equator to the North Pole"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How is the SI base unit of time ($1\\text{ s}$) defined in the SI system?",
+        "options": [
+            "The time interval of $1/86,400$ of a mean solar day",
+            "The time required for $9,192,631,770$ oscillations of light emitted by a Cesium-133 atom",
+            "The period of a simple pendulum with a length of exactly $1\\text{ m}$",
+            "The time taken for light to travel $3.0 \\times 10^8\\text{ m}$ in vacuum"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which SI prefix corresponds to a multiplying factor of $10^{-6}$?",
+        "options": [
+            "milli-",
+            "micro-",
+            "nano-",
+            "pico-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which SI prefix corresponds to a multiplying factor of $10^9$?",
+        "options": [
+            "mega-",
+            "giga-",
+            "tera-",
+            "kilo-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Perform the addition: $1.2\\text{ m} + 0.057\\text{ m}$. Following the rules for significant figures in addition, what is the correct result?",
+        "options": [
+            "$1.257\\text{ m}$",
+            "$1.26\\text{ m}$",
+            "$1.3\\text{ m}$",
+            "$1.25\\text{ m}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Perform the multiplication: $3.15 \\times 2.4$. Following the rules for significant figures, what is the result?",
+        "options": [
+            "$7.56$",
+            "$7.6$",
+            "$7.5$",
+            "$8.0$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How many significant figures are in the measurement $0.00350\\text{ kg}$?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Convert a speed of $72\\text{ km/h}$ into $\\text{m/s}$.",
+        "options": [
+            "$20\\text{ m/s}$",
+            "$25\\text{ m/s}$",
+            "$15\\text{ m/s}$",
+            "$30\\text{ m/s}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Convert an area of $5.0\\text{ cm}^2$ into $\\text{m}^2$.",
+        "options": [
+            "$5.0 \\times 10^{-2}\\text{ m}^2$",
+            "$5.0 \\times 10^{-4}\\text{ m}^2$",
+            "$5.0 \\times 10^{-6}\\text{ m}^2$",
+            "$5.0 \\times 10^{-3}\\text{ m}^2$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Convert a volume of $1.0\\text{ m}^3$ into liters ($\\text{L}$).",
+        "options": [
+            "$10\\text{ L}$",
+            "$100\\text{ L}$",
+            "$1000\\text{ L}$",
+            "$10000\\text{ L}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "A solid sphere has a radius $r = 2.0\\text{ cm}$ and a mass $m = 0.25\\text{ kg}$. What is its average density $\\rho$?",
+        "options": [
+            "$7.5 \\times 10^3\\text{ kg/m}^3$",
+            "$2.5 \\times 10^3\\text{ kg/m}^3$",
+            "$1.2 \\times 10^4\\text{ kg/m}^3$",
+            "$3.8 \\times 10^2\\text{ kg/m}^3$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the equivalent value of $1\\text{ atomic mass unit}$ ($1\\text{ u}$) in kilograms?",
+        "options": [
+            "$1.66 \\times 10^{-27}\\text{ kg}$",
+            "$9.11 \\times 10^{-31}\\text{ kg}$",
+            "$1.60 \\times 10^{-19}\\text{ kg}$",
+            "$6.02 \\times 10^{-23}\\text{ kg}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "The density of aluminum is $2.7\\text{ g/cm}^3$. What is this density expressed in $\\text{kg/m}^3$?",
+        "options": [
+            "$27\\text{ kg/m}^3$",
+            "$270\\text{ kg/m}^3$",
+            "$2700\\text{ kg/m}^3$",
+            "$27000\\text{ kg/m}^3$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which of the following units is a derived unit in the SI system?",
+        "options": [
+            "Second ($\\text{s}$)",
+            "Meter ($\\text{m}$)",
+            "Kilogram ($\\text{kg}$)",
+            "Newton ($\\text{N}$)"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the result of adding $12.11$, $0.3$, and $1.53$ according to significant figure rules?",
+        "options": [
+            "$13.94$",
+            "$13.9$",
+            "$14.0$",
+            "$13.941$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "How many significant figures are in the number $1.0050 \\times 10^4$?",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If a sample of sand has a total volume $V$ and the volume of the actual sand grains is $V_{\\text{grains}}$, what is the bulk sand density $\\rho_{\\text{sand}}$ in terms of the solid grain density $\\rho_{\\text{solid}}$?",
+        "options": [
+            "$\\rho_{\\text{sand}} = \\rho_{\\text{solid}} \\frac{V}{V_{\\text{grains}}}$",
+            "$\\rho_{\\text{sand}} = \\rho_{\\text{solid}} \\frac{V_{\\text{grains}}}{V}$",
+            "$\\rho_{\\text{sand}} = \\rho_{\\text{solid}} \\frac{V - V_{\\text{grains}}}{V}$",
+            "$\\rho_{\\text{sand}} = \\rho_{\\text{solid}} \\cdot V \\cdot V_{\\text{grains}}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the order of magnitude of the number of seconds in one calendar year ($365.25\\text{ days}$)?",
+        "options": [
+            "$10^5\\text{ s}$",
+            "$10^7\\text{ s}$",
+            "$10^9\\text{ s}$",
+            "$10^{11}\\text{ s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Convert $1.0\\text{ microsecond}$ ($1.0\\ \\mu\\text{s}$) into seconds.",
+        "options": [
+            "$10^{-3}\\text{ s}$",
+            "$10^{-6}\\text{ s}$",
+            "$10^{-9}\\text{ s}$",
+            "$10^{-12}\\text{ s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A cubical box has an edge length of $10\\text{ cm}$. What is its volume in cubic meters ($\\text{m}^3$)?",
+        "options": [
+            "$0.1\\text{ m}^3$",
+            "$0.01\\text{ m}^3$",
+            "$0.001\\text{ m}^3$",
+            "$0.0001\\text{ m}^3$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "When evaluating $1.234 \\times 2.0$, how many significant figures should be retained in the final product?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What are the dimensional dimensions of speed?",
+        "options": [
+            "$[\\text{L}][\\text{T}]^{-1}$",
+            "$[\\text{L}][\\text{T}]^{-2}$",
+            "$[\\text{M}][\\text{L}][\\text{T}]^{-1}$",
+            "$[\\text{L}]^2[\\text{T}]^{-1}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What are the dimensional dimensions of acceleration?",
+        "options": [
+            "$[\\text{L}][\\text{T}]^{-1}$",
+            "$[\\text{L}][\\text{T}]^{-2}$",
+            "$[\\text{M}][\\text{L}][\\text{T}]^{-2}$",
+            "$[\\text{L}][\\text{T}]$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a chain-link conversion method, what must be true about every conversion factor used?",
+        "options": [
+            "It must be numerically greater than 1",
+            "Its value including units must equal unity ($1$)",
+            "It must always convert directly to SI base units",
+            "It must be an exact integer power of 10"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In the measurement $0.004050\\text{ m}$, how many total significant figures are present?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Convert $5.0\\text{ gallons}$ to liters, given $1\\text{ U.S. gallon} \\approx 3.785\\text{ L}$.",
+        "options": [
+            "$18.9\\text{ L}$",
+            "$15.0\\text{ L}$",
+            "$21.2\\text{ L}$",
+            "$12.5\\text{ L}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which of the following SI prefixes represents the smallest multiplying factor?",
+        "options": [
+            "pico-",
+            "nano-",
+            "micro-",
+            "milli-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "One microcentury is equal to $10^{-6}\\text{ century}$. Approximately how many minutes is one microcentury?",
+        "options": [
+            "$5.26\\text{ min}$",
+            "$52.6\\text{ min}$",
+            "$526\\text{ min}$",
+            "$0.526\\text{ min}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A particle moves along the $x$-axis from $x_1 = +3\\text{ m}$ to $x_2 = -5\\text{ m}$. What is its displacement $\\Delta x$?",
+        "options": [
+            "$-8\\text{ m}$",
+            "$+8\\text{ m}$",
+            "$-2\\text{ m}$",
+            "$+2\\text{ m}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "A runner completes one full lap around a $400\\text{ m}$ circular track in $50\\text{ s}$. What is the runner's average velocity $v_{\\text{avg}}$?",
+        "options": [
+            "$8.0\\text{ m/s}$",
+            "$0\\text{ m/s}$",
+            "$4.0\\text{ m/s}$",
+            "$16.0\\text{ m/s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a position-time ($x-t$) graph, what does the slope of the tangent line at any given point represent?",
+        "options": [
+            "Average velocity",
+            "Instantaneous velocity",
+            "Acceleration",
+            "Total distance traveled"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a velocity-time ($v-t$) graph, what does the area under the curve between two time instances $t_1$ and $t_2$ represent?",
+        "options": [
+            "Average acceleration",
+            "Instantaneous acceleration",
+            "Displacement",
+            "Instantaneous speed"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "An object moves along the $x$-axis with a negative velocity ($v < 0$) and a positive acceleration ($a > 0$). What is happening to its speed?",
+        "options": [
+            "Speeding up",
+            "Slowing down",
+            "Moving at constant speed",
+            "Remaining at rest"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A car accelerates uniformly from rest to $20\\text{ m/s}$ in $5.0\\text{ s}$. What is its acceleration?",
+        "options": [
+            "$2.0\\text{ m/s}^2$",
+            "$4.0\\text{ m/s}^2$",
+            "$5.0\\text{ m/s}^2$",
+            "$10.0\\text{ m/s}^2$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A car accelerates uniformly from rest to $20\\text{ m/s}$ in $5.0\\text{ s}$. How far does it travel during this time interval?",
+        "options": [
+            "$20\\text{ m}$",
+            "$50\\text{ m}$",
+            "$100\\text{ m}$",
+            "$40\\text{ m}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A ball is thrown vertically upward with an initial speed of $19.6\\text{ m/s}$. Taking $g = 9.8\\text{ m/s}^2$, how long does it take to reach its highest point?",
+        "options": [
+            "$1.0\\text{ s}$",
+            "$2.0\\text{ s}$",
+            "$3.0\\text{ s}$",
+            "$4.0\\text{ s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A ball is thrown vertically upward into the air. At the peak of its flight, what is its acceleration?",
+        "options": [
+            "$0\\text{ m/s}^2$",
+            "$9.8\\text{ m/s}^2$ downward",
+            "$19.6\\text{ m/s}^2$ downward",
+            "$9.8\\text{ m/s}^2$ upward"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the maximum height reached by a ball thrown vertically upward with an initial speed of $19.6\\text{ m/s}$ (taking $g = 9.8\\text{ m/s}^2$)?",
+        "options": [
+            "$9.8\\text{ m}$",
+            "$19.6\\text{ m}$",
+            "$39.2\\text{ m}$",
+            "$4.9\\text{ m}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A vehicle traveling at $30\\text{ m/s}$ applies brakes and decelerates uniformly at $6.0\\text{ m/s}^2$ until it comes to a complete stop. What is its stopping distance?",
+        "options": [
+            "$25\\text{ m}$",
+            "$50\\text{ m}$",
+            "$75\\text{ m}$",
+            "$150\\text{ m}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "An object's position is given by $x(t) = 3.0t^2 - 2.0t + 5.0$ (in meters and seconds). What is its instantaneous velocity at $t = 2.0\\text{ s}$?",
+        "options": [
+            "$6.0\\text{ m/s}$",
+            "$10.0\\text{ m/s}$",
+            "$12.0\\text{ m/s}$",
+            "$14.0\\text{ m/s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "An object's position is given by $x(t) = 3.0t^2 - 2.0t + 5.0$ (in meters and seconds). What is its acceleration at $t = 2.0\\text{ s}$?",
+        "options": [
+            "$3.0\\text{ m/s}^2$",
+            "$6.0\\text{ m/s}^2$",
+            "$12.0\\text{ m/s}^2$",
+            "$0\\text{ m/s}^2$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A rock is dropped from rest from a bridge. Neglecting air resistance, how far does it fall in $3.0\\text{ seconds}$? (Take $g = 9.8\\text{ m/s}^2$)",
+        "options": [
+            "$14.7\\text{ m}$",
+            "$29.4\\text{ m}$",
+            "$44.1\\text{ m}$",
+            "$88.2\\text{ m}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If an object moves along a straight line with constant velocity, which of the following statements must be true?",
+        "options": [
+            "Its acceleration is constant and non-zero",
+            "Its position-time graph is a straight line",
+            "Its speed is continuously changing",
+            "Its net displacement over any non-zero time interval is zero"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which kinematic formula CANNOT be used when the acceleration of an object is variable (not constant)?",
+        "options": [
+            "$v = \\frac{dx}{dt}$",
+            "$v = v_0 + at$",
+            "$a = \\frac{dv}{dt}$",
+            "$\\Delta x = \\int v \\, dt$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "An object travels $100\\text{ m}$ East in $10\\text{ s}$, then turns around and travels $50\\text{ m}$ West in $10\\text{ s}$. What is its average speed for the entire $20\\text{ s}$ trip?",
+        "options": [
+            "$2.5\\text{ m/s}$",
+            "$5.0\\text{ m/s}$",
+            "$7.5\\text{ m/s}$",
+            "$10.0\\text{ m/s}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "An object travels $100\\text{ m}$ East in $10\\text{ s}$, then turns around and travels $50\\text{ m}$ West in $10\\text{ s}$. What is the magnitude of its average velocity for the entire $20\\text{ s}$ trip?",
+        "options": [
+            "$2.5\\text{ m/s}$",
+            "$5.0\\text{ m/s}$",
+            "$7.5\\text{ m/s}$",
+            "$10.0\\text{ m/s}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "If a velocity-time ($v-t$) graph is a horizontal straight line above the time axis, the object is:",
+        "options": [
+            "At rest",
+            "Moving with constant non-zero velocity",
+            "Moving with constant non-zero acceleration",
+            "Moving with increasing speed"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Object A is dropped from rest from a cliff. Object B is thrown straight downward from the same cliff at the same time. Neglecting air resistance, which statement is true?",
+        "options": [
+            "Both objects hit the ground at the same time",
+            "Both objects hit the ground with the same final velocity",
+            "Both objects experience the exact same acceleration ($g$ downward)",
+            "Object A hits the ground with a higher speed"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "A car starts from rest and accelerates at a constant $3.0\\text{ m/s}^2$. How long does it take to reach a speed of $24\\text{ m/s}$?",
+        "options": [
+            "$6.0\\text{ s}$",
+            "$8.0\\text{ s}$",
+            "$12.0\\text{ s}$",
+            "$72\\text{ s}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "An object is thrown straight upward into the air. At the instant it reaches its peak height, what are its velocity $v$ and acceleration $a$?",
+        "options": [
+            "$v = 0$, $a = 0$",
+            "$v = 0$, $a = g$ downward",
+            "$v = g$ upward, $a = 0$",
+            "$v = 0$, $a = g$ upward"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Evaluating the definite integral $\\int_{t_1}^{t_2} a(t) \\, dt$ yields which physical quantity?",
+        "options": [
+            "The final velocity $v(t_2)$",
+            "The change in velocity $\\Delta v$",
+            "The position $x(t_2)$",
+            "The average speed"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A particle's velocity is given by $v(t) = 4t^3 - 2t$ (in $\\text{m/s}$). What is its displacement $\\Delta x$ between $t = 0$ and $t = 2\\text{ s}$?",
+        "options": [
+            "$8\\text{ m}$",
+            "$12\\text{ m}$",
+            "$14\\text{ m}$",
+            "$16\\text{ m}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Can an object have zero velocity and non-zero acceleration at the same instant?",
+        "options": [
+            "No, never",
+            "Yes, at the instant it reaches the peak of a vertical throw",
+            "Yes, whenever it travels at constant speed in a straight line",
+            "Yes, but only if its displacement is zero"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "An object released from rest falls freely under gravity. What is the ratio of distances fallen in consecutive equal time intervals (1st second, 2nd second, 3rd second)?",
+        "options": [
+            "$1 : 2 : 3$",
+            "$1 : 3 : 5$",
+            "$1 : 4 : 9$",
+            "$1 : 1 : 1$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Two objects fall from rest under gravity from heights $h_1$ and $h_2$. The ratio of their fall times $t_1 / t_2$ is equal to:",
+        "options": [
+            "$h_1 / h_2$",
+            "$\\sqrt{h_1 / h_2}$",
+            "$(h_1 / h_2)^2$",
+            "$h_2 / h_1$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If an object's position-time ($x-t$) curve is a parabola opening upward, its acceleration is:",
+        "options": [
+            "Zero",
+            "Constant and positive",
+            "Constant and negative",
+            "Continuously decreasing"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "A driver traveling at $20\\text{ m/s}$ reacts in $0.50\\text{ s}$ before applying the brakes. How far does the car move during the reaction time?",
+        "options": [
+            "$5.0\\text{ m}$",
+            "$10\\text{ m}$",
+            "$15\\text{ m}$",
+            "$20\\text{ m}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the average velocity of an object whose position is $x(t) = 2t + 3$ between $t = 1\\text{ s}$ and $t = 4\\text{ s}$?",
+        "options": [
+            "$2\\text{ m/s}$",
+            "$3\\text{ m/s}$",
+            "$5\\text{ m/s}$",
+            "$8\\text{ m/s}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Which of the following physical quantities is a vector?",
+        "options": [
+            "Mass",
+            "Temperature",
+            "Displacement",
+            "Time"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which of the following physical quantities is a scalar?",
+        "options": [
+            "Velocity",
+            "Acceleration",
+            "Kinetic Energy",
+            "Force"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Vector $\\vec{A}$ has a magnitude of $8\\text{ units}$ and vector $\\vec{B}$ has a magnitude of $6\\text{ units}$. What is the maximum possible magnitude of $\\vec{A} + \\vec{B}$?",
+        "options": [
+            "$2\\text{ units}$",
+            "$10\\text{ units}$",
+            "$14\\text{ units}$",
+            "$48\\text{ units}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If vector $\\vec{A}$ has a magnitude of $8\\text{ units}$ and vector $\\vec{B}$ has a magnitude of $6\\text{ units}$, what is the minimum possible magnitude of $\\vec{A} + \\vec{B}$?",
+        "options": [
+            "$0\\text{ units}$",
+            "$2\\text{ units}$",
+            "$10\\text{ units}$",
+            "$14\\text{ units}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Vector $\\vec{A}$ has components $A_x = 3\\text{ m}$ and $A_y = 4\\text{ m}$. What is the magnitude of vector $\\vec{A}$?",
+        "options": [
+            "$5\\text{ m}$",
+            "$7\\text{ m}$",
+            "$1\\text{ m}$",
+            "$25\\text{ m}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Vector $\\vec{A}$ has components $A_x = 3\\text{ m}$ and $A_y = 4\\text{ m}$. What angle $\\theta$ does it make with the positive $x$-axis?",
+        "options": [
+            "$36.9^\\circ$",
+            "$53.1^\\circ$",
+            "$45.0^\\circ$",
+            "$30.0^\\circ$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Vector $\\vec{A}$ has magnitude $10\\text{ units}$ and points at an angle of $30^\\circ$ above the positive $x$-axis. What is its $x$-component $A_x$?",
+        "options": [
+            "$5.0\\text{ units}$",
+            "$8.66\\text{ units}$",
+            "$10.0\\text{ units}$",
+            "$4.33\\text{ units}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Vector $\\vec{A}$ has magnitude $10\\text{ units}$ and points at an angle of $30^\\circ$ above the positive $x$-axis. What is its $y$-component $A_y$?",
+        "options": [
+            "$5.0\\text{ units}$",
+            "$8.66\\text{ units}$",
+            "$10.0\\text{ units}$",
+            "$2.5\\text{ units}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "In a standard right-handed Cartesian coordinate system, what is the dot product of unit vectors $\\hat{i}$ and $\\hat{j}$ ($\\hat{i} \\cdot \\hat{j}$)?",
+        "options": [
+            "$0$",
+            "$1$",
+            "$-1$",
+            "$\\hat{k}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the dot product of unit vector $\\hat{i}$ with itself ($\\hat{i} \\cdot \\hat{i}$)?",
+        "options": [
+            "$0$",
+            "$1$",
+            "$-1$",
+            "$\\hat{k}$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "In a standard right-handed Cartesian system, what is the cross product of unit vectors $\\hat{i}$ and $\\hat{j}$ ($\\hat{i} \\times \\hat{j}$)?",
+        "options": [
+            "$0$",
+            "$1$",
+            "$\\hat{k}$",
+            "$-\\hat{k}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "In a standard right-handed Cartesian system, what is the cross product of unit vectors $\\hat{j}$ and $\\hat{i}$ ($\\hat{j} \\times \\hat{i}$)?",
+        "options": [
+            "$0$",
+            "$1$",
+            "$\\hat{k}$",
+            "$-\\hat{k}$"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the cross product of unit vector $\\hat{i}$ with itself ($\\hat{i} \\times \\hat{i}$)?",
+        "options": [
+            "$0$",
+            "$1$",
+            "$\\hat{k}$",
+            "$-\\hat{k}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Two non-zero vectors $\\vec{A}$ and $\\vec{B}$ are perpendicular to each other. What is their scalar product $\\vec{A} \\cdot \\vec{B}$?",
+        "options": [
+            "$AB$",
+            "$-AB$",
+            "$0$",
+            "$AB \\sin\\theta$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Two non-zero vectors $\\vec{A}$ and $\\vec{B}$ are parallel and point in the same direction. What is the magnitude of their vector product $|\\vec{A} \\times \\vec{B}|$?",
+        "options": [
+            "$AB$",
+            "$-AB$",
+            "$0$",
+            "$1$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Given vector $\\vec{A} = 2\\hat{i} + 3\\hat{j}$ and vector $\\vec{B} = 4\\hat{i} - 1\\hat{j}$, what is vector $\\vec{C} = \\vec{A} + \\vec{B}$?",
+        "options": [
+            "$6\\hat{i} + 2\\hat{j}$",
+            "$2\\hat{i} + 4\\hat{j}$",
+            "$6\\hat{i} + 4\\hat{j}$",
+            "$8\\hat{i} - 3\\hat{j}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Given vector $\\vec{A} = 2\\hat{i} + 3\\hat{j}$ and vector $\\vec{B} = 4\\hat{i} - 1\\hat{j}$, what is their dot product $\\vec{A} \\cdot \\vec{B}$?",
+        "options": [
+            "$5$",
+            "$8$",
+            "$11$",
+            "$-5$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "If $\\vec{A} \\cdot \\vec{B} = 0$ for two non-zero vectors $\\vec{A}$ and $\\vec{B}$, what can be concluded about their relative orientation?",
+        "options": [
+            "They are parallel",
+            "They are perpendicular",
+            "They have equal magnitudes",
+            "They point in opposite directions"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If $|\\vec{A} \\times \\vec{B}| = \\vec{A} \\cdot \\vec{B}$ for two non-zero vectors $\\vec{A}$ and $\\vec{B}$, what is the angle $\\theta$ between them?",
+        "options": [
+            "$0^\\circ$",
+            "$30^\\circ$",
+            "$45^\\circ$",
+            "$90^\\circ$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Vector $\\vec{A}$ points due East ($+x$) and vector $\\vec{B}$ points due North ($+y$). What is the direction of the cross product $\\vec{A} \\times \\vec{B}$?",
+        "options": [
+            "West",
+            "South",
+            "Vertically upward out of the page ($+z$)",
+            "Vertically downward into the page ($-z$)"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Which of the following vector operations obeys the commutative law?",
+        "options": [
+            "$\\vec{A} - \\vec{B}$",
+            "$\\vec{A} \\times \\vec{B}$",
+            "$\\vec{A} \\cdot \\vec{B}$",
+            "None of the above"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "The magnitude of a vector is always:",
+        "options": [
+            "Negative",
+            "Non-negative",
+            "Equal to its $x$-component",
+            "Zero"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If vector $\\vec{A} = 3\\hat{i} - 4\\hat{j} + 12\\hat{k}$, what is its magnitude $|\\vec{A}|$?",
+        "options": [
+            "$11$",
+            "$13$",
+            "$15$",
+            "$19$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "If a vector has components $A_x = -3\\text{ m}$ and $A_y = -3\\text{ m}$, in which quadrant does the vector lie?",
+        "options": [
+            "First Quadrant",
+            "Second Quadrant",
+            "Third Quadrant",
+            "Fourth Quadrant"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "For a vector with components $A_x = -3\\text{ m}$ and $A_y = -3\\text{ m}$, what is its counterclockwise angle relative to the positive $x$-axis?",
+        "options": [
+            "$45^\\circ$",
+            "$135^\\circ$",
+            "$225^\\circ$",
+            "$315^\\circ$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "A displacement vector $\\vec{d}$ has components $d_x = 10\\text{ m}$ and $d_y = -10\\text{ m}$. What is its magnitude?",
+        "options": [
+            "$0\\text{ m}$",
+            "$10\\text{ m}$",
+            "$14.1\\text{ m}$",
+            "$20\\text{ m}$"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "If the coordinate axes are rotated by $30^\\circ$, what happens to the magnitude of a physical vector?",
+        "options": [
+            "It increases",
+            "It decreases",
+            "It remains unchanged",
+            "It becomes zero"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "Given vector $\\vec{A} = 2\\hat{i} + 1\\hat{j} - 2\\hat{k}$, what is the unit vector $\\hat{a}$ in the direction of $\\vec{A}$?",
+        "options": [
+            "$(2\\hat{i} + \\hat{j} - 2\\hat{k}) / 3$",
+            "$(2\\hat{i} + \\hat{j} - 2\\hat{k}) / 9$",
+            "$(\\hat{i} + \\hat{j} - \\hat{k}) / 3$",
+            "$2\\hat{i} + \\hat{j} - 2\\hat{k}$"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "Calculate the $z$-component of the cross product $\\vec{C} = \\vec{A} \\times \\vec{B}$, where $\\vec{A} = 2\\hat{i} + 3\\hat{j}$ and $\\vec{B} = 1\\hat{i} - 4\\hat{j}$.",
+        "options": [
+            "$11$",
+            "$-11$",
+            "$5$",
+            "$-5$"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "Which statement about vector components is ALWAYS correct?",
+        "options": [
+            "A vector component can never be negative",
+            "A component's magnitude can never exceed the magnitude of the full vector",
+            "The magnitude of a vector can be smaller than one of its components",
+            "A vector component is always a scalar without direction"
+        ],
+        "answer": 1
+    }
+]

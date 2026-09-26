@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 嚴格禁止縮放，防止雙擊放大畫面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zen Idle 微積分學習放置遊戲</title>
+
+    <!-- PWA / 平板 App 支援設定 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a1a1a">
+
+    <!-- Matter.js 物理引擎 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+    <!-- KaTeX 數學排版 CDN 支援 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            touch-action: manipulation;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* 左側遊戲物理畫面區域 */
+        #game-container {
+            flex: 1;
+            position: relative;
+            background-color: #1a1a1a;
+            height: 100%;
+        }
+
+        /* 右側控制面板與題庫系統 */
+        #control-panel {
+            width: 440px;
+            background-color: #1f1f1f;
+            border-left: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .panel-section {
+            background-color: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #f39c12;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-box {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #f1c40f;
+        }
+
+        .status-box {
+            font-size: 0.95rem;
+            color: #b2bec3;
+            line-height: 1.4;
+        }
+
+        /* 視角上下切換按鈕群 */
+        .camera-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .cam-btn {
+            flex: 1;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .cam-btn:hover {
+            background-color: #2c3e50;
+        }
+
+        /* 題庫與答題介面 */
+        #quiz-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            color: #ecf0f1;
+        }
+
+        #options-area {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .option-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .option-btn:active {
+            transform: scale(0.98);
+        }
+
+        #feedback {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-align: center;
+            min-height: 24px;
+            color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 左側：Matter.js 物理掉落遊戲畫面 -->
+    <div id="game-container"></div>
+
+    <!-- 右側：放置數值儀表板與答題解鎖控制區 -->
+    <div id="control-panel">
+
+        <!-- 數據儀表板 -->
+        <div class="panel-section">
+            <h1>💰 放置產出</h1>
+            <div class="stat-box">金幣: <span id="gold-display">0.00</span></div>
+            <div class="status-box" id="status-display">已解鎖關卡: 1/8 | 球價值: $1.00 | 速度: 10.0s</div>
+
+            <!-- 鏡頭切換按鈕 -->
+            <div class="camera-controls">
+                <button class="cam-btn" onclick="scrollCamera(-1)">⬆️ 往上視圖</button>
+                <button class="cam-btn" onclick="scrollCamera(1)">⬇️ 往下視圖</button>
+            </div>
+        </div>
+
+        <!-- 答題挑戰區 -->
+        <div class="panel-section" id="quiz-container">
+            <div>
+                <h1>🎯 知識解鎖挑戰</h1>
+                <div id="question-text">載入題庫中...</div>
+                <div id="options-area"></div>
+            </div>
+            <div id="feedback"></div>
+        </div>
+
+    </div>
+
+    <!-- 遊戲核心邏輯 -->
+    <script src="game.js"></script>
+</body>
+
+</html>
