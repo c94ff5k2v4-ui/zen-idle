@@ -3439,5 +3439,320 @@
             "A vector component is always a scalar without direction"
         ],
         "answer": 1
-    }
+    },
+    {
+    "q": "What is the chemical name for the oxoacid with the formula HNO2?",
+    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula NO3-?",
+    "options": ["Nitrite ion", "Nitrate ion", "Nitride ion", "Hyponitrite ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Phosphoric acid?",
+    "options": ["H3PO3", "H3PO4", "HPO4^2-", "H2PO4-"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
+    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Sulfurous acid?",
+    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
+    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Hypochlorous acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Chloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical formula for Nitric acid?",
+    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula NO2-?",
+    "options": ["Nitrate ion", "Nitrite ion", "Nitride ion", "Hyponitrite ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula H3PO4?",
+    "options": ["Phosphorous acid", "Phosphoric acid", "Hypophosphorous acid", "Perphosphoric acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for the Sulfite ion?",
+    "options": ["SO3^2-", "SO4^2-", "S^2-", "HSO3-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula H2SO4?",
+    "options": ["Sulfurous acid", "Sulfuric acid", "Hydrosulfuric acid", "Persulfuric acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Chlorous acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula ClO-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical formula for Perchloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula HNO2?",
+    "options": ["Nitrous acid", "Nitric acid", "Nitrite ion", "Nitrate ion"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical formula for Nitric acid?",
+    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
+    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Sulfurous acid?",
+    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
+    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Hypochlorous acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Chloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical formula for the Nitrite ion?",
+    "options": ["NO-", "NO2-", "NO3-", "N3-"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Perchloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula HNO3?",
+    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Phosphoric acid?",
+    "options": ["H3PO3", "H3PO4", "H2PO4-", "HPO4^2-"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula SO3^2-?",
+    "options": ["Sulfate ion", "Sulfite ion", "Sulfide ion", "Persulfate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Sulfuric acid?",
+    "options": ["H2SO3", "H2SO4", "H2S", "H2SO5"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula HClO2?",
+    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for the Hypochlorite ion?",
+    "options": ["ClO-", "ClO2-", "ClO3-", "ClO4-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with the formula HClO3?",
+    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical formula for the Sulfate ion?",
+    "options": ["SO2^2-", "SO3^2-", "SO4^2-", "S2O3^2-"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with the formula NO3-?",
+    "options": ["Nitride ion", "Nitrite ion", "Nitrate ion", "Hyponitrite ion"],
+    "answer": 2
+  },
+  {
+    "q": "What is the systematic chemical name for the oxoacid with formula HNO2?",
+    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical formula for Nitric acid?",
+    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula PO4^3-?",
+    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Sulfurous acid?",
+    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula SO4^2-?",
+    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Hypochlorous acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula ClO2-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Chloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula ClO4-?",
+    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical formula for Phosphoric acid?",
+    "options": ["H3PO3", "H3PO4", "H2PO4-", "HPO4^2-"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Perchloric acid?",
+    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "answer": 3
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with formula HNO3?",
+    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for the Nitrite ion?",
+    "options": ["NO-", "NO2-", "NO3-", "N3-"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula SO3^2-?",
+    "options": ["Sulfate ion", "Sulfite ion", "Sulfide ion", "Persulfate ion"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for Sulfuric acid?",
+    "options": ["H2SO3", "H2SO4", "H2S", "H2SO5"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with formula HClO2?",
+    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "answer": 1
+  },
+  {
+    "q": "What is the chemical formula for the Hypochlorite ion?",
+    "options": ["ClO-", "ClO2-", "ClO3-", "ClO4-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the oxoacid with formula HClO3?",
+    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical formula for the Sulfate ion?",
+    "options": ["SO2^2-", "SO3^2-", "SO4^2-", "S2O3^2-"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the oxoanion with formula NO3-?",
+    "options": ["Nitride ion", "Nitrite ion", "Nitrate ion", "Hyponitrite ion"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the cation with formula NH4+?",
+    "options": ["Ammonium ion", "Hydronium ion", "Ammonia", "Nitride ion"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical formula for the Hydronium cation?",
+    "options": ["H+", "H2O", "H3O+", "OH-"],
+    "answer": 2
+  },
+  {
+    "q": "What is the chemical name for the anion with formula CH3CO2-?",
+    "options": ["Acetate ion", "Carbonate ion", "Formate ion", "Cyanide ion"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical formula for the Cyanide ion?",
+    "options": ["CN-", "CNO-", "SCN-", "NO2-"],
+    "answer": 0
+  },
+  {
+    "q": "What is the chemical name for the anion with formula HCO3-?",
+    "options": ["Carbonate ion", "Hydrogen carbonate ion", "Oxalate ion", "Acetate ion"],
+    "answer": 1
+  }
 ]
