@@ -319,16 +319,7 @@
         ],
         "answer": 1
     },
-    {
-        "q": "In what molecular forms can elemental sulfur exist?",
-        "options": [
-            "S2 and S3",
-            "S6 and S4",
-            "S10 and S12",
-            "S5 and S7"
-        ],
-        "answer": 1
-    },
+
     {
         "q": "What type of ion consists of two or more atoms covalently bonded together that carry a net charge?",
         "options": [
@@ -1497,7 +1488,7 @@
             "48 ft/s",
             "64 ft/s"
         ],
-        "answer": 2
+        "answer": 3
     },
     {
         "q": "What limit process yields the exact instantaneous velocity from average velocities?",
