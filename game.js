@@ -482,7 +482,7 @@ function closeErrorLogModal() {
 }
 
 // ==========================================
-// 10. 轉生系統 (原本的價值倍率 + (log10(x) / 10))
+// 10. 轉生系統 (原本的倍率 + (log10(x) / 100))
 // ==========================================
 function triggerPrestige() {
     if (quizStats.totalAnswered < 50) {
@@ -493,11 +493,11 @@ function triggerPrestige() {
     let x = gold;
     let logVal = Math.log10(Math.max(x, 1));
     
-    // 取得原本的價值倍率
+    // 取得原本的倍率
     let currentFactor = prestigeData.answerGrowthFactor || 1.4;
     
-    // 公式：原本的價值倍率 + (log10(x) / 10)
-    let customGrowth = currentFactor + (logVal / 10);
+    // 公式：原本的倍率 + (log10(x) / 100)
+    let customGrowth = currentFactor + (logVal / 100);
     
     prestigeData.answerGrowthFactor = customGrowth;
     prestigeData.count++;
@@ -512,7 +512,7 @@ function triggerPrestige() {
     updateLevelBoundaries();
     saveGameToCloud();
 
-    alert(`👑 轉生成功！原本倍率 (${currentFactor.toFixed(2)}) + 額外成長 (${(logVal / 10).toFixed(2)}) ＝ 新答題倍率：x${prestigeData.answerGrowthFactor.toFixed(4)}`);
+    alert(`👑 轉生成功！原本倍率 (${currentFactor.toFixed(4)}) + 額外成長 (${(logVal / 100).toFixed(4)}) ＝ 新答題倍率：x${prestigeData.answerGrowthFactor.toFixed(4)}`);
     updateUI();
 }
 
