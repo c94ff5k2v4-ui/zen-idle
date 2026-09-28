@@ -1,11 +1,17 @@
 // ==========================================
-// 1. SUPABASE 雲端連線與常數設定
+// 1. SUPABASE 雲端連線與帳號管理
 // ==========================================
 const SUPABASE_URL = 'https://ogcscxxiemcjsuxmgrfr.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const PLAYER_ID = 'player_zen_calculus_01'; // 跨裝置同步身分識別碼
+
+// 優先從 localStorage 讀取玩家代號，若無則自動產生一個訪客代號並存起來
+let PLAYER_ID = localStorage.getItem('calculus_player_id');
+if (!PLAYER_ID) {
+    PLAYER_ID = 'player_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('calculus_player_id', PLAYER_ID);
+}
 
 // ==========================================
 // 2. 遊戲核心狀態與永久歷史紀錄變數
@@ -15,13 +21,12 @@ let balls = [];
 let ballValue = 1.0;
 let spawnIntervalTime = 10000;
 let correctAnswersCount = 0;
-let unlockedLevels = 1; // 初始僅解鎖第 1 關
+let unlockedLevels = 1;
 
-// 永久歷史紀錄（Prestige 絕對不重置）
 let quizStats = {
     totalAnswered: 0,
     totalCorrect: 0,
-    wrongQuestions: [] // 格式：{ question, options, correctAnswer, userAnswer }
+    wrongQuestions: []
 };
 
 let prestigeData = {
@@ -29,10 +34,50 @@ let prestigeData = {
     count: 0
 };
 
+// 更新畫面上顯示目前玩家代號
+function updatePlayerDisplay() {
+    const userEl = document.getElementById('user-display');
+    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_ID}`;
+}
+
 // ==========================================
-// 3. 雲端讀取與寫入 (Supabase)
+// 3. 本機快取備份與雲端同步 (Supabase)
 // ==========================================
-async function loadGameFromCloud() {
+function saveGameLocally() {
+    const saveData = {
+        gold, unlockedLevels, ballValue, spawnIntervalTime,
+        quizStats, prestigeData
+    };
+    localStorage.setItem('calculus_save_' + PLAYER_ID, JSON.stringify(saveData));
+}
+
+function loadGameLocally() {
+    try {
+        const saved = localStorage.getItem('calculus_save_' + PLAYER_ID);
+        if (saved) {
+            const data = JSON.parse(saved);
+            gold = data.gold || 0;
+            unlockedLevels = data.unlockedLevels || 1;
+            ballValue = data.ballValue || 1.0;
+            spawnIntervalTime = data.spawnIntervalTime || 10000;
+            quizStats = data.quizStats || { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
+            prestigeData = data.prestigeData || { multiplier: 1.0, count: 0 };
+            return true;
+        }
+    } catch (e) {
+        console.error("讀取本機暫存失敗", e);
+    }
+    return false;
+}
+
+async function loadGame() {
+    // 1. 先讀取本機快取，確保平板滑掉重開能瞬間恢復畫面
+    loadGameLocally();
+    updatePlayerDisplay();
+    updateLevelBoundaries();
+    updateUI();
+
+    // 2. 嘗試從雲端抓取最新進度
     try {
         const { data, error } = await supabaseClient
             .from('player_saves')
@@ -40,40 +85,34 @@ async function loadGameFromCloud() {
             .eq('user_id', PLAYER_ID)
             .single();
 
-        if (error) {
-            console.log("尚無雲端存檔，使用初始預設進度");
-            return;
-        }
+        if (!error && data) {
+            console.log("成功從雲端同步進度！");
+            gold = data.gold || gold;
+            unlockedLevels = data.level || unlockedLevels;
+            ballValue = data.ball_value || ballValue;
+            spawnIntervalTime = data.spawn_interval || spawnIntervalTime;
+            quizStats.totalAnswered = data.total_answered || quizStats.totalAnswered;
+            quizStats.totalCorrect = data.total_correct || quizStats.totalCorrect;
+            quizStats.wrongQuestions = data.wrong_questions || quizStats.wrongQuestions;
+            if (data.prestige_data) prestigeData = data.prestige_data;
 
-        if (data) {
-            console.log("成功從雲端載入進度！", data);
-            gold = data.gold || 0;
-            unlockedLevels = data.level || 1;
-            ballValue = data.ball_value || 1.0;
-            spawnIntervalTime = data.spawn_interval || 10000;
-            
-            quizStats.totalAnswered = data.total_answered || 0;
-            quizStats.totalCorrect = data.total_correct || 0;
-            quizStats.wrongQuestions = data.wrong_questions || [];
-
-            if (data.prestige_data) {
-                prestigeData = data.prestige_data;
-            }
-
-            // 重新設定計時器與關卡邊界
             clearInterval(spawnerTimer);
             spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
             updateLevelBoundaries();
             updateUI();
+            saveGameLocally();
         }
     } catch (err) {
-        console.error("載入雲端存檔發生例外錯誤：", err);
+        console.log("使用本機快取模式運行（可能處於離線狀態）");
     }
 }
 
 async function saveGameToCloud() {
+    // 隨時同步到本機防止重置
+    saveGameLocally();
+
     try {
-        const { error } = await supabaseClient
+        await supabaseClient
             .from('player_saves')
             .upsert({
                 user_id: PLAYER_ID,
@@ -87,19 +126,38 @@ async function saveGameToCloud() {
                 prestige_data: prestigeData,
                 update_at: new Date()
             }, { onConflict: 'user_id' });
-
-        if (error) {
-            console.error("雲端存檔失敗：", error.message);
-        } else {
-            console.log("進度已成功同步至雲端！");
-        }
     } catch (err) {
-        console.error("雲端存檔發生例外錯誤：", err);
+        console.error("雲端存檔失敗，已安全保留於本機");
     }
 }
 
 // ==========================================
-// 4. MATTER.JS 物理引擎與 8 層樓關卡設定
+// 4. 登入視窗控制介面
+// ==========================================
+function openLoginModal() {
+    document.getElementById('username-input').value = PLAYER_ID;
+    document.getElementById('login-modal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+    document.getElementById('login-modal').style.display = 'none';
+}
+
+function saveUsername() {
+    let inputVal = document.getElementById('username-input').value.trim();
+    if (inputVal) {
+        PLAYER_ID = inputVal;
+        localStorage.setItem('calculus_player_id', PLAYER_ID);
+        closeLoginModal();
+        loadGame(); // 載入新帳號的進度
+        alert(`已成功切換至玩家: ${PLAYER_ID}`);
+    } else {
+        alert('代號不能為空！');
+    }
+}
+
+// ==========================================
+// 5. MATTER.JS 物理引擎與 8 層樓關卡設定
 // ==========================================
 const { Engine, Render, Runner, Bodies, Composite, Events } = Matter;
 
@@ -111,7 +169,6 @@ const container = document.getElementById('game-container');
 const width = container.clientWidth;
 const viewHeight = container.clientHeight;
 
-// 總共有 8 個關卡樓層，每層高度 700 像素
 const totalLevels = 8;
 const levelHeight = 700;
 const worldHeight = totalLevels * levelHeight;
@@ -131,21 +188,17 @@ Render.run(render);
 const runner = Runner.create();
 Runner.run(runner, engine);
 
-// 初始化相機視圖對準第一層
 Render.lookAt(render, {
     min: { x: 0, y: 0 },
     max: { x: width, y: viewHeight }
 });
 
-// 1. 左右邊界
 const leftWall = Bodies.rectangle(0, worldHeight / 2, 20, worldHeight, { isStatic: true, render: { fillStyle: '#333' } });
 const rightWall = Bodies.rectangle(width, worldHeight / 2, 20, worldHeight, { isStatic: true, render: { fillStyle: '#333' } });
 Composite.add(world, [leftWall, rightWall]);
 
-// 2. 建立所有 8 層樓的障礙物（釘子與斜板交錯）
 for (let level = 0; level < totalLevels; level++) {
     let startY = level * levelHeight;
-
     if (level % 2 === 0) {
         let cols = 9;
         let spacingX = (width - 60) / (cols - 1);
@@ -172,7 +225,6 @@ for (let level = 0; level < totalLevels; level++) {
     }
 }
 
-// 3. 動態關卡底部邊界系統
 let checkpointSensors = [];
 let bottomDestructors = [];
 let levelBottomBodies = [];
@@ -188,17 +240,14 @@ function updateLevelBoundaries() {
 
         if (level < unlockedLevels - 1) {
             let blueSensor = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
-                isStatic: true,
-                isSensor: true,
-                render: { fillStyle: '#3498db' }
+                isStatic: true, isSensor: true, render: { fillStyle: '#3498db' }
             });
             checkpointSensors.push(blueSensor);
             levelBottomBodies.push(blueSensor);
             Composite.add(world, blueSensor);
         } else if (level === unlockedLevels - 1) {
             let redBar = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
-                isStatic: true,
-                render: { fillStyle: '#e74c3c' }
+                isStatic: true, render: { fillStyle: '#e74c3c' }
             });
             bottomDestructors.push(redBar);
             levelBottomBodies.push(redBar);
@@ -208,73 +257,35 @@ function updateLevelBoundaries() {
     }
 }
 
-updateLevelBoundaries();
-
 // ==========================================
-// 5. 畫面上下滑動與相機控制
+// 6. 相機控制與觸控滑動
 // ==========================================
 let currentCameraY = 0;
 let maxScroll = worldHeight - viewHeight;
 
 function scrollCameraTo(newY) {
-    currentCameraY = newY;
-    if (currentCameraY < 0) currentCameraY = 0;
-    if (currentCameraY > maxScroll) currentCameraY = maxScroll;
-
+    currentCameraY = Math.max(0, Math.min(newY, maxScroll));
     Render.lookAt(render, {
         min: { x: 0, y: currentCameraY },
         max: { x: width, y: currentCameraY + viewHeight }
     });
 }
+function scrollCamera(direction) { scrollCameraTo(currentCameraY + direction * viewHeight); }
 
-function scrollCamera(direction) {
-    scrollCameraTo(currentCameraY + direction * viewHeight);
-}
-
-let isDragging = false;
-let startTouchY = 0;
-let startCameraY = 0;
-
-container.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startTouchY = e.touches[0].clientY;
-    startCameraY = currentCameraY;
-}, { passive: true });
-
-container.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    let currentTouchY = e.touches[0].clientY;
-    let deltaY = startTouchY - currentTouchY;
-    scrollCameraTo(startCameraY + deltaY);
-}, { passive: true });
-
+let isDragging = false, startTouchY = 0, startCameraY = 0;
+container.addEventListener('touchstart', (e) => { isDragging = true; startTouchY = e.touches[0].clientY; startCameraY = currentCameraY; }, { passive: true });
+container.addEventListener('touchmove', (e) => { if (!isDragging) return; scrollCameraTo(startCameraY + (startTouchY - e.touches[0].clientY)); }, { passive: true });
 container.addEventListener('touchend', () => { isDragging = false; });
-
-container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startTouchY = e.clientY;
-    startCameraY = currentCameraY;
-});
-
-window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    let deltaY = startTouchY - e.clientY;
-    scrollCameraTo(startCameraY + deltaY);
-});
-
+container.addEventListener('mousedown', (e) => { isDragging = true; startTouchY = e.clientY; startCameraY = currentCameraY; });
+window.addEventListener('mousemove', (e) => { if (!isDragging) return; scrollCameraTo(startCameraY + (startTouchY - e.clientY)); });
 window.addEventListener('mouseup', () => { isDragging = false; });
 
 // ==========================================
-// 6. 球體生成與碰撞偵測
+// 7. 球體生成與互動
 // ==========================================
 function spawnBall() {
     let x = width / 2 + (Math.random() * 30 - 15);
-    let y = 20;
-    let ball = Bodies.circle(x, y, 12, {
-        restitution: 0.85,
-        render: { fillStyle: '#ffffff' }
-    });
-
+    let ball = Bodies.circle(x, 20, 12, { restitution: 0.85, render: { fillStyle: '#ffffff' } });
     Composite.add(world, ball);
     balls.push(ball);
 }
@@ -283,9 +294,7 @@ let spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
 
 Events.on(engine, 'collisionStart', (event) => {
     event.pairs.forEach((pair) => {
-        let bodyA = pair.bodyA;
-        let bodyB = pair.bodyB;
-
+        let bodyA = pair.bodyA, bodyB = pair.bodyB;
         checkpointSensors.forEach(sensor => {
             if ((bodyA === sensor && balls.includes(bodyB)) || (bodyB === sensor && balls.includes(bodyA))) {
                 let ball = balls.includes(bodyA) ? bodyA : bodyB;
@@ -297,14 +306,11 @@ Events.on(engine, 'collisionStart', (event) => {
                 }
             }
         });
-
         bottomDestructors.forEach(destructor => {
             if ((bodyA === destructor && balls.includes(bodyB)) || (bodyB === destructor && balls.includes(bodyA))) {
                 let ball = balls.includes(bodyA) ? bodyA : bodyB;
-
                 gold += ballValue * prestigeData.multiplier;
                 updateUI();
-
                 Composite.remove(world, ball);
                 balls = balls.filter(b => b !== ball);
             }
@@ -313,16 +319,12 @@ Events.on(engine, 'collisionStart', (event) => {
 });
 
 function formatNumber(num) {
-    if (num >= 1e6) {
-        return num.toExponential(2).toUpperCase();
-    }
-    return num.toFixed(2);
+    return num >= 1e6 ? num.toExponential(2).toUpperCase() : num.toFixed(2);
 }
 
 function updateUI() {
     const goldEl = document.getElementById('gold-display');
     if (goldEl) goldEl.innerText = formatNumber(gold);
-    
     const statusEl = document.getElementById('status-display');
     if (statusEl) {
         statusEl.innerHTML = `已解鎖關卡: ${unlockedLevels}/${totalLevels} | 球價值: $${formatNumber(ballValue * prestigeData.multiplier)} | 速度: ${(spawnIntervalTime / 1000).toFixed(1)}s`;
@@ -330,13 +332,9 @@ function updateUI() {
 }
 
 // ==========================================
-// 7. 題庫與隨機洗牌出題系統（支援 KaTeX 與錯題記錄）
+// 8. 題庫與答題系統
 // ==========================================
-let quizData = [];
-let currentQuestionIndex = 0;
-let shuffledIndices = [];
-let shufflePointer = 0;
-let roundCount = 0;
+let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
 async function loadQuizData() {
     try {
@@ -363,21 +361,14 @@ function initShuffledIndices() {
 
 function loadRandomQuestion() {
     if (quizData.length === 0) return;
-
     if (shufflePointer >= shuffledIndices.length) {
         initShuffledIndices();
         if (roundCount > 1) {
             gold += ballValue * 5 * prestigeData.multiplier;
             updateUI();
-            let feedback = document.getElementById('feedback');
-            feedback.innerText = `太神啦！你已經把所有題目完整輪完一輪！獲得獎勵金幣！🏆`;
-            setTimeout(() => { feedback.innerText = ""; }, 4000);
         }
     }
-
-    currentQuestionIndex = shuffledIndices[shufflePointer];
-    shufflePointer++;
-
+    currentQuestionIndex = shuffledIndices[shufflePointer++];
     let qObj = quizData[currentQuestionIndex];
 
     document.getElementById('question-text').innerHTML = qObj.q;
@@ -394,10 +385,7 @@ function loadRandomQuestion() {
 
     if (typeof renderMathInElement === 'function') {
         renderMathInElement(document.getElementById('control-panel'), {
-            delimiters: [
-                { left: '$$', right: '$$', display: true },
-                { left: '$', right: '$', display: false }
-            ],
+            delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }],
             throwOnError: false
         });
     }
@@ -413,50 +401,27 @@ function checkAnswer(selectedIndex) {
     if (selectedIndex === qObj.answer) {
         quizStats.totalCorrect++;
         correctAnswersCount++;
-
         if (correctAnswersCount % 10 === 0 && unlockedLevels < totalLevels) {
             unlockedLevels++;
             updateLevelBoundaries();
             feedback.innerText = `太神啦！成功解鎖第 ${unlockedLevels} 層新關卡！🎉`;
         } else {
-            if (spawnIntervalTime <= 200) {
-                ballValue *= 1.6;
-                feedback.innerText = "答對！生成已達極限，球的價值爆發提升至 x1.6！💎";
-            } else {
-                let upgradeType = Math.random() > 0.5 ? 'value' : 'speed';
-                if (upgradeType === 'value') {
-                    ballValue *= 1.4;
-                    feedback.innerText = "答對！球的價值提升至 x1.4！📈";
-                } else {
-                    spawnIntervalTime *= 0.96;
-                    if (spawnIntervalTime < 200) spawnIntervalTime = 200;
-                    clearInterval(spawnerTimer);
-                    spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
-                    feedback.innerText = "答對！球的生產速度提升 4%！⚡";
-                }
-            }
+            ballValue *= 1.4;
+            feedback.innerText = "答對！球的價值提升！📈";
         }
     } else {
-        // 紀錄錯題至永久錯題陣列
         quizStats.wrongQuestions.push({
             question: qObj.q,
             options: qObj.options,
             correctAnswer: qObj.options[qObj.answer],
             userAnswer: qObj.options[selectedIndex]
         });
-
-        ballValue *= 0.9;
-        if (ballValue < 0.1) ballValue = 0.1;
-
-        spawnIntervalTime *= 1.01;
-        clearInterval(spawnerTimer);
-        spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
-
-        feedback.innerText = "答錯囉！球價值下降 (x0.9)，生成變慢！❌";
+        ballValue = Math.max(0.1, ballValue * 0.9);
+        feedback.innerText = "答錯囉！球價值下降！❌";
     }
 
     updateUI();
-    saveGameToCloud(); // 每次答題自動同步至雲端
+    saveGameToCloud();
 
     setTimeout(() => {
         feedback.innerText = "";
@@ -465,14 +430,11 @@ function checkAnswer(selectedIndex) {
 }
 
 // ==========================================
-// 8. 錯題本彈出視窗控制邏輯
+// 9. 錯題本檢視
 // ==========================================
 function openErrorLogModal() {
-    const modal = document.getElementById('error-modal');
     const container = document.getElementById('error-list-container');
-    
     let errors = quizStats.wrongQuestions || [];
-
     if (errors.length === 0) {
         container.innerHTML = '<p style="color: #b2bec3; text-align: center; padding: 20px;">太棒了！目前沒有累積錯題紀錄。</p>';
     } else {
@@ -488,40 +450,22 @@ function openErrorLogModal() {
         });
         container.innerHTML = html;
     }
-
-    modal.style.display = 'flex';
+    document.getElementById('error-modal').style.display = 'flex';
 }
-
-function closeErrorLogModal() {
-    const modal = document.getElementById('error-modal');
-    modal.style.display = 'none';
-}
+function closeErrorLogModal() { document.getElementById('error-modal').style.display = 'none'; }
 
 // ==========================================
-// 9. Prestige 轉生系統
+// 10. 轉生系統
 // ==========================================
 function triggerPrestige() {
-    const requiredQuestions = 50;
-    if (quizStats.totalAnswered < requiredQuestions) {
-        alert(`尚未達標！還需回答 ${requiredQuestions - quizStats.totalAnswered} 題才能解鎖 Prestige。`);
+    if (quizStats.totalAnswered < 50) {
+        alert(`還需回答 ${50 - quizStats.totalAnswered} 題才能解鎖 Prestige。`);
         return;
     }
-
-    let x = Math.max(gold, 1);
-    let currentSpeed = spawnIntervalTime / 1000;
-    let bonusMultiplier = 1.0;
-
-    // 依據球速條件套用不同公式
-    if (currentSpeed < 0.2) {
-        bonusMultiplier = 1.6 + Math.log10(x);
-    } else {
-        bonusMultiplier = 1.4 + (Math.log10(x) / 10);
-    }
-
+    let bonusMultiplier = 1.4 + (Math.log10(Math.max(gold, 1)) / 10);
     prestigeData.multiplier *= bonusMultiplier;
     prestigeData.count++;
 
-    // 重置遊戲數值（答題統計與錯題完全保留）
     gold = 0;
     unlockedLevels = 1;
     ballValue = 1.0;
@@ -529,13 +473,12 @@ function triggerPrestige() {
     clearInterval(spawnerTimer);
     spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
     updateLevelBoundaries();
-
     saveGameToCloud();
 
-    alert(`👑 第 ${prestigeData.count} 次 Prestige 轉生成功！\n本次獲得加成：x${bonusMultiplier.toFixed(2)}\n目前總倍率：x${prestigeData.multiplier.toFixed(2)}`);
+    alert(`👑 轉生成功！總倍率提升至 x${prestigeData.multiplier.toFixed(2)}`);
     updateUI();
 }
 
-// 初始化載入題庫與雲端存檔
+// 啟動遊戲
 loadQuizData();
-loadGameFromCloud();
+loadGame();
