@@ -116,7 +116,7 @@
             background-color: #2c3e50;
         }
 
-        /* 轉生與功能按鈕樣式 */
+        /* 按鈕樣式 */
         .prestige-btn {
             background-color: #e74c3c;
             color: white;
@@ -129,6 +129,7 @@
             margin-top: 10px;
             transition: background 0.2s;
         }
+
         .prestige-btn:hover {
             background-color: #c0392b;
         }
@@ -145,8 +146,27 @@
             margin-top: 10px;
             transition: background 0.2s;
         }
+
         .error-log-btn:hover {
             background-color: #732d91;
+        }
+
+        .login-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #219653;
         }
 
         /* 題庫與答題介面 */
@@ -205,27 +225,28 @@
 
 <body>
 
-    <!-- 左側：Matter.js 物理掉落遊戲畫面 (8層樓關卡與相機拖曳) -->
+    <!-- 左側：Matter.js 物理掉落遊戲畫面 -->
     <div id="game-container"></div>
 
-    <!-- 右側：放置數值儀表板與答題解鎖控制區 -->
+    <!-- 右側：控制面板 -->
     <div id="control-panel">
 
-        <!-- 數據儀表板 -->
+        <!-- 數據儀表板與身分設定 -->
         <div class="panel-section">
             <h1>💰 放置產出</h1>
             <div class="stat-box">金幣: <span id="gold-display">0.00</span></div>
             <div class="status-box" id="status-display">已解鎖關卡: 1/8 | 球價值: $1.00 | 速度: 10.0s</div>
+            <div class="status-box" id="user-display" style="margin-top: 6px; color: #f39c12; font-size: 0.85rem;">目前玩家:
+                載入中...</div>
 
-            <!-- 鏡頭切換按鈕 -->
             <div class="camera-controls">
                 <button class="cam-btn" onclick="scrollCamera(-1)">⬆️ 往上視圖</button>
                 <button class="cam-btn" onclick="scrollCamera(1)">⬇️ 往下視圖</button>
             </div>
 
-            <!-- 轉生與錯題本按鈕 -->
             <button class="prestige-btn" onclick="triggerPrestige()">👑 啟動 Prestige 轉生</button>
             <button class="error-log-btn" onclick="openErrorLogModal()">📖 查看錯題本</button>
+            <button class="login-btn" onclick="openLoginModal()">👤 切換/登入帳號</button>
         </div>
 
         <!-- 答題挑戰區 -->
@@ -240,15 +261,34 @@
 
     </div>
 
-    <!-- 錯題本彈出視窗 (Modal) -->
-    <div id="error-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; position: relative; border: 1px solid #444;">
+    <!-- 錯題本彈出視窗 -->
+    <div id="error-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div
+            style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; border: 1px solid #444;">
             <h2 style="color: #e74c3c; margin-bottom: 16px;">📖 微積分錯題本</h2>
-            <div id="error-list-container" style="margin-bottom: 20px; color: #ecf0f1; font-size: 0.95rem;">
-                <!-- 錯題內容會動態載入這裡 -->
-                目前沒有錯題紀錄！
+            <div id="error-list-container" style="margin-bottom: 20px; color: #ecf0f1; font-size: 0.95rem;">目前沒有錯題紀錄！
             </div>
-            <button onclick="closeErrorLogModal()" style="background: #c0392b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">關閉</button>
+            <button onclick="closeErrorLogModal()"
+                style="background: #c0392b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">關閉</button>
+        </div>
+    </div>
+
+    <!-- 登入/設定使用者帳號彈出視窗 -->
+    <div id="login-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1100; justify-content: center; align-items: center;">
+        <div
+            style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 400px; border: 1px solid #444; text-align: center;">
+            <h2 style="color: #2ecc71; margin-bottom: 12px;">👤 設定你的玩家代號</h2>
+            <p style="color: #b2bec3; font-size: 0.9rem; margin-bottom: 16px;">輸入你的專屬代號，進度將自動同步至雲端，平板重新整理或滑掉也不會遺失！</p>
+            <input type="text" id="username-input" placeholder="例如: student_alex"
+                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #1a1a1a; color: white; font-size: 1rem; margin-bottom: 16px; text-align: center;">
+            <div style="display: flex; gap: 10px;">
+                <button onclick="saveUsername()"
+                    style="flex: 1; background: #2ecc71; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">確定登入</button>
+                <button onclick="closeLoginModal()"
+                    style="flex: 1; background: #7f8c8d; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">取消</button>
+            </div>
         </div>
     </div>
 
