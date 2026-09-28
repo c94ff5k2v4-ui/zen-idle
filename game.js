@@ -2,7 +2,7 @@
 // 1. SUPABASE 雲端連線與帳號管理
 // ==========================================
 const SUPABASE_URL = 'https://ogcscxxiemcjsuxmgrfr.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ugo1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -407,7 +407,6 @@ function checkAnswer(selectedIndex) {
             let rewardType = Math.random() > 0.5 ? 'value' : 'speed';
 
             if (rewardType === 'value') {
-                // 套用轉生計算出的答題價值成長係數
                 let growthFactor = prestigeData.answerGrowthFactor || 1.4;
                 ballValue *= growthFactor;
                 feedback.innerText = `答對！隨機獎勵：球價值以 x${growthFactor.toFixed(4)} 成長！📈`;
@@ -483,7 +482,7 @@ function closeErrorLogModal() {
 }
 
 // ==========================================
-// 10. 轉生系統 (嚴格 50 題門檻 + 1.4 * (log(x)/10))
+// 10. 轉生系統 (正確公式：1.4 + (log10(x) / 10))
 // ==========================================
 function triggerPrestige() {
     if (quizStats.totalAnswered < 50) {
@@ -493,10 +492,11 @@ function triggerPrestige() {
 
     let x = gold;
     let logVal = Math.log10(Math.max(x, 1));
-    let customGrowth = 1.4 * (logVal / 10);
 
-    // 設定答題成長係數（確保至少有 1.0 保底）
-    prestigeData.answerGrowthFactor = Math.max(customGrowth, 1.0);
+    // 正確加法公式：1.4 + (log10(x) / 10)
+    let customGrowth = 1.4 + (logVal / 10);
+
+    prestigeData.answerGrowthFactor = Math.max(customGrowth, 1.4);
     prestigeData.count++;
 
     gold = 0;
