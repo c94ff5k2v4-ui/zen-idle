@@ -44,7 +44,7 @@ function updatePlayerDisplay() {
 function saveGameLocally() {
     const saveData = {
         gold, unlockedLevels, ballValue, spawnIntervalTime,
-        quizStats, prestigeData
+        quizStats, prestigeData, correctAnswersCount
     };
     localStorage.setItem('calculus_save_' + PLAYER_ID, JSON.stringify(saveData));
 }
@@ -60,6 +60,7 @@ function loadGameLocally() {
             spawnIntervalTime = data.spawnIntervalTime || 10000;
             quizStats = data.quizStats || { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
             prestigeData = data.prestigeData || { multiplier: 1.0, count: 0 };
+            correctAnswersCount = data.correctAnswersCount || 0;
             return true;
         }
     } catch (e) {
@@ -233,6 +234,7 @@ function updateLevelBoundaries() {
     for (let level = 0; level < totalLevels; level++) {
         let startY = level * levelHeight;
 
+        // 已解鎖層數之上的底部變為藍色感應區（球可穿過往下掉）
         if (level < unlockedLevels - 1) {
             let blueSensor = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
                 isStatic: true, isSensor: true, render: { fillStyle: '#3498db' }
@@ -240,7 +242,9 @@ function updateLevelBoundaries() {
             checkpointSensors.push(blueSensor);
             levelBottomBodies.push(blueSensor);
             Composite.add(world, blueSensor);
-        } else if (level === unlockedLevels - 1) {
+        } 
+        // 目前解鎖的最底部設為紅色阻擋線（球掉到這裡會被銷毀並得分）
+        else if (level === unlockedLevels - 1) {
             let redBar = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
                 isStatic: true, render: { fillStyle: '#e74c3c' }
             });
@@ -291,7 +295,7 @@ Events.on(engine, 'collisionStart', (event) => {
     event.pairs.forEach((pair) => {
         let bodyA = pair.bodyA, bodyB = pair.bodyB;
         checkpointSensors.forEach(sensor => {
-            if ((bodyA === sensor && balls.includes(bodyB)) || (bodyB === sensor && balls.includes(bodyA))) {
+            if ((bodyA === sensor && balls.includes(bodyB)) || (boduB === sensor && balls.includes(bodyA)) || (bodyB === sensor && balls.includes(bodyA))) {
                 let ball = balls.includes(bodyA) ? bodyA : bodyB;
                 if (!ball.touchedCheckpoints) ball.touchedCheckpoints = [];
                 if (!ball.touchedCheckpoints.includes(sensor)) {
@@ -399,7 +403,7 @@ function checkAnswer(selectedIndex) {
 
         if (correctAnswersCount % 10 === 0 && unlockedLevels < totalLevels) {
             unlockedLevels++;
-            updateLevelBoundaries();
+            updateLevelBoundaries(); // 自動開通通往下一層關卡的通道！
             feedback.innerText = `太神啦！成功解鎖第 ${unlockedLevels} 層新關卡！🎉`;
         } else {
             // 答對：隨機獲得「加速」或「加價格」
@@ -495,6 +499,7 @@ function triggerPrestige() {
 
     gold = 0;
     unlockedLevels = 1;
+    correctAnswersCount = 0;
     ballValue = 1.0;
     spawnIntervalTime = 10000;
     clearInterval(spawnerTimer);
