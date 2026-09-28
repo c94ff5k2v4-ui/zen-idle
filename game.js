@@ -21,7 +21,7 @@ let unlockedLevels = 1; // 初始僅解鎖第 1 關
 let quizStats = {
     totalAnswered: 0,
     totalCorrect: 0,
-    wrongQuestions: [] // 格式：{ question, options, correct, userChoice }
+    wrongQuestions: [] // 格式：{ question, options, correctAnswer, userAnswer }
 };
 
 let prestigeData = {
@@ -51,7 +51,7 @@ async function loadGameFromCloud() {
             unlockedLevels = data.level || 1;
             ballValue = data.ball_value || 1.0;
             spawnIntervalTime = data.spawn_interval || 10000;
-
+            
             quizStats.totalAnswered = data.total_answered || 0;
             quizStats.totalCorrect = data.total_correct || 0;
             quizStats.wrongQuestions = data.wrong_questions || [];
@@ -99,7 +99,7 @@ async function saveGameToCloud() {
 }
 
 // ==========================================
-// 4. MATTER.JS 物理引擎與關卡設定
+// 4. MATTER.JS 物理引擎與 8 層樓關卡設定
 // ==========================================
 const { Engine, Render, Runner, Bodies, Composite, Events } = Matter;
 
@@ -142,7 +142,7 @@ const leftWall = Bodies.rectangle(0, worldHeight / 2, 20, worldHeight, { isStati
 const rightWall = Bodies.rectangle(width, worldHeight / 2, 20, worldHeight, { isStatic: true, render: { fillStyle: '#333' } });
 Composite.add(world, [leftWall, rightWall]);
 
-// 2. 建立所有 8 層樓的障礙物（滿版釘子與流暢斜板交錯）
+// 2. 建立所有 8 層樓的障礙物（釘子與斜板交錯）
 for (let level = 0; level < totalLevels; level++) {
     let startY = level * levelHeight;
 
@@ -322,7 +322,7 @@ function formatNumber(num) {
 function updateUI() {
     const goldEl = document.getElementById('gold-display');
     if (goldEl) goldEl.innerText = formatNumber(gold);
-
+    
     const statusEl = document.getElementById('status-display');
     if (statusEl) {
         statusEl.innerHTML = `已解鎖關卡: ${unlockedLevels}/${totalLevels} | 球價值: $${formatNumber(ballValue * prestigeData.multiplier)} | 速度: ${(spawnIntervalTime / 1000).toFixed(1)}s`;
@@ -330,7 +330,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 7. 題庫與隨機洗牌出題系統（支援錯題本與雲端）
+// 7. 題庫與隨機洗牌出題系統（支援 KaTeX 與錯題記錄）
 // ==========================================
 let quizData = [];
 let currentQuestionIndex = 0;
@@ -437,12 +437,12 @@ function checkAnswer(selectedIndex) {
             }
         }
     } else {
-        // 紀錄錯題
+        // 紀錄錯題至永久錯題陣列
         quizStats.wrongQuestions.push({
             question: qObj.q,
             options: qObj.options,
-            correct: qObj.answer,
-            userChoice: selectedIndex
+            correctAnswer: qObj.options[qObj.answer],
+            userAnswer: qObj.options[selectedIndex]
         });
 
         ballValue *= 0.9;
@@ -465,7 +465,40 @@ function checkAnswer(selectedIndex) {
 }
 
 // ==========================================
-// 8. Prestige 轉生系統
+// 8. 錯題本彈出視窗控制邏輯
+// ==========================================
+function openErrorLogModal() {
+    const modal = document.getElementById('error-modal');
+    const container = document.getElementById('error-list-container');
+    
+    let errors = quizStats.wrongQuestions || [];
+
+    if (errors.length === 0) {
+        container.innerHTML = '<p style="color: #b2bec3; text-align: center; padding: 20px;">太棒了！目前沒有累積錯題紀錄。</p>';
+    } else {
+        let html = '';
+        errors.forEach((item, index) => {
+            html += `
+                <div style="background: #1f1f1f; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e74c3c;">
+                    <div style="font-weight: bold; margin-bottom: 6px;">Q${index + 1}: ${item.question}</div>
+                    <div style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 4px;">❌ 你的選擇: ${item.userAnswer}</div>
+                    <div style="color: #2ecc71; font-size: 0.9rem;">✅ 正確答案: ${item.correctAnswer}</div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeErrorLogModal() {
+    const modal = document.getElementById('error-modal');
+    modal.style.display = 'none';
+}
+
+// ==========================================
+// 9. Prestige 轉生系統
 // ==========================================
 function triggerPrestige() {
     const requiredQuestions = 50;
@@ -503,6 +536,6 @@ function triggerPrestige() {
     updateUI();
 }
 
-// 初始化載入
+// 初始化載入題庫與雲端存檔
 loadQuizData();
 loadGameFromCloud();
