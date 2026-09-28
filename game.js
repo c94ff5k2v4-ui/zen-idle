@@ -1,3 +1,106 @@
+// ==========================================
+// 1. SUPABASE 雲端連線與常數設定
+// ==========================================
+const SUPABASE_URL = 'https://ogcscxxiemcjsuxmgrfr.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const PLAYER_ID = 'player_zen_calculus_01'; // 跨裝置同步身分識別碼
+
+// ==========================================
+// 2. 遊戲核心狀態與永久歷史紀錄變數
+// ==========================================
+let gold = 0;
+let balls = [];
+let ballValue = 1.0;
+let spawnIntervalTime = 10000;
+let correctAnswersCount = 0;
+let unlockedLevels = 1; // 初始僅解鎖第 1 關
+
+// 永久歷史紀錄（Prestige 絕對不重置）
+let quizStats = {
+    totalAnswered: 0,
+    totalCorrect: 0,
+    wrongQuestions: [] // 格式：{ question, options, correct, userChoice }
+};
+
+let prestigeData = {
+    multiplier: 1.0,
+    count: 0
+};
+
+// ==========================================
+// 3. 雲端讀取與寫入 (Supabase)
+// ==========================================
+async function loadGameFromCloud() {
+    try {
+        const { data, error } = await supabaseClient
+            .from('player_saves')
+            .select('*')
+            .eq('user_id', PLAYER_ID)
+            .single();
+
+        if (error) {
+            console.log("尚無雲端存檔，使用初始預設進度");
+            return;
+        }
+
+        if (data) {
+            console.log("成功從雲端載入進度！", data);
+            gold = data.gold || 0;
+            unlockedLevels = data.level || 1;
+            ballValue = data.ball_value || 1.0;
+            spawnIntervalTime = data.spawn_interval || 10000;
+
+            quizStats.totalAnswered = data.total_answered || 0;
+            quizStats.totalCorrect = data.total_correct || 0;
+            quizStats.wrongQuestions = data.wrong_questions || [];
+
+            if (data.prestige_data) {
+                prestigeData = data.prestige_data;
+            }
+
+            // 重新設定計時器與關卡邊界
+            clearInterval(spawnerTimer);
+            spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
+            updateLevelBoundaries();
+            updateUI();
+        }
+    } catch (err) {
+        console.error("載入雲端存檔發生例外錯誤：", err);
+    }
+}
+
+async function saveGameToCloud() {
+    try {
+        const { error } = await supabaseClient
+            .from('player_saves')
+            .upsert({
+                user_id: PLAYER_ID,
+                level: unlockedLevels,
+                gold: gold,
+                ball_value: ballValue,
+                spawn_interval: spawnIntervalTime,
+                total_answered: quizStats.totalAnswered,
+                total_correct: quizStats.totalCorrect,
+                wrong_questions: quizStats.wrongQuestions,
+                prestige_data: prestigeData,
+                update_at: new Date()
+            }, { onConflict: 'user_id' });
+
+        if (error) {
+            console.error("雲端存檔失敗：", error.message);
+        } else {
+            console.log("進度已成功同步至雲端！");
+        }
+    } catch (err) {
+        console.error("雲端存檔發生例外錯誤：", err);
+    }
+}
+
+// ==========================================
+// 4. MATTER.JS 物理引擎與關卡設定
+// ==========================================
 const { Engine, Render, Runner, Bodies, Composite, Events } = Matter;
 
 const engine = Engine.create();
@@ -73,7 +176,6 @@ for (let level = 0; level < totalLevels; level++) {
 let checkpointSensors = [];
 let bottomDestructors = [];
 let levelBottomBodies = [];
-let unlockedLevels = 1;     // 初始僅解鎖第 1 關
 
 function updateLevelBoundaries() {
     levelBottomBodies.forEach(body => Composite.remove(world, body));
@@ -108,7 +210,9 @@ function updateLevelBoundaries() {
 
 updateLevelBoundaries();
 
-// 4. 畫面上下滑動與平板觸控拖曳鏡頭控制
+// ==========================================
+// 5. 畫面上下滑動與相機控制
+// ==========================================
 let currentCameraY = 0;
 let maxScroll = worldHeight - viewHeight;
 
@@ -144,9 +248,7 @@ container.addEventListener('touchmove', (e) => {
     scrollCameraTo(startCameraY + deltaY);
 }, { passive: true });
 
-container.addEventListener('touchend', () => {
-    isDragging = false;
-});
+container.addEventListener('touchend', () => { isDragging = false; });
 
 container.addEventListener('mousedown', (e) => {
     isDragging = true;
@@ -160,17 +262,11 @@ window.addEventListener('mousemove', (e) => {
     scrollCameraTo(startCameraY + deltaY);
 });
 
-window.addEventListener('mouseup', () => {
-    isDragging = false;
-});
+window.addEventListener('mouseup', () => { isDragging = false; });
 
-// 5. 遊戲核心數值與計時生成
-let gold = 0;
-let balls = [];
-let ballValue = 1.0;
-let spawnIntervalTime = 10000;
-let correctAnswersCount = 0;
-
+// ==========================================
+// 6. 球體生成與碰撞偵測
+// ==========================================
 function spawnBall() {
     let x = width / 2 + (Math.random() * 30 - 15);
     let y = 20;
@@ -185,7 +281,6 @@ function spawnBall() {
 
 let spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
 
-// 6. 碰撞與感應偵測
 Events.on(engine, 'collisionStart', (event) => {
     event.pairs.forEach((pair) => {
         let bodyA = pair.bodyA;
@@ -197,7 +292,7 @@ Events.on(engine, 'collisionStart', (event) => {
                 if (!ball.touchedCheckpoints) ball.touchedCheckpoints = [];
                 if (!ball.touchedCheckpoints.includes(sensor)) {
                     ball.touchedCheckpoints.push(sensor);
-                    gold += ballValue;
+                    gold += ballValue * prestigeData.multiplier;
                     updateUI();
                 }
             }
@@ -207,7 +302,7 @@ Events.on(engine, 'collisionStart', (event) => {
             if ((bodyA === destructor && balls.includes(bodyB)) || (bodyB === destructor && balls.includes(bodyA))) {
                 let ball = balls.includes(bodyA) ? bodyA : bodyB;
 
-                gold += ballValue;
+                gold += ballValue * prestigeData.multiplier;
                 updateUI();
 
                 Composite.remove(world, ball);
@@ -225,12 +320,18 @@ function formatNumber(num) {
 }
 
 function updateUI() {
-    document.getElementById('gold-display').innerText = formatNumber(gold);
-    document.getElementById('status-display').innerHTML =
-        `已解鎖關卡: ${unlockedLevels}/${totalLevels} | 球價值: $${formatNumber(ballValue)} | 速度: ${(spawnIntervalTime / 1000).toFixed(1)}s`;
+    const goldEl = document.getElementById('gold-display');
+    if (goldEl) goldEl.innerText = formatNumber(gold);
+
+    const statusEl = document.getElementById('status-display');
+    if (statusEl) {
+        statusEl.innerHTML = `已解鎖關卡: ${unlockedLevels}/${totalLevels} | 球價值: $${formatNumber(ballValue * prestigeData.multiplier)} | 速度: ${(spawnIntervalTime / 1000).toFixed(1)}s`;
+    }
 }
 
-// 7. 題庫與隨機洗牌出題系統（支援 KaTeX 數學渲染）
+// ==========================================
+// 7. 題庫與隨機洗牌出題系統（支援錯題本與雲端）
+// ==========================================
 let quizData = [];
 let currentQuestionIndex = 0;
 let shuffledIndices = [];
@@ -266,7 +367,7 @@ function loadRandomQuestion() {
     if (shufflePointer >= shuffledIndices.length) {
         initShuffledIndices();
         if (roundCount > 1) {
-            gold += ballValue * 5;
+            gold += ballValue * 5 * prestigeData.multiplier;
             updateUI();
             let feedback = document.getElementById('feedback');
             feedback.innerText = `太神啦！你已經把所有題目完整輪完一輪！獲得獎勵金幣！🏆`;
@@ -279,7 +380,6 @@ function loadRandomQuestion() {
 
     let qObj = quizData[currentQuestionIndex];
 
-    // 使用 innerHTML 讓 KaTeX 能夠正確抓取並渲染微積分數學式
     document.getElementById('question-text').innerHTML = qObj.q;
     let optionsArea = document.getElementById('options-area');
     optionsArea.innerHTML = '';
@@ -292,7 +392,6 @@ function loadRandomQuestion() {
         optionsArea.appendChild(btn);
     });
 
-    // 觸發 KaTeX 數學公式即時渲染
     if (typeof renderMathInElement === 'function') {
         renderMathInElement(document.getElementById('control-panel'), {
             delimiters: [
@@ -309,7 +408,10 @@ function checkAnswer(selectedIndex) {
     let qObj = quizData[currentQuestionIndex];
     let feedback = document.getElementById('feedback');
 
+    quizStats.totalAnswered++;
+
     if (selectedIndex === qObj.answer) {
+        quizStats.totalCorrect++;
         correctAnswersCount++;
 
         if (correctAnswersCount % 10 === 0 && unlockedLevels < totalLevels) {
@@ -317,7 +419,6 @@ function checkAnswer(selectedIndex) {
             updateLevelBoundaries();
             feedback.innerText = `太神啦！成功解鎖第 ${unlockedLevels} 層新關卡！🎉`;
         } else {
-            // 生成時間極限機制：<= 0.2秒(200ms) 時改為球價值提升 1.6 倍
             if (spawnIntervalTime <= 200) {
                 ballValue *= 1.6;
                 feedback.innerText = "答對！生成已達極限，球的價值爆發提升至 x1.6！💎";
@@ -335,15 +436,15 @@ function checkAnswer(selectedIndex) {
                 }
             }
         }
-
-        updateUI();
-
-        setTimeout(() => {
-            feedback.innerText = "";
-            loadRandomQuestion();
-        }, 2000);
-
     } else {
+        // 紀錄錯題
+        quizStats.wrongQuestions.push({
+            question: qObj.q,
+            options: qObj.options,
+            correct: qObj.answer,
+            userChoice: selectedIndex
+        });
+
         ballValue *= 0.9;
         if (ballValue < 0.1) ballValue = 0.1;
 
@@ -352,9 +453,56 @@ function checkAnswer(selectedIndex) {
         spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
 
         feedback.innerText = "答錯囉！球價值下降 (x0.9)，生成變慢！❌";
-        updateUI();
     }
+
+    updateUI();
+    saveGameToCloud(); // 每次答題自動同步至雲端
+
+    setTimeout(() => {
+        feedback.innerText = "";
+        loadRandomQuestion();
+    }, 2000);
 }
 
+// ==========================================
+// 8. Prestige 轉生系統
+// ==========================================
+function triggerPrestige() {
+    const requiredQuestions = 50;
+    if (quizStats.totalAnswered < requiredQuestions) {
+        alert(`尚未達標！還需回答 ${requiredQuestions - quizStats.totalAnswered} 題才能解鎖 Prestige。`);
+        return;
+    }
+
+    let x = Math.max(gold, 1);
+    let currentSpeed = spawnIntervalTime / 1000;
+    let bonusMultiplier = 1.0;
+
+    // 依據球速條件套用不同公式
+    if (currentSpeed < 0.2) {
+        bonusMultiplier = 1.6 + Math.log10(x);
+    } else {
+        bonusMultiplier = 1.4 + (Math.log10(x) / 10);
+    }
+
+    prestigeData.multiplier *= bonusMultiplier;
+    prestigeData.count++;
+
+    // 重置遊戲數值（答題統計與錯題完全保留）
+    gold = 0;
+    unlockedLevels = 1;
+    ballValue = 1.0;
+    spawnIntervalTime = 10000;
+    clearInterval(spawnerTimer);
+    spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
+    updateLevelBoundaries();
+
+    saveGameToCloud();
+
+    alert(`👑 第 ${prestigeData.count} 次 Prestige 轉生成功！\n本次獲得加成：x${bonusMultiplier.toFixed(2)}\n目前總倍率：x${prestigeData.multiplier.toFixed(2)}`);
+    updateUI();
+}
+
+// 初始化載入
 loadQuizData();
-updateUI();
+loadGameFromCloud();
