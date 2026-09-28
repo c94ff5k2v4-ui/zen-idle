@@ -6,7 +6,6 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// 優先從 localStorage 讀取玩家代號，若無則自動產生一個訪客代號並存起來
 let PLAYER_ID = localStorage.getItem('calculus_player_id');
 if (!PLAYER_ID) {
     PLAYER_ID = 'player_' + Math.random().toString(36).substring(2, 9);
@@ -34,7 +33,6 @@ let prestigeData = {
     count: 0
 };
 
-// 更新畫面上顯示目前玩家代號
 function updatePlayerDisplay() {
     const userEl = document.getElementById('user-display');
     if (userEl) userEl.innerText = `目前玩家: ${PLAYER_ID}`;
@@ -71,13 +69,11 @@ function loadGameLocally() {
 }
 
 async function loadGame() {
-    // 1. 先讀取本機快取，確保平板滑掉重開能瞬間恢復畫面
     loadGameLocally();
     updatePlayerDisplay();
     updateLevelBoundaries();
     updateUI();
 
-    // 2. 嘗試從雲端抓取最新進度
     try {
         const { data, error } = await supabaseClient
             .from('player_saves')
@@ -103,12 +99,11 @@ async function loadGame() {
             saveGameLocally();
         }
     } catch (err) {
-        console.log("使用本機快取模式運行（可能處於離線狀態）");
+        console.log("使用本機快取模式運行");
     }
 }
 
 async function saveGameToCloud() {
-    // 隨時同步到本機防止重置
     saveGameLocally();
 
     try {
@@ -149,7 +144,7 @@ function saveUsername() {
         PLAYER_ID = inputVal;
         localStorage.setItem('calculus_player_id', PLAYER_ID);
         closeLoginModal();
-        loadGame(); // 載入新帳號的進度
+        loadGame();
         alert(`已成功切換至玩家: ${PLAYER_ID}`);
     } else {
         alert('代號不能為空！');
@@ -401,23 +396,42 @@ function checkAnswer(selectedIndex) {
     if (selectedIndex === qObj.answer) {
         quizStats.totalCorrect++;
         correctAnswersCount++;
+
         if (correctAnswersCount % 10 === 0 && unlockedLevels < totalLevels) {
             unlockedLevels++;
             updateLevelBoundaries();
             feedback.innerText = `太神啦！成功解鎖第 ${unlockedLevels} 層新關卡！🎉`;
         } else {
-            ballValue *= 1.4;
-            feedback.innerText = "答對！球的價值提升！📈";
+            // 答對：隨機獲得「加速」或「加價格」
+            let rewardType = Math.random() > 0.5 ? 'value' : 'speed';
+            
+            if (rewardType === 'value') {
+                ballValue *= 1.4;
+                feedback.innerText = "答對！隨機獎勵：球的價值顯著提升！📈";
+            } else {
+                spawnIntervalTime *= 0.94;
+                if (spawnIntervalTime < 200) spawnIntervalTime = 200;
+                clearInterval(spawnerTimer);
+                spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
+                feedback.innerText = "答對！隨機獎勵：球的生產速度加快！⚡";
+            }
         }
     } else {
+        // 紀錄錯題
         quizStats.wrongQuestions.push({
             question: qObj.q,
             options: qObj.options,
             correctAnswer: qObj.options[qObj.answer],
             userAnswer: qObj.options[selectedIndex]
         });
+
+        // 答錯：同時扣價格 ＆ 減速
         ballValue = Math.max(0.1, ballValue * 0.9);
-        feedback.innerText = "答錯囉！球價值下降！❌";
+        spawnIntervalTime *= 1.06;
+        clearInterval(spawnerTimer);
+        spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
+
+        feedback.innerText = "答錯囉！懲罰：球價值下降 ＆ 生產減速！❌";
     }
 
     updateUI();
@@ -430,10 +444,19 @@ function checkAnswer(selectedIndex) {
 }
 
 // ==========================================
-// 9. 錯題本檢視
+// 9. 錯題本檢視與數據統計
 // ==========================================
 function openErrorLogModal() {
     const container = document.getElementById('error-list-container');
+    
+    let total = quizStats.totalAnswered || 0;
+    let correct = quizStats.totalCorrect || 0;
+    let rate = total > 0 ? ((correct / total) * 100).toFixed(1) : '0.0';
+
+    document.getElementById('stat-total').innerText = total;
+    document.getElementById('stat-correct').innerText = correct;
+    document.getElementById('stat-rate').innerText = rate + '%';
+
     let errors = quizStats.wrongQuestions || [];
     if (errors.length === 0) {
         container.innerHTML = '<p style="color: #b2bec3; text-align: center; padding: 20px;">太棒了！目前沒有累積錯題紀錄。</p>';
@@ -450,9 +473,13 @@ function openErrorLogModal() {
         });
         container.innerHTML = html;
     }
+    
     document.getElementById('error-modal').style.display = 'flex';
 }
-function closeErrorLogModal() { document.getElementById('error-modal').style.display = 'none'; }
+
+function closeErrorLogModal() { 
+    document.getElementById('error-modal').style.display = 'none'; 
+}
 
 // ==========================================
 // 10. 轉生系統
