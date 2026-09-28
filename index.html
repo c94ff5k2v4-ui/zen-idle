@@ -13,6 +13,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#1a1a1a">
 
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <!-- Matter.js 物理引擎 CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
@@ -164,12 +167,30 @@
             min-height: 24px;
             color: #2ecc71;
         }
+
+        /* 轉生與按鈕樣式 */
+        .prestige-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .prestige-btn:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- 左側：Matter.js 物理掉落遊戲畫面 -->
+    <!-- 左側：Matter.js 物理掉落遊戲畫面 (8層樓關卡與相機拖曳) -->
     <div id="game-container"></div>
 
     <!-- 右側：放置數值儀表板與答題解鎖控制區 -->
@@ -186,6 +207,9 @@
                 <button class="cam-btn" onclick="scrollCamera(-1)">⬆️ 往上視圖</button>
                 <button class="cam-btn" onclick="scrollCamera(1)">⬇️ 往下視圖</button>
             </div>
+
+            <!-- 轉生按鈕 -->
+            <button class="prestige-btn" onclick="triggerPrestige()">👑 啟動 Prestige 轉生</button>
         </div>
 
         <!-- 答題挑戰區 -->
@@ -200,7 +224,7 @@
 
     </div>
 
-    <!-- 遊戲核心邏輯 -->
+    <!-- 遊戲核心邏輯 (請確保與上一段 game.js 放在同個資料夾) -->
     <script src="game.js"></script>
 </body>
 
