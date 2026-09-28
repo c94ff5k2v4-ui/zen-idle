@@ -52,28 +52,32 @@
             height: 100%;
         }
 
-        /* 右側控制面板與題庫系統 */
+        /* 右側控制面板：改為允許內部捲動，避免被擠壓 */
         #control-panel {
-            width: 440px;
+            width: 420px;
             background-color: #1f1f1f;
             border-left: 2px solid #333;
             display: flex;
             flex-direction: column;
-            padding: 24px;
+            padding: 16px;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
             z-index: 10;
+            height: 100vh;
+            overflow-y: auto;
+            /* 支援內部上下捲動 */
         }
 
         .panel-section {
             background-color: #2a2a2a;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 16px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
         }
 
         h1 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             color: #f39c12;
             display: flex;
             align-items: center;
@@ -81,14 +85,14 @@
         }
 
         .stat-box {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #f1c40f;
         }
 
         .status-box {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #b2bec3;
             line-height: 1.4;
         }
@@ -96,8 +100,8 @@
         /* 視角上下切換按鈕群 */
         .camera-controls {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .cam-btn {
@@ -105,10 +109,11 @@
             background-color: #34495e;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 0.85rem;
             transition: background 0.2s;
         }
 
@@ -116,34 +121,41 @@
             background-color: #2c3e50;
         }
 
-        /* 按鈕樣式 */
         .prestige-btn {
             background-color: #e74c3c;
             color: white;
             border: none;
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 8px;
+            font-size: 0.9rem;
             transition: background 0.2s;
         }
-        .prestige-btn:hover { background-color: #c0392b; }
+
+        .prestige-btn:hover {
+            background-color: #c0392b;
+        }
 
         .error-log-btn {
             background-color: #8e44ad;
             color: white;
             border: none;
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 8px;
+            font-size: 0.9rem;
             transition: background 0.2s;
         }
-        .error-log-btn:hover { background-color: #732d91; }
+
+        .error-log-btn:hover {
+            background-color: #732d91;
+        }
 
         .login-btn {
             background-color: #27ae60;
@@ -158,51 +170,59 @@
             font-size: 0.85rem;
             transition: background 0.2s;
         }
-        .login-btn:hover { background-color: #219653; }
+
+        .login-btn:hover {
+            background-color: #219653;
+        }
 
         /* 題庫與答題介面 */
         #quiz-container {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            flex-grow: 1;
         }
 
         #question-text {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 16px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            line-height: 1.4;
             color: #ecf0f1;
         }
 
         #options-area {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .option-btn {
             background-color: #3498db;
             color: white;
             border: none;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             text-align: left;
             cursor: pointer;
             transition: background 0.2s, transform 0.1s;
         }
-        .option-btn:hover { background-color: #2980b9; }
-        .option-btn:active { transform: scale(0.98); }
+
+        .option-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .option-btn:active {
+            transform: scale(0.98);
+        }
 
         #feedback {
-            margin-top: 15px;
-            font-size: 0.95rem;
+            margin-top: 10px;
+            font-size: 0.9rem;
             font-weight: bold;
             text-align: center;
-            min-height: 24px;
+            min-height: 20px;
             color: #2ecc71;
         }
     </style>
@@ -221,7 +241,8 @@
             <h1>💰 放置產出</h1>
             <div class="stat-box">金幣: <span id="gold-display">0.00</span></div>
             <div class="status-box" id="status-display">已解鎖關卡: 1/8 | 球價值: $1.00 | 速度: 10.0s</div>
-            <div class="status-box" id="user-display" style="margin-top: 6px; color: #f39c12; font-size: 0.85rem;">目前玩家: 載入中...</div>
+            <div class="status-box" id="user-display" style="margin-top: 6px; color: #f39c12; font-size: 0.85rem;">目前玩家:
+                載入中...</div>
 
             <div class="camera-controls">
                 <button class="cam-btn" onclick="scrollCamera(-1)">⬆️ 往上視圖</button>
@@ -246,12 +267,15 @@
     </div>
 
     <!-- 錯題本彈出視窗（含即時答題統計） -->
-    <div id="error-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; border: 1px solid #444;">
+    <div id="error-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div
+            style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; border: 1px solid #444;">
             <h2 style="color: #e74c3c; margin-bottom: 12px;">📖 微積分學習紀錄與錯題本</h2>
-            
+
             <!-- 答題統計面板 -->
-            <div id="quiz-stats-summary" style="background: #1f1f1f; padding: 12px; border-radius: 8px; margin-bottom: 16px; display: flex; justify-content: space-around; text-align: center; border: 1px solid #333;">
+            <div id="quiz-stats-summary"
+                style="background: #1f1f1f; padding: 12px; border-radius: 8px; margin-bottom: 16px; display: flex; justify-content: space-around; text-align: center; border: 1px solid #333;">
                 <div>
                     <div style="font-size: 0.8rem; color: #b2bec3;">總答題數</div>
                     <div id="stat-total" style="font-size: 1.2rem; font-weight: bold; color: #f1c40f;">0</div>
@@ -266,22 +290,30 @@
                 </div>
             </div>
 
-            <div id="error-list-container" style="margin-bottom: 20px; color: #ecf0f1; font-size: 0.95rem; max-height: 40vh; overflow-y: auto;">
+            <div id="error-list-container"
+                style="margin-bottom: 20px; color: #ecf0f1; font-size: 0.95rem; max-height: 40vh; overflow-y: auto;">
                 目前沒有錯題紀錄！
             </div>
-            <button onclick="closeErrorLogModal()" style="background: #c0392b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">關閉</button>
+            <button onclick="closeErrorLogModal()"
+                style="background: #c0392b; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;">關閉</button>
         </div>
     </div>
 
     <!-- 登入/設定使用者帳號彈出視窗 -->
-    <div id="login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1100; justify-content: center; align-items: center;">
-        <div style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 400px; border: 1px solid #444; text-align: center;">
+    <div id="login-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1100; justify-content: center; align-items: center;">
+        <div
+            style="background: #2a2a2a; padding: 24px; border-radius: 12px; width: 90%; max-width: 400px; border: 1px solid #444; text-align: center;">
             <h2 style="color: #2ecc71; margin-bottom: 12px;">👤 設定你的玩家代號</h2>
-            <p style="color: #b2bec3; font-size: 0.9rem; margin-bottom: 16px;">輸入你的專屬代號，進度將自動同步至雲端與本機，平板重新整理或滑掉也不會遺失！</p>
-            <input type="text" id="username-input" placeholder="例如: student_alex" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #1a1a1a; color: white; font-size: 1rem; margin-bottom: 16px; text-align: center;">
+            <p style="color: #b2bec3; font-size: 0.9rem; margin-bottom: 16px;">輸入你的專屬代號，進度將自動同步至雲端與本機，平板重新整理或滑掉也不會遺失！
+            </p>
+            <input type="text" id="username-input" placeholder="例如: student_alex"
+                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #1a1a1a; color: white; font-size: 1rem; margin-bottom: 16px; text-align: center;">
             <div style="display: flex; gap: 10px;">
-                <button onclick="saveUsername()" style="flex: 1; background: #2ecc71; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">確定登入</button>
-                <button onclick="closeLoginModal()" style="flex: 1; background: #7f8c8d; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">取消</button>
+                <button onclick="saveUsername()"
+                    style="flex: 1; background: #2ecc71; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">確定登入</button>
+                <button onclick="closeLoginModal()"
+                    style="flex: 1; background: #7f8c8d; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">取消</button>
             </div>
         </div>
     </div>
