@@ -30,6 +30,7 @@ let quizStats = {
 
 let prestigeData = {
     multiplier: 1.0,
+    answerGrowthFactor: 1.4, // 預設答對成長倍率
     count: 0
 };
 
@@ -59,7 +60,7 @@ function loadGameLocally() {
             ballValue = data.ballValue || 1.0;
             spawnIntervalTime = data.spawnIntervalTime || 10000;
             quizStats = data.quizStats || { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
-            prestigeData = data.prestigeData || { multiplier: 1.0, count: 0 };
+            prestigeData = data.prestigeData || { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
             correctAnswersCount = data.correctAnswersCount || 0;
             return true;
         }
@@ -234,7 +235,6 @@ function updateLevelBoundaries() {
     for (let level = 0; level < totalLevels; level++) {
         let startY = level * levelHeight;
 
-        // 已解鎖層數之上的底部變為藍色感應區（球可穿過往下掉）
         if (level < unlockedLevels - 1) {
             let blueSensor = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
                 isStatic: true, isSensor: true, render: { fillStyle: '#3498db' }
@@ -242,9 +242,7 @@ function updateLevelBoundaries() {
             checkpointSensors.push(blueSensor);
             levelBottomBodies.push(blueSensor);
             Composite.add(world, blueSensor);
-        } 
-        // 目前解鎖的最底部設為紅色阻擋線（球掉到這裡會被銷毀並得分）
-        else if (level === unlockedLevels - 1) {
+        } else if (level === unlockedLevels - 1) {
             let redBar = Bodies.rectangle(width / 2, startY + levelHeight - 25, width - 40, 20, {
                 isStatic: true, render: { fillStyle: '#e74c3c' }
             });
@@ -295,7 +293,7 @@ Events.on(engine, 'collisionStart', (event) => {
     event.pairs.forEach((pair) => {
         let bodyA = pair.bodyA, bodyB = pair.bodyB;
         checkpointSensors.forEach(sensor => {
-            if ((bodyA === sensor && balls.includes(bodyB)) || (boduB === sensor && balls.includes(bodyA)) || (bodyB === sensor && balls.includes(bodyA))) {
+            if ((bodyA === sensor && balls.includes(bodyB)) || (bodyB === sensor && balls.includes(bodyA))) {
                 let ball = balls.includes(bodyA) ? bodyA : bodyB;
                 if (!ball.touchedCheckpoints) ball.touchedCheckpoints = [];
                 if (!ball.touchedCheckpoints.includes(sensor)) {
@@ -403,15 +401,16 @@ function checkAnswer(selectedIndex) {
 
         if (correctAnswersCount % 10 === 0 && unlockedLevels < totalLevels) {
             unlockedLevels++;
-            updateLevelBoundaries(); // 自動開通通往下一層關卡的通道！
+            updateLevelBoundaries();
             feedback.innerText = `太神啦！成功解鎖第 ${unlockedLevels} 層新關卡！🎉`;
         } else {
-            // 答對：隨機獲得「加速」或「加價格」
             let rewardType = Math.random() > 0.5 ? 'value' : 'speed';
-            
+
             if (rewardType === 'value') {
-                ballValue *= 1.4;
-                feedback.innerText = "答對！隨機獎勵：球的價值顯著提升！📈";
+                // 套用轉生計算出的答題價值成長係數
+                let growthFactor = prestigeData.answerGrowthFactor || 1.4;
+                ballValue *= growthFactor;
+                feedback.innerText = `答對！隨機獎勵：球價值以 x${growthFactor.toFixed(4)} 成長！📈`;
             } else {
                 spawnIntervalTime *= 0.94;
                 if (spawnIntervalTime < 200) spawnIntervalTime = 200;
@@ -421,7 +420,6 @@ function checkAnswer(selectedIndex) {
             }
         }
     } else {
-        // 紀錄錯題
         quizStats.wrongQuestions.push({
             question: qObj.q,
             options: qObj.options,
@@ -429,7 +427,6 @@ function checkAnswer(selectedIndex) {
             userAnswer: qObj.options[selectedIndex]
         });
 
-        // 答錯：同時扣價格 ＆ 減速
         ballValue = Math.max(0.1, ballValue * 0.9);
         spawnIntervalTime *= 1.06;
         clearInterval(spawnerTimer);
@@ -452,7 +449,7 @@ function checkAnswer(selectedIndex) {
 // ==========================================
 function openErrorLogModal() {
     const container = document.getElementById('error-list-container');
-    
+
     let total = quizStats.totalAnswered || 0;
     let correct = quizStats.totalCorrect || 0;
     let rate = total > 0 ? ((correct / total) * 100).toFixed(1) : '0.0';
@@ -477,24 +474,29 @@ function openErrorLogModal() {
         });
         container.innerHTML = html;
     }
-    
+
     document.getElementById('error-modal').style.display = 'flex';
 }
 
-function closeErrorLogModal() { 
-    document.getElementById('error-modal').style.display = 'none'; 
+function closeErrorLogModal() {
+    document.getElementById('error-modal').style.display = 'none';
 }
 
 // ==========================================
-// 10. 轉生系統
+// 10. 轉生系統 (嚴格 50 題門檻 + 1.4 * (log(x)/10))
 // ==========================================
 function triggerPrestige() {
     if (quizStats.totalAnswered < 50) {
         alert(`還需回答 ${50 - quizStats.totalAnswered} 題才能解鎖 Prestige。`);
         return;
     }
-    let bonusMultiplier = 1.4 + (Math.log10(Math.max(gold, 1)) / 10);
-    prestigeData.multiplier *= bonusMultiplier;
+
+    let x = gold;
+    let logVal = Math.log10(Math.max(x, 1));
+    let customGrowth = 1.4 * (logVal / 10);
+
+    // 設定答題成長係數（確保至少有 1.0 保底）
+    prestigeData.answerGrowthFactor = Math.max(customGrowth, 1.0);
     prestigeData.count++;
 
     gold = 0;
@@ -507,7 +509,7 @@ function triggerPrestige() {
     updateLevelBoundaries();
     saveGameToCloud();
 
-    alert(`👑 轉生成功！總倍率提升至 x${prestigeData.multiplier.toFixed(2)}`);
+    alert(`👑 轉生成功！轉生前金幣: ${x.toFixed(0)} | 之後每次答對成長倍率調整為：x${prestigeData.answerGrowthFactor.toFixed(4)}`);
     updateUI();
 }
 
