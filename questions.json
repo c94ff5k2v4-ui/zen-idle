@@ -319,7 +319,6 @@
         ],
         "answer": 1
     },
-
     {
         "q": "What type of ion consists of two or more atoms covalently bonded together that carry a net charge?",
         "options": [
@@ -3441,318 +3440,1083 @@
         "answer": 1
     },
     {
-    "q": "What is the chemical name for the oxoacid with the formula HNO2?",
-    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+        "q": "What is the chemical name for the oxoacid with the formula HNO2?",
+        "options": [
+            "Nitrous acid",
+            "Nitric acid",
+            "Hydronitric acid",
+            "Hyponitrous acid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula NO3-?",
+        "options": [
+            "Nitrite ion",
+            "Nitrate ion",
+            "Nitride ion",
+            "Hyponitrite ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Phosphoric acid?",
+        "options": [
+            "H3PO3",
+            "H3PO4",
+            "HPO4^2-",
+            "H2PO4-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
+        "options": [
+            "Phosphite ion",
+            "Phosphate ion",
+            "Phosphide ion",
+            "Hypophosphite ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Sulfurous acid?",
+        "options": [
+            "H2SO3",
+            "H2SO4",
+            "H2S",
+            "HSO3-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
+        "options": [
+            "Sulfite ion",
+            "Sulfate ion",
+            "Sulfide ion",
+            "Thiosulfate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Hypochlorous acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Chloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical formula for Nitric acid?",
+        "options": [
+            "HNO2",
+            "HNO3",
+            "HNO4",
+            "H2NO3"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula NO2-?",
+        "options": [
+            "Nitrate ion",
+            "Nitrite ion",
+            "Nitride ion",
+            "Hyponitrite ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula H3PO4?",
+        "options": [
+            "Phosphorous acid",
+            "Phosphoric acid",
+            "Hypophosphorous acid",
+            "Perphosphoric acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for the Sulfite ion?",
+        "options": [
+            "SO3^2-",
+            "SO4^2-",
+            "S^2-",
+            "HSO3-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula H2SO4?",
+        "options": [
+            "Sulfurous acid",
+            "Sulfuric acid",
+            "Hydrosulfuric acid",
+            "Persulfuric acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Chlorous acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula ClO-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical formula for Perchloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula HNO2?",
+        "options": [
+            "Nitrous acid",
+            "Nitric acid",
+            "Nitrite ion",
+            "Nitrate ion"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical formula for Nitric acid?",
+        "options": [
+            "HNO2",
+            "HNO3",
+            "HNO4",
+            "H2NO3"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
+        "options": [
+            "Phosphite ion",
+            "Phosphate ion",
+            "Phosphide ion",
+            "Hypophosphite ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Sulfurous acid?",
+        "options": [
+            "H2SO3",
+            "H2SO4",
+            "H2S",
+            "HSO3-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
+        "options": [
+            "Sulfite ion",
+            "Sulfate ion",
+            "Sulfide ion",
+            "Thiosulfate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Hypochlorous acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Chloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical formula for the Nitrite ion?",
+        "options": [
+            "NO-",
+            "NO2-",
+            "NO3-",
+            "N3-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Perchloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula HNO3?",
+        "options": [
+            "Nitrous acid",
+            "Nitric acid",
+            "Hydronitric acid",
+            "Hyponitrous acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Phosphoric acid?",
+        "options": [
+            "H3PO3",
+            "H3PO4",
+            "H2PO4-",
+            "HPO4^2-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula SO3^2-?",
+        "options": [
+            "Sulfate ion",
+            "Sulfite ion",
+            "Sulfide ion",
+            "Persulfate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Sulfuric acid?",
+        "options": [
+            "H2SO3",
+            "H2SO4",
+            "H2S",
+            "H2SO5"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula HClO2?",
+        "options": [
+            "Hypochlorous acid",
+            "Chlorous acid",
+            "Chloric acid",
+            "Perchloric acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for the Hypochlorite ion?",
+        "options": [
+            "ClO-",
+            "ClO2-",
+            "ClO3-",
+            "ClO4-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with the formula HClO3?",
+        "options": [
+            "Hypochlorous acid",
+            "Chlorous acid",
+            "Chloric acid",
+            "Perchloric acid"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical formula for the Sulfate ion?",
+        "options": [
+            "SO2^2-",
+            "SO3^2-",
+            "SO4^2-",
+            "S2O3^2-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with the formula NO3-?",
+        "options": [
+            "Nitride ion",
+            "Nitrite ion",
+            "Nitrate ion",
+            "Hyponitrite ion"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the systematic chemical name for the oxoacid with formula HNO2?",
+        "options": [
+            "Nitrous acid",
+            "Nitric acid",
+            "Hydronitric acid",
+            "Hyponitrous acid"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical formula for Nitric acid?",
+        "options": [
+            "HNO2",
+            "HNO3",
+            "HNO4",
+            "H2NO3"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula PO4^3-?",
+        "options": [
+            "Phosphite ion",
+            "Phosphate ion",
+            "Phosphide ion",
+            "Hypophosphite ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Sulfurous acid?",
+        "options": [
+            "H2SO3",
+            "H2SO4",
+            "H2S",
+            "HSO3-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula SO4^2-?",
+        "options": [
+            "Sulfite ion",
+            "Sulfate ion",
+            "Sulfide ion",
+            "Thiosulfate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Hypochlorous acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula ClO2-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Chloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula ClO4-?",
+        "options": [
+            "Hypochlorite ion",
+            "Chlorite ion",
+            "Chlorate ion",
+            "Perchlorate ion"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical formula for Phosphoric acid?",
+        "options": [
+            "H3PO3",
+            "H3PO4",
+            "H2PO4-",
+            "HPO4^2-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Perchloric acid?",
+        "options": [
+            "HClO",
+            "HClO2",
+            "HClO3",
+            "HClO4"
+        ],
+        "answer": 3
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with formula HNO3?",
+        "options": [
+            "Nitrous acid",
+            "Nitric acid",
+            "Hydronitric acid",
+            "Hyponitrous acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for the Nitrite ion?",
+        "options": [
+            "NO-",
+            "NO2-",
+            "NO3-",
+            "N3-"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula SO3^2-?",
+        "options": [
+            "Sulfate ion",
+            "Sulfite ion",
+            "Sulfide ion",
+            "Persulfate ion"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for Sulfuric acid?",
+        "options": [
+            "H2SO3",
+            "H2SO4",
+            "H2S",
+            "H2SO5"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with formula HClO2?",
+        "options": [
+            "Hypochlorous acid",
+            "Chlorous acid",
+            "Chloric acid",
+            "Perchloric acid"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "What is the chemical formula for the Hypochlorite ion?",
+        "options": [
+            "ClO-",
+            "ClO2-",
+            "ClO3-",
+            "ClO4-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the oxoacid with formula HClO3?",
+        "options": [
+            "Hypochlorous acid",
+            "Chlorous acid",
+            "Chloric acid",
+            "Perchloric acid"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical formula for the Sulfate ion?",
+        "options": [
+            "SO2^2-",
+            "SO3^2-",
+            "SO4^2-",
+            "S2O3^2-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the oxoanion with formula NO3-?",
+        "options": [
+            "Nitride ion",
+            "Nitrite ion",
+            "Nitrate ion",
+            "Hyponitrite ion"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the cation with formula NH4+?",
+        "options": [
+            "Ammonium ion",
+            "Hydronium ion",
+            "Ammonia",
+            "Nitride ion"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical formula for the Hydronium cation?",
+        "options": [
+            "H+",
+            "H2O",
+            "H3O+",
+            "OH-"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "What is the chemical name for the anion with formula CH3CO2-?",
+        "options": [
+            "Acetate ion",
+            "Carbonate ion",
+            "Formate ion",
+            "Cyanide ion"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical formula for the Cyanide ion?",
+        "options": [
+            "CN-",
+            "CNO-",
+            "SCN-",
+            "NO2-"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "What is the chemical name for the anion with formula HCO3-?",
+        "options": [
+            "Carbonate ion",
+            "Hydrogen carbonate ion",
+            "Oxalate ion",
+            "Acetate ion"
+        ],
+        "answer": 1
+    },
+    {
+    "q": "A particle moves along a straight line with an acceleration given by $a(t) = 6t - 18\\text{ m/s}^2$. If $v(0) = 24\\text{ m/s}$ and $x(0) = 10\\text{ m}$, at what times $t > 0$ does the particle momentarily come to rest?",
+    "options": [
+      "$t = 2\\text{ s}$ and $t = 4\\text{ s}$",
+      "$t = 1\\text{ s}$ and $t = 5\\text{ s}$",
+      "$t = 3\\text{ s}$ only",
+      "$t = 6\\text{ s}$ only"
+    ],
     "answer": 0
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula NO3-?",
-    "options": ["Nitrite ion", "Nitrate ion", "Nitride ion", "Hyponitrite ion"],
+    "q": "For a particle moving along the x-axis with velocity $v(t) = 3t^2 - 12t + 9\\text{ m/s}$, what is the total distance traveled between $t = 0\\text{ s}$ and $t = 4\\text{ s}$?",
+    "options": [
+      "$4\\text{ m}$",
+      "$12\\text{ m}$",
+      "$16\\text{ m}$",
+      "$8\\text{ m}$"
+    ],
     "answer": 1
   },
   {
-    "q": "What is the chemical formula for Phosphoric acid?",
-    "options": ["H3PO3", "H3PO4", "HPO4^2-", "H2PO4-"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
-    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Sulfurous acid?",
-    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
-    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Hypochlorous acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Chloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "q": "An object of mass $m$ falls from rest under gravity with air resistance proportional to its velocity, governed by $\\frac{dv}{dt} = g - kv$, where $k > 0$ is a constant. Which expression represents the velocity $v(t)$ as a function of time?",
+    "options": [
+      "$v(t) = \\frac{g}{k}e^{-kt}$",
+      "$v(t) = gt - \\frac{1}{2}kt^2$",
+      "$v(t) = \\frac{g}{k}\\left(1 - e^{-kt}\\right)$",
+      "$v(t) = \\frac{g}{k}\\left(1 + e^{-kt}\\right)$"
+    ],
     "answer": 2
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "q": "A particle subject to a drag acceleration $a = g - kv$ is dropped from rest at position $y(0) = 0$. What is its position $y(t)$ as a function of time $t$?",
+    "options": [
+      "$y(t) = \\frac{g}{k}t + \\frac{g}{k^2}e^{-kt}$",
+      "$y(t) = \\frac{g}{2k}t^2$",
+      "$y(t) = \\frac{g}{k^2}\\left(1 - e^{-kt}\\right)$",
+      "$y(t) = \\frac{g}{k}t - \\frac{g}{k^2}\\left(1 - e^{-kt}\\right)$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical formula for Nitric acid?",
-    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula NO2-?",
-    "options": ["Nitrate ion", "Nitrite ion", "Nitride ion", "Hyponitrite ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoacid with the formula H3PO4?",
-    "options": ["Phosphorous acid", "Phosphoric acid", "Hypophosphorous acid", "Perphosphoric acid"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for the Sulfite ion?",
-    "options": ["SO3^2-", "SO4^2-", "S^2-", "HSO3-"],
+    "q": "A boat can travel at $v_{bw} = 10\\text{ m/s}$ in still water. It attempts to cross a river flowing due east at $v_w = 6\\text{ m/s}$. To travel along the shortest path directly across to the north bank, at what angle west of north must the boat steer?",
+    "options": [
+      "$\\arcsin(0.6) \\approx 36.87^\\circ$",
+      "$\\arccos(0.6) \\approx 53.13^\\circ$",
+      "$\\arctan(0.6) \\approx 30.96^\\circ$",
+      "$\\arcsin(0.8) \\approx 53.13^\\circ$"
+    ],
     "answer": 0
   },
   {
-    "q": "What is the chemical name for the oxoacid with the formula H2SO4?",
-    "options": ["Sulfurous acid", "Sulfuric acid", "Hydrosulfuric acid", "Persulfuric acid"],
+    "q": "A river of width $D = 400\\text{ m}$ flows east at $v_w = 3\\text{ m/s}$. A boat with speed relative to water $v_{bw} = 5\\text{ m/s}$ aims to cross the river in the shortest possible time. What is this minimum crossing time, and how far downstream (east) will the boat drift?",
+    "options": [
+      "Minimum time $= 100\\text{ s}$, drift $= 0\\text{ m}$",
+      "Minimum time $= 80\\text{ s}$, drift $= 240\\text{ m}$",
+      "Minimum time $= 80\\text{ s}$, drift $= 400\\text{ m}$",
+      "Minimum time $= 100\\text{ s}$, drift $= 240\\text{ m}$"
+    ],
     "answer": 1
   },
   {
-    "q": "What is the chemical formula for Chlorous acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
-    "answer": 1
+    "q": "A drone flies in a steady wind with velocity $\\vec{v}_{wg} = -15\\hat{i} + 5\\hat{j}\\text{ m/s}$. The drone's speed relative to the air is $v_{d/w} = 25\\text{ m/s}$. If the drone must travel along a straight path from the origin to a target at coordinates $(600\\text{ m}, 800\\text{ m})$, what is the required ground speed $v_g$ of the drone?",
+    "options": [
+      "$25\\text{ m/s}$",
+      "$20\\text{ m/s}$",
+      "$15\\text{ m/s}$",
+      "$10\\text{ m/s}$"
+    ],
+    "answer": 2
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula ClO-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical formula for Perchloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "q": "For the drone scenario described in the previous question (target at $(600\\text{ m}, 800\\text{ m})$, wind $\\vec{v}_{wg} = -15\\hat{i} + 5\\hat{j}\\text{ m/s}$, air speed $v_{d/w} = 25\\text{ m/s}$, ground speed $v_g = 15\\text{ m/s}$), what is the drone's velocity vector relative to the air, $\\vec{v}_{d/w}$?",
+    "options": [
+      "$\\vec{v}_{d/w} = 9\\hat{i} + 12\\hat{j}\\text{ m/s}$",
+      "$\\vec{v}_{d/w} = 15\\hat{i} + 20\\hat{j}\\text{ m/s}$",
+      "$\\vec{v}_{d/w} = 20\\hat{i} + 15\\hat{j}\\text{ m/s}$",
+      "$\\vec{v}_{d/w} = 24\\hat{i} + 7\\hat{j}\\text{ m/s}$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical name for the oxoacid with the formula HNO2?",
-    "options": ["Nitrous acid", "Nitric acid", "Nitrite ion", "Nitrate ion"],
+    "q": "A model rocket is launched vertically with acceleration given by $a(t) = 30 - 6t\\text{ m/s}^2$ starting from rest at $t = 0$. What is the maximum upward velocity achieved by the rocket before its acceleration turns negative?",
+    "options": [
+      "$75\\text{ m/s}$",
+      "$150\\text{ m/s}$",
+      "$50\\text{ m/s}$",
+      "$100\\text{ m/s}$"
+    ],
     "answer": 0
   },
   {
-    "q": "What is the chemical formula for Nitric acid?",
-    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
+    "q": "A boat travels north at a speed relative to the water of $8\\text{ m/s}$. The current flows east at $6\\text{ m/s}$. What is the magnitude and direction of the boat's velocity relative to the ground?",
+    "options": [
+      "$14\\text{ m/s}$ at $45.00^\\circ$ east of north",
+      "$10\\text{ m/s}$ at $36.87^\\circ$ east of north",
+      "$2\\text{ m/s}$ due north",
+      "$10\\text{ m/s}$ at $53.13^\\circ$ east of north"
+    ],
     "answer": 1
   },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula PO4^3-?",
-    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Sulfurous acid?",
-    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
+   {
+    "q": "Find the domain of the function $f(x) = \\frac{x + 1}{x^2 + 2x - 3}$.",
+    "options": [
+      "$(-\\infty, -3) \\cup (-3, 1) \\cup (1, \\infty)$",
+      "$(-\\infty, -1) \\cup (-1, 3) \\cup (3, \\infty)$",
+      "$(-\\infty, -3) \\cup (1, \\infty)$",
+      "$(-\\infty, \\infty)$"
+    ],
     "answer": 0
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula SO4^2-?",
-    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Hypochlorous acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "q": "Find the domain of the function $f(x) = \\frac{\\sqrt{x + 4}}{x - 2}$.",
+    "options": [
+      "$[-4, 2) \\cup (2, \\infty)$",
+      "$(-4, 2) \\cup (2, \\infty)$",
+      "$[2, \\infty)$",
+      "$[-4, \\infty)$"
+    ],
     "answer": 0
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula ClO2-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "q": "Find the domain of the function $f(x) = \\frac{2x - 1}{|x| - 5}$.",
+    "options": [
+      "$(-\\infty, 5) \\cup (5, \\infty)$",
+      "$(-\\infty, -5) \\cup (-5, 5) \\cup (5, \\infty)$",
+      "$(-\\infty, 0) \\cup (0, \\infty)$",
+      "$(-5, 5)$"
+    ],
     "answer": 1
   },
   {
-    "q": "What is the chemical formula for Chloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
-    "answer": 2
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula ClO4-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "q": "Given $\\lim_{x \\to 2} (3x - 1) = 5$, find the maximum value of $\\delta$ such that $|(3x - 1) - 5| < 0.03$ whenever $0 < |x - 2| < \\delta$.",
+    "options": [
+      "$0.03$",
+      "$0.09$",
+      "$0.005$",
+      "$0.01$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical formula for the Nitrite ion?",
-    "options": ["NO-", "NO2-", "NO3-", "N3-"],
-    "answer": 1
+    "q": "Using the $\\epsilon$-$ \\delta$ definition of limit for $\\lim_{x \\to 1} (2 - 4x) = -2$, what is the optimal choice of $\\delta$ for a given $\\epsilon > 0$?",
+    "options": [
+      "$\\delta = 4\\epsilon$",
+      "$\\delta = \\frac{\\epsilon}{2}$",
+      "$\\delta = \\frac{\\epsilon}{4}$",
+      "$\\delta = \\epsilon$"
+    ],
+    "answer": 2
   },
   {
-    "q": "What is the chemical formula for Perchloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "q": "In proving $\\lim_{x \\to 3} x^2 = 9$ using the $\\epsilon$-$ \\delta$ definition, if we restrict $\\delta \\le 1$, then $|x + 3| < 7$. For $\\epsilon = 0.07$, which of the following is a valid choice for $\\delta$?",
+    "options": [
+      "$0.07$",
+      "$0.49$",
+      "$0.01$",
+      "$0.14$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to -1} \\frac{x^3 - 2x^2 + 5}{x^2 + 1}$.",
+    "options": [
+      "$2$",
+      "$-1$",
+      "$0$",
+      "$1$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical name for the oxoacid with the formula HNO3?",
-    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Phosphoric acid?",
-    "options": ["H3PO3", "H3PO4", "H2PO4-", "HPO4^2-"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with the formula SO3^2-?",
-    "options": ["Sulfate ion", "Sulfite ion", "Sulfide ion", "Persulfate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Sulfuric acid?",
-    "options": ["H2SO3", "H2SO4", "H2S", "H2SO5"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoacid with the formula HClO2?",
-    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for the Hypochlorite ion?",
-    "options": ["ClO-", "ClO2-", "ClO3-", "ClO4-"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoacid with the formula HClO3?",
-    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "q": "Given $\\lim_{x \\to 2} f(x) = 4$ and $\\lim_{x \\to 2} g(x) = -3$, evaluate $\\lim_{x \\to 2} \\left[ (f(x))^2 - 2g(x) \\right]$.",
+    "options": [
+      "$10$",
+      "$14$",
+      "$22$",
+      "$20$"
+    ],
     "answer": 2
   },
   {
-    "q": "What is the chemical formula for the Sulfate ion?",
-    "options": ["SO2^2-", "SO3^2-", "SO4^2-", "S2O3^2-"],
+    "q": "If $\\lim_{x \\to -2} \\frac{f(x)}{x^2} = 3$, evaluate $\\lim_{x \\to -2} f(x)$.",
+    "options": [
+      "$6$",
+      "$-6$",
+      "$12$",
+      "$0$"
+    ],
     "answer": 2
   },
   {
-    "q": "What is the chemical name for the oxoanion with the formula NO3-?",
-    "options": ["Nitride ion", "Nitrite ion", "Nitrate ion", "Hyponitrite ion"],
-    "answer": 2
-  },
-  {
-    "q": "What is the systematic chemical name for the oxoacid with formula HNO2?",
-    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical formula for Nitric acid?",
-    "options": ["HNO2", "HNO3", "HNO4", "H2NO3"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with formula PO4^3-?",
-    "options": ["Phosphite ion", "Phosphate ion", "Phosphide ion", "Hypophosphite ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Sulfurous acid?",
-    "options": ["H2SO3", "H2SO4", "H2S", "HSO3-"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with formula SO4^2-?",
-    "options": ["Sulfite ion", "Sulfate ion", "Sulfide ion", "Thiosulfate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Hypochlorous acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with formula ClO2-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Chloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
-    "answer": 2
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with formula ClO4-?",
-    "options": ["Hypochlorite ion", "Chlorite ion", "Chlorate ion", "Perchlorate ion"],
+    "q": "Evaluate the limit: $\\lim_{x \\to 2} \\frac{x^2 - 5x + 6}{x^2 - 4}$.",
+    "options": [
+      "$\\frac{1}{4}$",
+      "$-\\frac{1}{2}$",
+      "$\\frac{5}{4}$",
+      "$-\\frac{1}{4}$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical formula for Phosphoric acid?",
-    "options": ["H3PO3", "H3PO4", "H2PO4-", "HPO4^2-"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Perchloric acid?",
-    "options": ["HClO", "HClO2", "HClO3", "HClO4"],
+    "q": "Evaluate the limit: $\\lim_{x \\to -2} \\frac{x^3 + 8}{x^2 - 4}$.",
+    "options": [
+      "$3$",
+      "$-12$",
+      "$0$",
+      "$-3$"
+    ],
     "answer": 3
   },
   {
-    "q": "What is the chemical name for the oxoacid with formula HNO3?",
-    "options": ["Nitrous acid", "Nitric acid", "Hydronitric acid", "Hyponitrous acid"],
+    "q": "Evaluate the limit: $\\lim_{x \\to 1} \\left( \\frac{1}{x - 1} - \\frac{3}{x^3 - 1} \\right)$.",
+    "options": [
+      "$\\frac{3}{4}$",
+      "$1$",
+      "$\\frac{1}{3}$",
+      "$0$"
+    ],
     "answer": 1
   },
   {
-    "q": "What is the chemical formula for the Nitrite ion?",
-    "options": ["NO-", "NO2-", "NO3-", "N3-"],
-    "answer": 1
+    "q": "Evaluate the limit: $\\lim_{t \\to -2} \\frac{t^2 - 4}{t^3 + 2t^2 - t - 2}$.",
+    "options": [
+      "$\\frac{4}{3}$",
+      "$\\frac{1}{3}$",
+      "$-\\frac{2}{3}$",
+      "$-\\frac{4}{3}$"
+    ],
+    "answer": 3
   },
   {
-    "q": "What is the chemical name for the oxoanion with formula SO3^2-?",
-    "options": ["Sulfate ion", "Sulfite ion", "Sulfide ion", "Persulfate ion"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for Sulfuric acid?",
-    "options": ["H2SO3", "H2SO4", "H2S", "H2SO5"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical name for the oxoacid with formula HClO2?",
-    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
-    "answer": 1
-  },
-  {
-    "q": "What is the chemical formula for the Hypochlorite ion?",
-    "options": ["ClO-", "ClO2-", "ClO3-", "ClO4-"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the oxoacid with formula HClO3?",
-    "options": ["Hypochlorous acid", "Chlorous acid", "Chloric acid", "Perchloric acid"],
+    "q": "Evaluate the limit: $\\lim_{x \\to 1} \\frac{x^4 - 1}{x^3 - 1}$.",
+    "options": [
+      "$\\frac{3}{4}$",
+      "$1$",
+      "$\\frac{4}{3}$",
+      "$\\frac{2}{3}$"
+    ],
     "answer": 2
   },
   {
-    "q": "What is the chemical formula for the Sulfate ion?",
-    "options": ["SO2^2-", "SO3^2-", "SO4^2-", "S2O3^2-"],
-    "answer": 2
-  },
-  {
-    "q": "What is the chemical name for the oxoanion with formula NO3-?",
-    "options": ["Nitride ion", "Nitrite ion", "Nitrate ion", "Hyponitrite ion"],
-    "answer": 2
-  },
-  {
-    "q": "What is the chemical name for the cation with formula NH4+?",
-    "options": ["Ammonium ion", "Hydronium ion", "Ammonia", "Nitride ion"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical formula for the Hydronium cation?",
-    "options": ["H+", "H2O", "H3O+", "OH-"],
-    "answer": 2
-  },
-  {
-    "q": "What is the chemical name for the anion with formula CH3CO2-?",
-    "options": ["Acetate ion", "Carbonate ion", "Formate ion", "Cyanide ion"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical formula for the Cyanide ion?",
-    "options": ["CN-", "CNO-", "SCN-", "NO2-"],
-    "answer": 0
-  },
-  {
-    "q": "What is the chemical name for the anion with formula HCO3-?",
-    "options": ["Carbonate ion", "Hydrogen carbonate ion", "Oxalate ion", "Acetate ion"],
+    "q": "Evaluate the limit: $\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$.",
+    "options": [
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{4}$",
+      "$0$",
+      "$\\frac{1}{8}$"
+    ],
     "answer": 1
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to 3} \\frac{\\sqrt{x + 1} - 2}{x - 3}$.",
+    "options": [
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{3}$",
+      "$1$",
+      "$\\frac{1}{4}$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to 1} \\frac{\\sqrt{x + 3} - 2}{\\sqrt{x + 8} - 3}$.",
+    "options": [
+      "$\\frac{2}{3}$",
+      "$\\frac{1}{2}$",
+      "$1$",
+      "$\\frac{3}{2}$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{h \\to 0} \\frac{\\sqrt{1 + h} - 1}{h}$.",
+    "options": [
+      "$1$",
+      "$0$",
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{4}$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the one-sided limit: $\\lim_{x \\to -1^-} \\frac{x^2 - 1}{|x + 1|}$.",
+    "options": [
+      "$-2$",
+      "$0$",
+      "Does not exist",
+      "$2$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the one-sided limit: $\\lim_{x \\to -1^+} \\frac{x^2 - 1}{|x + 1|}$.",
+    "options": [
+      "$2$",
+      "$0$",
+      "$-2$",
+      "Does not exist"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Find the value of $a$ such that $\\lim_{x \\to 1} f(x)$ exists, where $f(x) = \\begin{cases} 2x + a, & x < 1 \\\\ x^2 - 1, & x \\ge 1 \\end{cases}$.",
+    "options": [
+      "$2$",
+      "$0$",
+      "$-1$",
+      "$-2$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to 3^-} (x - \\lfloor x \\rfloor)$, where $\\lfloor x \\rfloor$ denotes the greatest integer function.",
+    "options": [
+      "$0$",
+      "$3$",
+      "$1$",
+      "$2$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to \\infty} \\frac{5x^3 - 2x + 1}{2x^3 + x^2 - 7}$.",
+    "options": [
+      "$\\infty$",
+      "$0$",
+      "$\\frac{5}{2}$",
+      "$\\frac{1}{2}$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to \\infty} \\frac{3x^2 + 4}{x^3 - 2x + 5}$.",
+    "options": [
+      "$3$",
+      "$0$",
+      "$\\infty$",
+      "$\\frac{3}{2}$"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to -\\infty} \\frac{3x + 2}{\\sqrt{4x^2 + 1}}$.",
+    "options": [
+      "$\\frac{3}{2}$",
+      "$0$",
+      " Does not exist",
+      "$-\\frac{3}{2}$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to \\infty} \\frac{x^{100}(100x^{99} + 1)}{x^{200} + 5}$.",
+    "options": [
+      "$100$",
+      "$1$",
+      "$0$",
+      "$\\infty$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to \\infty} \\left( \\sqrt{4x^2 + 5x} - 2x \\right)$.",
+    "options": [
+      "$\\frac{5}{2}$",
+      "$\\frac{5}{4}$",
+      "$0$",
+      "$\\infty$"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{y \\to \\infty} \\left( \\sqrt{y^2 - 1} - \\sqrt{y^2 - y} \\right)$.",
+    "options": [
+      "$1$",
+      "$0$",
+      "$\\frac{1}{2}$",
+      "$-\\frac{1}{2}$"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to -\\infty} \\left( \\sqrt{x^2 + 4x} + x \\right)$.",
+    "options": [
+      "$2$",
+      "$-2$",
+      "$0$",
+      "$\\infty$"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{t \\to -\\infty} \\left( \\sqrt{t^2 + 7t + 2} - \\sqrt{t^2 - 2t + 5} \\right)$.",
+    "options": [
+      "$\\frac{9}{2}$",
+      "$-3$",
+      "$0$",
+      "$-\\frac{9}{2}$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "If $\\lim_{x \\to 0} \\frac{\\sqrt{ax + b} - 2}{x} = 1$, find the value of $a - b$.",
+    "options": [
+      "$0$",
+      "$2$",
+      "$-2$",
+      "$4$"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Suppose $a > 0$ and $\\lim_{x \\to -\\infty} \\left( \\sqrt{ax^2 + bx + c} + x \\right) = \\frac{2}{3}$. Find the pair of values $(a, b)$.",
+    "options": [
+      "$\\left(1, -\\frac{4}{3}\\right)$",
+      "$\\left(1, \\frac{4}{3}\\right)$",
+      "$\\left(4, -\\frac{2}{3}\\right)$",
+      "$\\left(1, -\\frac{2}{3}\\right)$"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Given that $\\lim_{x \\to 2} \\frac{x^2 + ax + b}{x - 2} = 5$, find the value of $a + b$.",
+    "options": [
+      "$-7$",
+      "$5$",
+      "$-1$",
+      "$-5$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Evaluate the limit: $\\lim_{x \\to 0} \\frac{\\sin(3x)}{2x}$.",
+    "options": [
+      "$\\frac{2}{3}$",
+      "$1$",
+      "$0$",
+      "$\\frac{3}{2}$"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "If $1 - \\frac{x^2}{6} \\le f(x) \\le 1 + \\frac{x^2}{4}$ for all $x \\neq 0$ near $0$, evaluate $\\lim_{x \\to 0} f(x)$ using the Squeeze Theorem.",
+    "options": [
+      "$1$",
+      "$0$",
+      "$\\frac{1}{6}$",
+      "Does not exist"
+    ],
+    "answer": 0
   }
 ]
