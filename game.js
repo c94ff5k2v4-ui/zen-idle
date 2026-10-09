@@ -329,23 +329,30 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (自動清洗 text 殘骸)
+// 8. 題庫與答題系統 (安全物件清洗法)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
 async function loadQuizData() {
     try {
         let response = await fetch('questions.json');
-        let rawText = await response.text();
+        let rawData = await response.json();
         
-        // 🔥 超強正則表達式，徹底消除 textkg, textN, textm/s^2 等排版殘骸
-        rawText = rawText.replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1');
-        rawText = rawText.replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1');
-        rawText = rawText.replace(/\\?text\{([^}]+)\}/g, '$1');
-        // 額外保底：將單獨殘留的 text 拿掉
-        rawText = rawText.replace(/text(?=kg|N|m|s)/gi, '');
+        // 安全清洗函式：針對解析後的 JSON 內容進行字串清理，絕不破壞結構
+        const cleanText = (text) => {
+            if (!text) return '';
+            return text
+                .replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1')
+                .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
+                .replace(/\\?text\{([^}]+)\}/g, '$1')
+                .replace(/text(?=kg|N|m|s)/gi, '');
+        };
 
-        quizData = JSON.parse(rawText);
+        quizData = rawData.map(item => ({
+            q: cleanText(item.q),
+            options: item.options.map(opt => cleanText(opt)),
+            answer: item.answer
+        }));
 
         if (quizData.length > 0) {
             initShuffledIndices();
