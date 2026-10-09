@@ -329,19 +329,30 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統
+// 8. 題庫與答題系統 (自動清洗 text 殘骸)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
 async function loadQuizData() {
     try {
         let response = await fetch('questions.json');
-        quizData = await response.json();
+        let rawText = await response.text();
+        
+        // 🔥 超強正則表達式，徹底消除 textkg, textN, textm/s^2 等排版殘骸
+        rawText = rawText.replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1');
+        rawText = rawText.replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1');
+        rawText = rawText.replace(/\\?text\{([^}]+)\}/g, '$1');
+        // 額外保底：將單獨殘留的 text 拿掉
+        rawText = rawText.replace(/text(?=kg|N|m|s)/gi, '');
+
+        quizData = JSON.parse(rawText);
+
         if (quizData.length > 0) {
             initShuffledIndices();
             loadRandomQuestion();
         }
     } catch (e) {
+        console.error("題庫載入錯誤", e);
         document.getElementById('question-text').innerText = "請確認已建立 questions.json 題庫";
     }
 }
