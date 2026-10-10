@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (完整清洗化學式與文字殘骸)
+// 8. 題庫與答題系統 (完美修復雙反斜線與 vec 向量指令)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -338,16 +338,20 @@ async function loadQuizData() {
         let response = await fetch('questions.json');
         let rawData = await response.json();
         
-        // 安全清洗函式：全面修復帶有反斜線的化學式與單位
+        // 安全清洗函式：修正雙反斜線、還原 vec 向量、修復化學式與箭頭
         const cleanText = (text) => {
             if (!text) return '';
             return text
+                // 將 JSON 帶有的雙反斜線轉回單反斜線
+                .replace(/\\\\/g, '\\')
                 .replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1')
                 .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
                 .replace(/\\?text\{([^}]+)\}/g, '$1')
                 .replace(/\btext(?=kg|N|m|s)/gi, '')
-                // 完美修復所有被誤加反斜線的化學式 (例如 \CO, \C, \O_2 等)
-                .replace(/\\([A-Z][a-z]?)/g, '$1');
+                .replace(/\\([A-Z][a-z]?)/g, '$1')                 .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
+                .replace(/rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1')                 .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow/g, '$1 \\rightarrow ')
+                // 修復 vecF 變成 \vec{F}
+                .replace(/\bvec([A-Za-z])\b/g, '\\vec{$1}');
         };
 
         quizData = rawData.map(item => ({
