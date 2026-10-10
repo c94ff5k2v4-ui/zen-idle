@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (精準保護 LaTeX 指令)
+// 8. 題庫與答題系統 (完整清洗化學式與文字殘骸)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -338,7 +338,7 @@ async function loadQuizData() {
         let response = await fetch('questions.json');
         let rawData = await response.json();
         
-        // 安全清洗函式：只針對 text 殘骸與錯誤化學式反斜線進行修正，保留 \int, \frac 等正確指令
+        // 安全清洗函式：全面修復帶有反斜線的化學式與單位
         const cleanText = (text) => {
             if (!text) return '';
             return text
@@ -346,8 +346,8 @@ async function loadQuizData() {
                 .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
                 .replace(/\\?text\{([^}]+)\}/g, '$1')
                 .replace(/\btext(?=kg|N|m|s)/gi, '')
-                // 僅修復被誤加反斜線的單一化學元素符號 (例如 \O_2 -> O_2)，不影響 \int 或 \frac
-                .replace(/\\([A-Z])([a-z]?)(?=_|\d)/g, '$1$2');
+                // 完美修復所有被誤加反斜線的化學式 (例如 \CO, \C, \O_2 等)
+                .replace(/\\([A-Z][a-z]?)/g, '$1');
         };
 
         quizData = rawData.map(item => ({
