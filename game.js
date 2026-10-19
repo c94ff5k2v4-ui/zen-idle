@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (完美修復雙反斜線與 vec 向量指令)
+// 8. 題庫與答題系統 (清洗排版錯誤與雙反斜線)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -338,19 +338,16 @@ async function loadQuizData() {
         let response = await fetch('questions.json');
         let rawData = await response.json();
         
-        // 安全清洗函式：修正雙反斜線、還原 vec 向量、修復化學式與箭頭
         const cleanText = (text) => {
             if (!text) return '';
             return text
-                // 將 JSON 帶有的雙反斜線轉回單反斜線
                 .replace(/\\\\/g, '\\')
                 .replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1')
                 .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
                 .replace(/\\?text\{([^}]+)\}/g, '$1')
                 .replace(/\btext(?=kg|N|m|s)/gi, '')
-                .replace(/\\([A-Z][a-z]?)/g, '$1')                 .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
-                .replace(/rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1')                 .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow/g, '$1 \\rightarrow ')
-                // 修復 vecF 變成 \vec{F}
+                .replace(/\\([A-Z][a-z]?)/g, '$1') .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
+                .replace(/rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1') .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow/g, '$1 \\rightarrow ')
                 .replace(/\bvec([A-Za-z])\b/g, '\\vec{$1}');
         };
 
@@ -468,7 +465,7 @@ function checkAnswer(selectedIndex) {
 }
 
 // ==========================================
-// 9. 錯題本檢視與數據統計
+// 9. 錯題本檢視與數據統計 (倒序 + KaTeX 渲染)
 // ==========================================
 function openErrorLogModal() {
     const container = document.getElementById('error-list-container');
@@ -486,16 +483,31 @@ function openErrorLogModal() {
         container.innerHTML = '<p style="color: #b2bec3; text-align: center; padding: 20px;">太棒了！目前沒有累積錯題紀錄。</p>';
     } else {
         let html = '';
-        errors.forEach((item, index) => {
+        
+        // 倒序顯示：最新的錯題排在最上方
+        errors.slice().reverse().forEach((item, index) => {
+            let originalNo = errors.length - index;
+            
             html += `
                 <div style="background: #1f1f1f; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e74c3c;">
-                    <div style="font-weight: bold; margin-bottom: 6px;">Q${index + 1}: ${item.question}</div>
+                    <div style="font-weight: bold; margin-bottom: 6px; color: #ecf0f1;">#${originalNo} ${item.question}</div>
                     <div style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 4px;">❌ 你的選擇: ${item.userAnswer}</div>
                     <div style="color: #2ecc71; font-size: 0.9rem;">✅ 正確答案: ${item.correctAnswer}</div>
                 </div>
             `;
         });
         container.innerHTML = html;
+
+        // 啟動 KaTeX 數學渲染引擎解析錯題本中的 LaTeX 公式
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ],
+                throwOnError: false
+            });
+        }
     }
     
     document.getElementById('error-modal').style.display = 'flex';
@@ -517,10 +529,7 @@ function triggerPrestige() {
     let x = gold;
     let logVal = Math.log10(Math.max(x, 1));
     
-    // 取得原本的倍率
     let currentFactor = prestigeData.answerGrowthFactor || 1.4;
-    
-    // 公式：原本的倍率 + (log10(x) / 100)
     let customGrowth = currentFactor + (logVal / 100);
     
     prestigeData.answerGrowthFactor = customGrowth;
