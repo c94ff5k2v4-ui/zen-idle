@@ -1,20 +1,17 @@
 // ==========================================
-// 1. SUPABASE 雲端連線與帳號管理 (裝置綁定固定 ID)
+// 1. SUPABASE 雲端連線與帳號管理
 // ==========================================
 const SUPABASE_URL = 'https://ogcscxxiemcjsuxmgrfr.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// 永久綁定此裝置的唯一 ID（雲端存檔的 KEY，絕不隨改名改變）
-let DEVICE_ID = localStorage.getItem('calculus_device_id');
-if (!DEVICE_ID) {
-    DEVICE_ID = 'device_' + Math.random().toString(36).substring(2, 9);
-    localStorage.setItem('calculus_device_id', DEVICE_ID);
+// 玩家帳號名稱（做為存檔的唯一識別碼）
+let PLAYER_NAME = localStorage.getItem('calculus_player_name');
+if (!PLAYER_NAME) {
+    PLAYER_NAME = 'player_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('calculus_player_name', PLAYER_NAME);
 }
-
-// 玩家自定義的顯示名稱
-let PLAYER_NAME = localStorage.getItem('calculus_player_name') || '玩家_zza';
 
 // ==========================================
 // 2. 遊戲核心狀態與永久歷史紀錄變數
@@ -43,20 +40,35 @@ function updatePlayerDisplay() {
     if (userEl) userEl.innerText = `目前玩家: ${PLAYER_NAME}`;
 }
 
+// 重設本地記憶體中的遊戲狀態（切換帳號時使用）
+function resetGameState() {
+    gold = 0;
+    unlockedLevels = 1;
+    ballValue = 1.0;
+    spawnIntervalTime = 10000;
+    correctAnswersCount = 0;
+    quizStats = { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
+    prestigeData = { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
+    
+    // 清除畫面上所有的球
+    balls.forEach(ball => Composite.remove(world, ball));
+    balls = [];
+}
+
 // ==========================================
 // 3. 本機快取備份與雲端同步 (Supabase)
 // ==========================================
 function saveGameLocally() {
     const saveData = {
         gold, unlockedLevels, ballValue, spawnIntervalTime,
-        quizStats, prestigeData, correctAnswersCount, PLAYER_NAME
+        quizStats, prestigeData, correctAnswersCount
     };
-    localStorage.setItem('calculus_save_' + DEVICE_ID, JSON.stringify(saveData));
+    localStorage.setItem('calculus_save_' + PLAYER_NAME, JSON.stringify(saveData));
 }
 
 function loadGameLocally() {
     try {
-        const saved = localStorage.getItem('calculus_save_' + DEVICE_ID);
+        const saved = localStorage.getItem('calculus_save_' + PLAYER_NAME);
         if (saved) {
             const data = JSON.parse(saved);
             gold = data.gold || 0;
@@ -66,7 +78,6 @@ function loadGameLocally() {
             quizStats = data.quizStats || { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
             prestigeData = data.prestigeData || { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
             correctAnswersCount = data.correctAnswersCount || 0;
-            if (data.PLAYER_NAME) PLAYER_NAME = data.PLAYER_NAME;
             return true;
         }
     } catch (e) {
@@ -76,7 +87,7 @@ function loadGameLocally() {
 }
 
 async function loadGame() {
-    loadGameLocally();
+    let hasLocal = loadGameLocally();
     updatePlayerDisplay();
     updateLevelBoundaries();
     updateUI();
@@ -85,29 +96,28 @@ async function loadGame() {
         const { data, error } = await supabaseClient
             .from('player_saves')
             .select('*')
-            .eq('user_id', DEVICE_ID)
+            .eq('user_id', PLAYER_NAME)
             .single();
 
         if (!error && data) {
             console.log("成功從雲端同步進度！");
-            gold = data.gold || gold;
-            unlockedLevels = data.level || unlockedLevels;
-            ballValue = data.ball_value || ballValue;
-            spawnIntervalTime = data.spawn_interval || spawnIntervalTime;
-            quizStats.totalAnswered = data.total_answered || quizStats.totalAnswered;
-            quizStats.totalCorrect = data.total_correct || quizStats.totalCorrect;
-            quizStats.wrongQuestions = data.wrong_questions || quizStats.wrongQuestions;
+            gold = data.gold || 0;
+            unlockedLevels = data.level || 1;
+            ballValue = data.ball_value || 1.0;
+            spawnIntervalTime = data.spawn_interval || 10000;
+            quizStats.totalAnswered = data.total_answered || 0;
+            quizStats.totalCorrect = data.total_correct || 0;
+            quizStats.wrongQuestions = data.wrong_questions || [];
             if (data.prestige_data) prestigeData = data.prestige_data;
-            if (data.player_name) {
-                PLAYER_NAME = data.player_name;
-                localStorage.setItem('calculus_player_name', PLAYER_NAME);
-            }
 
             clearInterval(spawnerTimer);
             spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
             updateLevelBoundaries();
             updateUI();
             saveGameLocally();
+        } else if (!hasLocal) {
+            // 如果雲端跟本機都沒有這個帳號的紀錄，則存一次初始數據
+            saveGameToCloud();
         }
     } catch (err) {
         console.log("使用本機快取模式運行");
@@ -121,8 +131,7 @@ async function saveGameToCloud() {
         await supabaseClient
             .from('player_saves')
             .upsert({
-                user_id: DEVICE_ID,
-                player_name: PLAYER_NAME,
+                user_id: PLAYER_NAME,
                 level: unlockedLevels,
                 gold: gold,
                 ball_value: ballValue,
@@ -139,7 +148,7 @@ async function saveGameToCloud() {
 }
 
 // ==========================================
-// 4. 登入視窗控制介面 (改名但不換帳號)
+// 4. 登入/切換帳號視窗控制介面
 // ==========================================
 function openLoginModal() {
     document.getElementById('username-input').value = PLAYER_NAME;
@@ -150,17 +159,28 @@ function closeLoginModal() {
     document.getElementById('login-modal').style.display = 'none';
 }
 
-function saveUsername() {
+async function saveUsername() {
     let inputVal = document.getElementById('username-input').value.trim();
     if (inputVal) {
+        if (inputVal === PLAYER_NAME) {
+            closeLoginModal();
+            return;
+        }
+
+        // 先把當前帳號的進度存好
+        await saveGameToCloud();
+
+        // 切換成新帳號
         PLAYER_NAME = inputVal;
         localStorage.setItem('calculus_player_name', PLAYER_NAME);
+        
         closeLoginModal();
-        updatePlayerDisplay();
-        saveGameToCloud();
-        alert(`已成功更新玩家名稱為: ${PLAYER_NAME}`);
+        resetGameState(); // 重置畫面與數據
+        await loadGame();  // 載入新帳號的雲端/本機進度
+        
+        alert(`已成功切換至帳號: ${PLAYER_NAME}`);
     } else {
-        alert('名稱不能為空！');
+        alert('帳號名稱不能為空！');
     }
 }
 
@@ -340,7 +360,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (自動相容有無 unit 欄位)
+// 8. 題庫與答題系統
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
