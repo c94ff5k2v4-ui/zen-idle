@@ -367,22 +367,18 @@ async function loadQuizData() {
             if (!text) return '';
             let cleaned = text.replace(/\\\\/g, '\\');
             
-            // 自動修復常見黏字問題（例如 Chapter5 變成 Chapter 5，Whatis 變成 What is）
+            // 強效自動斷詞修復（將黏在一起的英文單字、大小寫交接處自動補上空格）
             cleaned = cleaned
                 .replace(/([a-zA-Z])([0-9])/g, '$1 $2')
                 .replace(/([0-9])([a-zA-Z])/g, '$1 $2')
                 .replace(/([a-z])([A-Z])/g, '$1 $2')
-                .replace(/\b(What|Whatis|Find|Write|Calculate|Determine|A|The|is|the|formula|of|a|hydrocarbon)\b/g, (match) => {
-                    // 針對黏在一起的特定字眼做拆分
-                    if (match === 'Whatis') return 'What is';
-                    return match;
-                });
-
-            // 自動修復全形英文或空格遺失
-            cleaned = cleaned
+                // 針對常見黏在一起的題庫片語進行拆分
+                .replace(/Writethenetionicequationformixing/g, 'Write the net ionic equation for mixing ')
+                .replace(/Whatistheempiricalformulaofahydrocarbon/g, 'What is the empirical formula of a hydrocarbon ')
                 .replace(/Whatisthe/g, 'What is the ')
+                .replace(/netionicequation/g, 'net ionic equation ')
                 .replace(/empiricalformula/g, 'empirical formula ')
-                .replace(/ofahydrocarbon/g, 'of a hydrocarbon ');
+                .replace(/ahydrocarbon/g, 'a hydrocarbon ');
 
             if ((cleaned.includes('\\text{') || cleaned.includes('\\rightarrow')) && !cleaned.includes('$')) {
                 cleaned = '$' + cleaned + '$';
