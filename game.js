@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (自動相容有無 unit 欄位的題庫)
+// 8. 題庫與答題系統 (自動修復未包覆的 LaTeX 化學方程式)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -340,7 +340,13 @@ async function loadQuizData() {
         
         const cleanText = (text) => {
             if (!text) return '';
-            return text.replace(/\\\\/g, '\\');
+            let cleaned = text.replace(/\\\\/g, '\\');
+            
+            // 如果選項或內容包含 \text{...} 且沒有被 $ 符號包覆，自動用 $ 把它們包起來讓 KaTeX 渲染
+            if ((cleaned.includes('\\text{') || cleaned.includes('\\rightarrow')) && !cleaned.includes('$')) {
+                cleaned = '$' + cleaned + '$';
+            }
+            return cleaned;
         };
 
         quizData = rawData.map((item, index) => ({
@@ -383,7 +389,6 @@ function loadRandomQuestion() {
     currentQuestionIndex = shuffledIndices[shufflePointer++];
     let qObj = quizData[currentQuestionIndex];
 
-    // 智慧顯示標籤：若有 unit 則完整顯示，若無則顯示題號或直接顯示題目
     let infoTag = '';
     if (qObj.unit) {
         infoTag = `<div style="color: #3498db; font-size: 0.85rem; font-weight: bold; margin-bottom: 6px;">📌 [${qObj.unit} - 第 ${qObj.problem_number} 題]</div>`;
