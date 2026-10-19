@@ -3792,7 +3792,7 @@
   {
     "unit": "第七單元",
     "problem_number": 31,
-    "q": "As a $2.5\\text{ kg}$ body moves in the positive direction along an $x$ axis, a single force acts on it. The force is given by $F_x = 6x\\text{ N}$, with $x$ in meters. The velocity at $x = 3.5\\text{ m}$ is $8.5\\text{ m/s}$. (a) Find the velocity of the body at $x = 4.5\\text{ m}$. (b) Find the positive value of $x$ at which the body has a velocity of $5.5\\text{ m/s}$.",
+    "q": "As a $2.5\\text{ kg}$ body moves in the positive direction along an $x$ axis, a single force acts on it. The force is given by $F_x = -6x\\text{ N}$, with $x$ in meters. The velocity at $x = 3.5\\text{ m}$ is $8.5\\text{ m/s}$. (a) Find the velocity of the body at $x = 4.5\\text{ m}$. (b) Find the positive value of $x$ at which the body has a velocity of $5.5\\text{ m/s}$.",
     "options": [
       "(a) $7.3\\text{ m/s}$; (b) $5.5\\text{ m}$",
       "(a) $9.1\\text{ m/s}$; (b) $4.2\\text{ m}$",
