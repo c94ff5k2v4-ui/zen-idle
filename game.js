@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (完美支援標準 LaTeX 與雙反斜線轉譯)
+// 8. 題庫與答題系統 (自動相容有無 unit 欄位的題庫)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -338,14 +338,14 @@ async function loadQuizData() {
         let response = await fetch('questions.json');
         let rawData = await response.json();
         
-        // 將 JSON 中的雙反斜線還原為 KaTeX 專用的單反斜線，完整保留科學符號與單位
         const cleanText = (text) => {
             if (!text) return '';
-            return text
-                .replace(/\\\\/g, '\\');
+            return text.replace(/\\\\/g, '\\');
         };
 
-        quizData = rawData.map(item => ({
+        quizData = rawData.map((item, index) => ({
+            unit: item.unit || '',
+            problem_number: item.problem_number !== undefined ? item.problem_number : (index + 1),
             q: cleanText(item.q),
             options: item.options.map(opt => cleanText(opt)),
             answer: item.answer
@@ -383,7 +383,15 @@ function loadRandomQuestion() {
     currentQuestionIndex = shuffledIndices[shufflePointer++];
     let qObj = quizData[currentQuestionIndex];
 
-    document.getElementById('question-text').innerHTML = qObj.q;
+    // 智慧顯示標籤：若有 unit 則完整顯示，若無則顯示題號或直接顯示題目
+    let infoTag = '';
+    if (qObj.unit) {
+        infoTag = `<div style="color: #3498db; font-size: 0.85rem; font-weight: bold; margin-bottom: 6px;">📌 [${qObj.unit} - 第 ${qObj.problem_number} 題]</div>`;
+    } else if (qObj.problem_number) {
+        infoTag = `<div style="color: #3498db; font-size: 0.85rem; font-weight: bold; margin-bottom: 6px;">📌 [第 ${qObj.problem_number} 題]</div>`;
+    }
+
+    document.getElementById('question-text').innerHTML = infoTag + qObj.q;
     let optionsArea = document.getElementById('options-area');
     optionsArea.innerHTML = '';
 
@@ -435,6 +443,8 @@ function checkAnswer(selectedIndex) {
         }
     } else {
         quizStats.wrongQuestions.push({
+            unit: qObj.unit,
+            problem_number: qObj.problem_number,
             question: qObj.q,
             options: qObj.options,
             correctAnswer: qObj.options[qObj.answer],
@@ -459,7 +469,7 @@ function checkAnswer(selectedIndex) {
 }
 
 // ==========================================
-// 9. 錯題本檢視與數據統計 (倒序 + KaTeX 渲染)
+// 9. 錯題本檢視與數據統計 (倒序 + 智慧單元題號 + KaTeX 渲染)
 // ==========================================
 function openErrorLogModal() {
     const container = document.getElementById('error-list-container');
@@ -480,9 +490,16 @@ function openErrorLogModal() {
         
         errors.slice().reverse().forEach((item, index) => {
             let originalNo = errors.length - index;
+            let tagStr = '';
+            if (item.unit) {
+                tagStr = `[${item.unit} - 第 ${item.problem_number} 題]`;
+            } else if (item.problem_number) {
+                tagStr = `[第 ${item.problem_number} 題]`;
+            }
             
             html += `
                 <div style="background: #1f1f1f; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e74c3c;">
+                    <div style="font-size: 0.8rem; color: #3498db; margin-bottom: 2px;">${tagStr}</div>
                     <div style="font-weight: bold; margin-bottom: 6px; color: #ecf0f1;">#${originalNo} ${item.question}</div>
                     <div style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 4px;">❌ 你的選擇: ${item.userAnswer}</div>
                     <div style="color: #2ecc71; font-size: 0.9rem;">✅ 正確答案: ${item.correctAnswer}</div>
