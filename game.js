@@ -6,11 +6,10 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// 玩家帳號名稱（做為存檔的唯一識別碼）
-let PLAYER_NAME = localStorage.getItem('calculus_player_name');
-if (!PLAYER_NAME) {
-    PLAYER_NAME = 'player_' + Math.random().toString(36).substring(2, 9);
-    localStorage.setItem('calculus_player_name', PLAYER_NAME);
+let PLAYER_ID = localStorage.getItem('calculus_player_id');
+if (!PLAYER_ID) {
+    PLAYER_ID = 'player_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('calculus_player_id', PLAYER_ID);
 }
 
 // ==========================================
@@ -31,28 +30,13 @@ let quizStats = {
 
 let prestigeData = {
     multiplier: 1.0,
-    answerGrowthFactor: 1.4,
+    answerGrowthFactor: 1.4, // 預設初始答對成長倍率
     count: 0
 };
 
 function updatePlayerDisplay() {
     const userEl = document.getElementById('user-display');
-    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_NAME}`;
-}
-
-// 重設本地記憶體中的遊戲狀態（切換帳號時使用）
-function resetGameState() {
-    gold = 0;
-    unlockedLevels = 1;
-    ballValue = 1.0;
-    spawnIntervalTime = 10000;
-    correctAnswersCount = 0;
-    quizStats = { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
-    prestigeData = { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
-    
-    // 清除畫面上所有的球
-    balls.forEach(ball => Composite.remove(world, ball));
-    balls = [];
+    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_ID}`;
 }
 
 // ==========================================
@@ -63,12 +47,12 @@ function saveGameLocally() {
         gold, unlockedLevels, ballValue, spawnIntervalTime,
         quizStats, prestigeData, correctAnswersCount
     };
-    localStorage.setItem('calculus_save_' + PLAYER_NAME, JSON.stringify(saveData));
+    localStorage.setItem('calculus_save_' + PLAYER_ID, JSON.stringify(saveData));
 }
 
 function loadGameLocally() {
     try {
-        const saved = localStorage.getItem('calculus_save_' + PLAYER_NAME);
+        const saved = localStorage.getItem('calculus_save_' + PLAYER_ID);
         if (saved) {
             const data = JSON.parse(saved);
             gold = data.gold || 0;
@@ -87,7 +71,7 @@ function loadGameLocally() {
 }
 
 async function loadGame() {
-    let hasLocal = loadGameLocally();
+    loadGameLocally();
     updatePlayerDisplay();
     updateLevelBoundaries();
     updateUI();
@@ -96,18 +80,18 @@ async function loadGame() {
         const { data, error } = await supabaseClient
             .from('player_saves')
             .select('*')
-            .eq('user_id', PLAYER_NAME)
+            .eq('user_id', PLAYER_ID)
             .single();
 
         if (!error && data) {
             console.log("成功從雲端同步進度！");
-            gold = data.gold || 0;
-            unlockedLevels = data.level || 1;
-            ballValue = data.ball_value || 1.0;
-            spawnIntervalTime = data.spawn_interval || 10000;
-            quizStats.totalAnswered = data.total_answered || 0;
-            quizStats.totalCorrect = data.total_correct || 0;
-            quizStats.wrongQuestions = data.wrong_questions || [];
+            gold = data.gold || gold;
+            unlockedLevels = data.level || unlockedLevels;
+            ballValue = data.ball_value || ballValue;
+            spawnIntervalTime = data.spawn_interval || spawnIntervalTime;
+            quizStats.totalAnswered = data.total_answered || quizStats.totalAnswered;
+            quizStats.totalCorrect = data.total_correct || quizStats.totalCorrect;
+            quizStats.wrongQuestions = data.wrong_questions || quizStats.wrongQuestions;
             if (data.prestige_data) prestigeData = data.prestige_data;
 
             clearInterval(spawnerTimer);
@@ -115,9 +99,6 @@ async function loadGame() {
             updateLevelBoundaries();
             updateUI();
             saveGameLocally();
-        } else if (!hasLocal) {
-            // 如果雲端跟本機都沒有這個帳號的紀錄，則存一次初始數據
-            saveGameToCloud();
         }
     } catch (err) {
         console.log("使用本機快取模式運行");
@@ -131,7 +112,7 @@ async function saveGameToCloud() {
         await supabaseClient
             .from('player_saves')
             .upsert({
-                user_id: PLAYER_NAME,
+                user_id: PLAYER_ID,
                 level: unlockedLevels,
                 gold: gold,
                 ball_value: ballValue,
@@ -148,10 +129,10 @@ async function saveGameToCloud() {
 }
 
 // ==========================================
-// 4. 登入/切換帳號視窗控制介面
+// 4. 登入視窗控制介面
 // ==========================================
 function openLoginModal() {
-    document.getElementById('username-input').value = PLAYER_NAME;
+    document.getElementById('username-input').value = PLAYER_ID;
     document.getElementById('login-modal').style.display = 'flex';
 }
 
@@ -159,28 +140,16 @@ function closeLoginModal() {
     document.getElementById('login-modal').style.display = 'none';
 }
 
-async function saveUsername() {
+function saveUsername() {
     let inputVal = document.getElementById('username-input').value.trim();
     if (inputVal) {
-        if (inputVal === PLAYER_NAME) {
-            closeLoginModal();
-            return;
-        }
-
-        // 先把當前帳號的進度存好
-        await saveGameToCloud();
-
-        // 切換成新帳號
-        PLAYER_NAME = inputVal;
-        localStorage.setItem('calculus_player_name', PLAYER_NAME);
-        
+        PLAYER_ID = inputVal;
+        localStorage.setItem('calculus_player_id', PLAYER_ID);
         closeLoginModal();
-        resetGameState(); // 重置畫面與數據
-        await loadGame();  // 載入新帳號的雲端/本機進度
-        
-        alert(`已成功切換至帳號: ${PLAYER_NAME}`);
+        loadGame();
+        alert(`已成功切換至玩家: ${PLAYER_ID}`);
     } else {
-        alert('帳號名稱不能為空！');
+        alert('代號不能為空！');
     }
 }
 
@@ -360,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統
+// 8. 題庫與答題系統 (自動修復未包覆的 LaTeX 化學方程式)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -372,6 +341,8 @@ async function loadQuizData() {
         const cleanText = (text) => {
             if (!text) return '';
             let cleaned = text.replace(/\\\\/g, '\\');
+            
+            // 如果選項或內容包含 \text{...} 且沒有被 $ 符號包覆，自動用 $ 把它們包起來讓 KaTeX 渲染
             if ((cleaned.includes('\\text{') || cleaned.includes('\\rightarrow')) && !cleaned.includes('$')) {
                 cleaned = '$' + cleaned + '$';
             }
