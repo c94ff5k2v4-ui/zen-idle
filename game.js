@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (完美修復 \long 指令與化學式箭頭排版)
+// 8. 題庫與答題系統 (完美支援標準 LaTeX 與雙反斜線轉譯)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -338,19 +338,11 @@ async function loadQuizData() {
         let response = await fetch('questions.json');
         let rawData = await response.json();
         
+        // 將 JSON 中的雙反斜線還原為 KaTeX 專用的單反斜線，完整保留科學符號與單位
         const cleanText = (text) => {
             if (!text) return '';
             return text
-                .replace(/\\\\/g, '\\')
-                // 移除錯誤的 \long 殘骸
-                .replace(/\\long\b/g, '')
-                .replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1')
-                .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
-                .replace(/\\?text\{([^}]+)\}/g, '$1')
-                .replace(/\btext(?=kg|N|m|s)/gi, '')
-                .replace(/\\([A-Z][a-z]?)/g, '$1') .replace(/([a-zA-Z0-9_\+\-\)]+)\\?rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
-                .replace(/\\?rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1') .replace(/([a-zA-Z0-9_\+\-\)]+)\\?rightarrow/g, '$1 \\rightarrow ')
-                .replace(/\bvec([A-Za-z])\b/g, '\\vec{$1}');
+                .replace(/\\\\/g, '\\');
         };
 
         quizData = rawData.map(item => ({
