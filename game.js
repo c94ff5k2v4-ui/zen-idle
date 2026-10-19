@@ -329,7 +329,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (清洗排版錯誤與雙反斜線)
+// 8. 題庫與答題系統 (完美修復 \long 指令與化學式箭頭排版)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -342,12 +342,14 @@ async function loadQuizData() {
             if (!text) return '';
             return text
                 .replace(/\\\\/g, '\\')
+                // 移除錯誤的 \long 殘骸
+                .replace(/\\long\b/g, '')
                 .replace(/\\?text\{?(kg|N|m|s|g|cm|mm|rad|deg)\b\}?/gi, '$1')
                 .replace(/\\?text\{?(m\/s\^?2?)\b\}?/gi, '$1')
                 .replace(/\\?text\{([^}]+)\}/g, '$1')
                 .replace(/\btext(?=kg|N|m|s)/gi, '')
-                .replace(/\\([A-Z][a-z]?)/g, '$1') .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
-                .replace(/rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1') .replace(/([a-zA-Z0-9_\+\-\)]+)rightarrow/g, '$1 \\rightarrow ')
+                .replace(/\\([A-Z][a-z]?)/g, '$1') .replace(/([a-zA-Z0-9_\+\-\)]+)\\?rightarrow([a-zA-Z0-9_\+\-\(]+)/g, '$1 \\rightarrow $2')
+                .replace(/\\?rightarrow([a-zA-Z0-9_\+\-\(]+)/g, ' \\rightarrow $1') .replace(/([a-zA-Z0-9_\+\-\)]+)\\?rightarrow/g, '$1 \\rightarrow ')
                 .replace(/\bvec([A-Za-z])\b/g, '\\vec{$1}');
         };
 
@@ -484,7 +486,6 @@ function openErrorLogModal() {
     } else {
         let html = '';
         
-        // 倒序顯示：最新的錯題排在最上方
         errors.slice().reverse().forEach((item, index) => {
             let originalNo = errors.length - index;
             
@@ -498,7 +499,6 @@ function openErrorLogModal() {
         });
         container.innerHTML = html;
 
-        // 啟動 KaTeX 數學渲染引擎解析錯題本中的 LaTeX 公式
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(container, {
                 delimiters: [
