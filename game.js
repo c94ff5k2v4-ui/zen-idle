@@ -1,16 +1,20 @@
 // ==========================================
-// 1. SUPABASE 雲端連線與帳號管理
+// 1. SUPABASE 雲端連線與帳號管理 (裝置綁定固定 ID)
 // ==========================================
 const SUPABASE_URL = 'https://ogcscxxiemcjsuxmgrfr.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nY3NjeHhpZW1janN1eG1ncmZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1NzM5OTIsImV4cCI6MjEwNjE0OTk5Mn0.ZxybKrxdVwNdOZHnhy6tc-Xc7qFQgx7oE8YSFyOiCgs';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let PLAYER_ID = localStorage.getItem('calculus_player_id');
-if (!PLAYER_ID) {
-    PLAYER_ID = 'player_' + Math.random().toString(36).substring(2, 9);
-    localStorage.setItem('calculus_player_id', PLAYER_ID);
+// 永久綁定此裝置的唯一 ID（雲端存檔的 KEY，絕不隨改名改變）
+let DEVICE_ID = localStorage.getItem('calculus_device_id');
+if (!DEVICE_ID) {
+    DEVICE_ID = 'device_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('calculus_device_id', DEVICE_ID);
 }
+
+// 玩家自定義的顯示名稱
+let PLAYER_NAME = localStorage.getItem('calculus_player_name') || '玩家_zza';
 
 // ==========================================
 // 2. 遊戲核心狀態與永久歷史紀錄變數
@@ -30,13 +34,13 @@ let quizStats = {
 
 let prestigeData = {
     multiplier: 1.0,
-    answerGrowthFactor: 1.4, // 預設初始答對成長倍率
+    answerGrowthFactor: 1.4,
     count: 0
 };
 
 function updatePlayerDisplay() {
     const userEl = document.getElementById('user-display');
-    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_ID}`;
+    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_NAME}`;
 }
 
 // ==========================================
@@ -45,14 +49,14 @@ function updatePlayerDisplay() {
 function saveGameLocally() {
     const saveData = {
         gold, unlockedLevels, ballValue, spawnIntervalTime,
-        quizStats, prestigeData, correctAnswersCount
+        quizStats, prestigeData, correctAnswersCount, PLAYER_NAME
     };
-    localStorage.setItem('calculus_save_' + PLAYER_ID, JSON.stringify(saveData));
+    localStorage.setItem('calculus_save_' + DEVICE_ID, JSON.stringify(saveData));
 }
 
 function loadGameLocally() {
     try {
-        const saved = localStorage.getItem('calculus_save_' + PLAYER_ID);
+        const saved = localStorage.getItem('calculus_save_' + DEVICE_ID);
         if (saved) {
             const data = JSON.parse(saved);
             gold = data.gold || 0;
@@ -62,6 +66,7 @@ function loadGameLocally() {
             quizStats = data.quizStats || { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
             prestigeData = data.prestigeData || { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
             correctAnswersCount = data.correctAnswersCount || 0;
+            if (data.PLAYER_NAME) PLAYER_NAME = data.PLAYER_NAME;
             return true;
         }
     } catch (e) {
@@ -80,7 +85,7 @@ async function loadGame() {
         const { data, error } = await supabaseClient
             .from('player_saves')
             .select('*')
-            .eq('user_id', PLAYER_ID)
+            .eq('user_id', DEVICE_ID)
             .single();
 
         if (!error && data) {
@@ -93,6 +98,10 @@ async function loadGame() {
             quizStats.totalCorrect = data.total_correct || quizStats.totalCorrect;
             quizStats.wrongQuestions = data.wrong_questions || quizStats.wrongQuestions;
             if (data.prestige_data) prestigeData = data.prestige_data;
+            if (data.player_name) {
+                PLAYER_NAME = data.player_name;
+                localStorage.setItem('calculus_player_name', PLAYER_NAME);
+            }
 
             clearInterval(spawnerTimer);
             spawnerTimer = setInterval(spawnBall, spawnIntervalTime);
@@ -112,7 +121,8 @@ async function saveGameToCloud() {
         await supabaseClient
             .from('player_saves')
             .upsert({
-                user_id: PLAYER_ID,
+                user_id: DEVICE_ID,
+                player_name: PLAYER_NAME,
                 level: unlockedLevels,
                 gold: gold,
                 ball_value: ballValue,
@@ -129,10 +139,10 @@ async function saveGameToCloud() {
 }
 
 // ==========================================
-// 4. 登入視窗控制介面
+// 4. 登入視窗控制介面 (改名但不換帳號)
 // ==========================================
 function openLoginModal() {
-    document.getElementById('username-input').value = PLAYER_ID;
+    document.getElementById('username-input').value = PLAYER_NAME;
     document.getElementById('login-modal').style.display = 'flex';
 }
 
@@ -143,13 +153,14 @@ function closeLoginModal() {
 function saveUsername() {
     let inputVal = document.getElementById('username-input').value.trim();
     if (inputVal) {
-        PLAYER_ID = inputVal;
-        localStorage.setItem('calculus_player_id', PLAYER_ID);
+        PLAYER_NAME = inputVal;
+        localStorage.setItem('calculus_player_name', PLAYER_NAME);
         closeLoginModal();
-        loadGame();
-        alert(`已成功切換至玩家: ${PLAYER_ID}`);
+        updatePlayerDisplay();
+        saveGameToCloud();
+        alert(`已成功更新玩家名稱為: ${PLAYER_NAME}`);
     } else {
-        alert('代號不能為空！');
+        alert('名稱不能為空！');
     }
 }
 
@@ -329,7 +340,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (自動修復未包覆的 LaTeX 化學方程式)
+// 8. 題庫與答題系統 (自動相容有無 unit 欄位)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -341,8 +352,6 @@ async function loadQuizData() {
         const cleanText = (text) => {
             if (!text) return '';
             let cleaned = text.replace(/\\\\/g, '\\');
-            
-            // 如果選項或內容包含 \text{...} 且沒有被 $ 符號包覆，自動用 $ 把它們包起來讓 KaTeX 渲染
             if ((cleaned.includes('\\text{') || cleaned.includes('\\rightarrow')) && !cleaned.includes('$')) {
                 cleaned = '$' + cleaned + '$';
             }
