@@ -6,10 +6,10 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let PLAYER_ID = localStorage.getItem('calculus_player_id');
-if (!PLAYER_ID) {
-    PLAYER_ID = 'player_' + Math.random().toString(36).substring(2, 9);
-    localStorage.setItem('calculus_player_id', PLAYER_ID);
+let PLAYER_NAME = localStorage.getItem('calculus_player_name');
+if (!PLAYER_NAME) {
+    PLAYER_NAME = 'player_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('calculus_player_name', PLAYER_NAME);
 }
 
 // ==========================================
@@ -30,13 +30,26 @@ let quizStats = {
 
 let prestigeData = {
     multiplier: 1.0,
-    answerGrowthFactor: 1.4, // 預設初始答對成長倍率
+    answerGrowthFactor: 1.4,
     count: 0
 };
 
 function updatePlayerDisplay() {
     const userEl = document.getElementById('user-display');
-    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_ID}`;
+    if (userEl) userEl.innerText = `目前玩家: ${PLAYER_NAME}`;
+}
+
+function resetGameState() {
+    gold = 0;
+    unlockedLevels = 1;
+    ballValue = 1.0;
+    spawnIntervalTime = 10000;
+    correctAnswersCount = 0;
+    quizStats = { totalAnswered: 0, totalCorrect: 0, wrongQuestions: [] };
+    prestigeData = { multiplier: 1.0, answerGrowthFactor: 1.4, count: 0 };
+    
+    balls.forEach(ball => Composite.remove(world, ball));
+    balls = [];
 }
 
 // ==========================================
@@ -47,12 +60,12 @@ function saveGameLocally() {
         gold, unlockedLevels, ballValue, spawnIntervalTime,
         quizStats, prestigeData, correctAnswersCount
     };
-    localStorage.setItem('calculus_save_' + PLAYER_ID, JSON.stringify(saveData));
+    localStorage.setItem('calculus_save_' + PLAYER_NAME, JSON.stringify(saveData));
 }
 
 function loadGameLocally() {
     try {
-        const saved = localStorage.getItem('calculus_save_' + PLAYER_ID);
+        const saved = localStorage.getItem('calculus_save_' + PLAYER_NAME);
         if (saved) {
             const data = JSON.parse(saved);
             gold = data.gold || 0;
@@ -71,7 +84,7 @@ function loadGameLocally() {
 }
 
 async function loadGame() {
-    loadGameLocally();
+    let hasLocal = loadGameLocally();
     updatePlayerDisplay();
     updateLevelBoundaries();
     updateUI();
@@ -80,18 +93,18 @@ async function loadGame() {
         const { data, error } = await supabaseClient
             .from('player_saves')
             .select('*')
-            .eq('user_id', PLAYER_ID)
+            .eq('user_id', PLAYER_NAME)
             .single();
 
         if (!error && data) {
             console.log("成功從雲端同步進度！");
-            gold = data.gold || gold;
-            unlockedLevels = data.level || unlockedLevels;
-            ballValue = data.ball_value || ballValue;
-            spawnIntervalTime = data.spawn_interval || spawnIntervalTime;
-            quizStats.totalAnswered = data.total_answered || quizStats.totalAnswered;
-            quizStats.totalCorrect = data.total_correct || quizStats.totalCorrect;
-            quizStats.wrongQuestions = data.wrong_questions || quizStats.wrongQuestions;
+            gold = data.gold || 0;
+            unlockedLevels = data.level || 1;
+            ballValue = data.ball_value || 1.0;
+            spawnIntervalTime = data.spawn_interval || 10000;
+            quizStats.totalAnswered = data.total_answered || 0;
+            quizStats.totalCorrect = data.total_correct || 0;
+            quizStats.wrongQuestions = data.wrong_questions || [];
             if (data.prestige_data) prestigeData = data.prestige_data;
 
             clearInterval(spawnerTimer);
@@ -99,6 +112,8 @@ async function loadGame() {
             updateLevelBoundaries();
             updateUI();
             saveGameLocally();
+        } else if (!hasLocal) {
+            saveGameToCloud();
         }
     } catch (err) {
         console.log("使用本機快取模式運行");
@@ -112,7 +127,7 @@ async function saveGameToCloud() {
         await supabaseClient
             .from('player_saves')
             .upsert({
-                user_id: PLAYER_ID,
+                user_id: PLAYER_NAME,
                 level: unlockedLevels,
                 gold: gold,
                 ball_value: ballValue,
@@ -129,10 +144,10 @@ async function saveGameToCloud() {
 }
 
 // ==========================================
-// 4. 登入視窗控制介面
+// 4. 登入/切換帳號視窗控制介面
 // ==========================================
 function openLoginModal() {
-    document.getElementById('username-input').value = PLAYER_ID;
+    document.getElementById('username-input').value = PLAYER_NAME;
     document.getElementById('login-modal').style.display = 'flex';
 }
 
@@ -140,16 +155,26 @@ function closeLoginModal() {
     document.getElementById('login-modal').style.display = 'none';
 }
 
-function saveUsername() {
+async function saveUsername() {
     let inputVal = document.getElementById('username-input').value.trim();
     if (inputVal) {
-        PLAYER_ID = inputVal;
-        localStorage.setItem('calculus_player_id', PLAYER_ID);
+        if (inputVal === PLAYER_NAME) {
+            closeLoginModal();
+            return;
+        }
+
+        await saveGameToCloud();
+
+        PLAYER_NAME = inputVal;
+        localStorage.setItem('calculus_player_name', PLAYER_NAME);
+        
         closeLoginModal();
-        loadGame();
-        alert(`已成功切換至玩家: ${PLAYER_ID}`);
+        resetGameState();
+        await loadGame();
+        
+        alert(`已成功切換至帳號: ${PLAYER_NAME}`);
     } else {
-        alert('代號不能為空！');
+        alert('帳號名稱不能為空！');
     }
 }
 
@@ -329,7 +354,7 @@ function updateUI() {
 }
 
 // ==========================================
-// 8. 題庫與答題系統 (自動修復未包覆的 LaTeX 化學方程式)
+// 8. 題庫與答題系統 (自動修復黏在一起的英文單字)
 // ==========================================
 let quizData = [], currentQuestionIndex = 0, shuffledIndices = [], shufflePointer = 0, roundCount = 0;
 
@@ -342,7 +367,23 @@ async function loadQuizData() {
             if (!text) return '';
             let cleaned = text.replace(/\\\\/g, '\\');
             
-            // 如果選項或內容包含 \text{...} 且沒有被 $ 符號包覆，自動用 $ 把它們包起來讓 KaTeX 渲染
+            // 自動修復常見黏字問題（例如 Chapter5 變成 Chapter 5，Whatis 變成 What is）
+            cleaned = cleaned
+                .replace(/([a-zA-Z])([0-9])/g, '$1 $2')
+                .replace(/([0-9])([a-zA-Z])/g, '$1 $2')
+                .replace(/([a-z])([A-Z])/g, '$1 $2')
+                .replace(/\b(What|Whatis|Find|Write|Calculate|Determine|A|The|is|the|formula|of|a|hydrocarbon)\b/g, (match) => {
+                    // 針對黏在一起的特定字眼做拆分
+                    if (match === 'Whatis') return 'What is';
+                    return match;
+                });
+
+            // 自動修復全形英文或空格遺失
+            cleaned = cleaned
+                .replace(/Whatisthe/g, 'What is the ')
+                .replace(/empiricalformula/g, 'empirical formula ')
+                .replace(/ofahydrocarbon/g, 'of a hydrocarbon ');
+
             if ((cleaned.includes('\\text{') || cleaned.includes('\\rightarrow')) && !cleaned.includes('$')) {
                 cleaned = '$' + cleaned + '$';
             }
